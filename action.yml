@@ -1,5 +1,5 @@
-name: 'Advanced issue labeler'
-description: 'Provide a description here'
+name: Advanced Issue Labeler
+description: Label issues based on values from issue form dropdown.
 
 branding:
   icon: bookmark
@@ -8,11 +8,14 @@ branding:
 inputs:
   issue-form:
     required: true
-    description: 'Representation of issue form in JSON type'
+    description: Representation of issue form in JSON type
   section:
     required: true
-    description: 'Section of form that is used to determine labels'
+    description: Section of form that is used to determine labels
+  token:
+    required: true
+    description: GitHub token used to set issue labels
 
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
+  using: node16
+  main: dist/index.js
