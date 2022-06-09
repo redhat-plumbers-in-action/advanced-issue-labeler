@@ -1,19 +1,10 @@
-import * as core from '@actions/core'
-import {wait} from './wait'
+import { setFailed } from '@actions/core';
+import run from '@probot/adapter-github-actions';
 
-async function run(): Promise<void> {
-  try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
+import app from './app';
 
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
-
-    core.setOutput('time', new Date().toTimeString())
-  } catch (error) {
-    if (error instanceof Error) core.setFailed(error.message)
-  }
+try {
+  await run.run(app);
+} catch (error) {
+  if (error instanceof Error) setFailed(error.message);
 }
-
-run()
