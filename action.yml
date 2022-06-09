@@ -1,11 +1,18 @@
-name: 'Your name here'
+name: 'Advanced issue labeler'
 description: 'Provide a description here'
-author: 'Your name or organization here'
+
+branding:
+  icon: bookmark
+  color: blue
+
 inputs:
-  milliseconds: # change this
+  issue-form:
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    description: 'Representation of issue form in JSON type'
+  section:
+    required: true
+    description: 'Section of form that is used to determine labels'
+
 runs:
   using: 'node16'
   main: 'dist/index.js'
