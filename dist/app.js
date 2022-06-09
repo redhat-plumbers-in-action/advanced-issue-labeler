@@ -4,7 +4,7 @@ const app = (probot) => {
         const issueForm = JSON.parse(getInput('issue-form'));
         const section = getInput('section');
         debug(`Issue form: ${issueForm}`);
-        const response = await context.octokit.rest.issues.setLabels(context.issue({ labels: issueForm[section].split(', ', 10) }));
+        const response = await context.octokit.rest.issues.addLabels(context.issue({ labels: issueForm[section].split(', ', 10) }));
         debug(`GitHub API response: ${response}`);
     });
 };

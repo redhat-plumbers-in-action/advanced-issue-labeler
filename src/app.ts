@@ -7,7 +7,7 @@ const app = (probot: Probot) => {
     const section = getInput('section');
     debug(`Issue form: ${issueForm}`);
 
-    const response = await context.octokit.rest.issues.setLabels(
+    const response = await context.octokit.rest.issues.addLabels(
       context.issue({ labels: issueForm[section].split(', ', 10) })
     );
 
