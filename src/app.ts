@@ -20,8 +20,13 @@ const app = (probot: Probot) => {
       return;
     }
 
+    if (!labels[0]) {
+      debug(`Section field is empty.`);
+      return;
+    }
+
     const response = await context.octokit.rest.issues.addLabels(
-      context.issue({ labels: issueForm[section].split(', ', 10) })
+      context.issue({ labels })
     );
 
     debug(`GitHub API response: ${response}`);
