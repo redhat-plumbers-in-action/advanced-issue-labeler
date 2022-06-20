@@ -3,11 +3,14 @@ const app = (probot) => {
     probot.on('issues.opened', async (context) => {
         const issueForm = JSON.parse(getInput('issue-form'));
         const section = getInput('section');
+        const blockList = getInput('block-list').split('\n', 25);
         if (!issueForm.hasOwnProperty(section)) {
             debug(`Issue form doesn't contain section: ${section}`);
             return;
         }
-        const labels = issueForm[section].split(', ', 10);
+        const labels = issueForm[section]
+            .split(', ', 10)
+            .filter(label => !blockList.find(toRemove => label === toRemove));
         if (labels.length === 0) {
             debug(`Section field is empty.`);
             return;
@@ -16,6 +19,7 @@ const app = (probot) => {
             debug(`Section field is empty.`);
             return;
         }
+        debug(`Labels to be set: ${labels}`);
         const response = await context.octokit.rest.issues.addLabels(context.issue({ labels }));
         debug(`GitHub API response: ${response}`);
     });

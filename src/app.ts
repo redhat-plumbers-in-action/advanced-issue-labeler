@@ -7,13 +7,16 @@ const app = (probot: Probot) => {
       getInput('issue-form')
     );
     const section = getInput('section');
+    const blockList = getInput('block-list').split('\n', 25);
 
     if (!issueForm.hasOwnProperty(section)) {
       debug(`Issue form doesn't contain section: ${section}`);
       return;
     }
 
-    const labels: string[] = issueForm[section].split(', ', 10);
+    const labels: string[] = issueForm[section]
+      .split(', ', 10)
+      .filter(label => !blockList.find(toRemove => label === toRemove));
 
     if (labels.length === 0) {
       debug(`Section field is empty.`);
@@ -24,6 +27,8 @@ const app = (probot: Probot) => {
       debug(`Section field is empty.`);
       return;
     }
+
+    debug(`Labels to be set: ${labels}`);
 
     const response = await context.octokit.rest.issues.addLabels(
       context.issue({ labels })
