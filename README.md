@@ -26,7 +26,7 @@ Following example shows how to automatically label issues based on components, t
       - resolve
       - journal
       - network
-      - systemdctl
+      - systemctl
       - udev
       - login
       - nspawn
@@ -65,6 +65,8 @@ jobs:
         with:
           issue-form: ${{ steps.issue-parser.outputs.jsonString }}
           section: component
+          block-list: |
+            other
           token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
@@ -97,6 +99,15 @@ ID of dropdown section from issue form template.
 
 * default value: `undefined`
 * requirements: `required`
+
+### block-list
+
+List of forbiden labels. Theese labels won't be set.
+
+* default value: `undefined`
+* requirements: `optional`
+
+_⚠️ Please notice the `|` in the example above ☝️. That let's you effectively declare a multi-line yaml string. You can learn more about multi-line yaml syntax [here](https://yaml-multiline.info). This syntax is require when block-listing multiple labels._
 
 ### token
 
