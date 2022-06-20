@@ -1,0 +1,45 @@
+name: Unit tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+  # Allows to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Unit Tests - Node.js
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 17.x]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: yarn
+          cache-dependency-path: yarn.lock
+
+      - name: Install
+        run: yarn install
+
+      - name: Compile
+        run: yarn build
+
+      - name: Package
+        run: yarn run package
+
+      - name: Test
+        run: yarn test
+
+      - name: Codecov
+        if: ${{ matrix.node-version == '17.x' }}
+        uses: codecov/codecov-action@v3

@@ -4,8 +4,14 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    labels:
+      - 'type: dependencies'
+      - 'github-actions'
 
   - package-ecosystem: npm
     directory: /
     schedule:
-      interval: weekly
+      interval: daily
+    labels:
+      - 'type: dependencies'
+      - 'javascript'

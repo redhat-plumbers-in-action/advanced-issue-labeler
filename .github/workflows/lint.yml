@@ -1,0 +1,39 @@
+name: Linting suite
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+  # Allows to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  lint:
+    name: Linters
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js 17.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 17
+          cache: yarn
+
+      - name: Install
+        run: yarn install
+
+      - name: Build
+        run: yarn build
+
+      - name: Prettier
+        run: yarn run format-check
+
+      - name: ESLint
+        run: yarn run lint
+
+      # - name: Run CSpell
+      #   run: yarn run lint:spellcheck
