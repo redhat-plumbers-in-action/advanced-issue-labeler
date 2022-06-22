@@ -22,16 +22,15 @@ Following example shows how to automatically label issues based on components, t
     description: Please chose component related to this issue.
     multiple: true
     options:
-      - systemd
-      - resolve
-      - journal
-      - network
-      - systemctl
-      - udev
-      - login
-      - nspawn
-      - boot
-      - homed
+      - 'systemd-analyze'
+      - 'systemd-ask-password'
+      - 'systemd-binfmt'
+      - 'systemd-cgtop'
+      - 'systemd-cryptsetup'
+      - 'systemd-delta'
+      - 'systemd-env-generator'
+      - '30-systemd-environment-d-generator'
+      - 'other'
   validations:
     required: true
 ```
@@ -117,6 +116,24 @@ Token used to set labels
 * requirements: `required`
 * recomended value: `secrets.GITHUB_TOKEN`
 
+## Policy
+
+It's possible to define labeling policy to further customize the labeling process. Policy can be defined using `.github/advanced-issue-labeler.yml` configuration file. Structure needs to be as follows:
+
+```yml
+policy:
+  analyze: ['systemd-analyze']
+  ask-password: ['systemd-ask-password']
+  binfmt: ['systemd-binfmt']
+  cgtop: ['systemd-cgtop']
+  cryptsetup: ['systemd-cryptsetup']
+  delta: ['systemd-delta']
+  env: ['systemd-env-generator', '30-systemd-environment-d-generator']
+  # ...
+```
+
+Each keyword in the policy section represents the final label when one of keywords in the array will be chosen from the dropdown menu in issue form.
+
 ## Limitations
 
-* TBA
+* ⚠️ Currently it's not possible to use strings containing `, ` in the dropdown menu. This pattern is used in the separation process when the dropdown option `multiple` is set to `true`.
