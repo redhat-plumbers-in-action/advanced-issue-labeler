@@ -8,21 +8,41 @@ const app = (probot) => {
             debug(`Issue form doesn't contain section: ${section}`);
             return;
         }
-        const labels = issueForm[section]
+        const keywords = issueForm[section]
             .split(', ', 10)
-            .filter(label => !blockList.find(toRemove => label === toRemove));
-        if (labels.length === 0) {
+            .filter(label => !isCompliant(blockList, label));
+        if (keywords.length === 0) {
             debug(`Section field is empty.`);
             return;
         }
-        if (!labels[0]) {
+        if (!keywords[0]) {
             debug(`Section field is empty.`);
             return;
+        }
+        let labels = [];
+        const config = await context.config('advanced-issue-labeler.yml');
+        if (!config) {
+            labels = keywords;
+        }
+        else {
+            for (const rule in config === null || config === void 0 ? void 0 : config.policy) {
+                let keywordFound = false;
+                for (const keyword of keywords) {
+                    if (isCompliant(config.policy[rule], keyword)) {
+                        keywordFound = true;
+                    }
+                }
+                if (keywordFound)
+                    labels.push(rule);
+            }
         }
         debug(`Labels to be set: ${labels}`);
         const response = await context.octokit.rest.issues.addLabels(context.issue({ labels }));
         debug(`GitHub API response: ${response}`);
     });
 };
+function isCompliant(policy, keyword) {
+    return !!policy.find(rule => keyword === rule);
+}
 export default app;
 //# sourceMappingURL=app.js.map
