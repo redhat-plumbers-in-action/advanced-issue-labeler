@@ -9,9 +9,5 @@
 
   "js": {
     "addLabels": ["javascript"]
-  },
-
-  "docker": {
-    "addLabels": ["docker"]
   }
 }
