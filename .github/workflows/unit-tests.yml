@@ -1,13 +1,16 @@
+---
+
 name: Unit tests
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
-
-  # Allows to run this workflow manually from the Actions tab
+    branches: [ main ]
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   test:
@@ -16,7 +19,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 17.x]
+        node-version: [ 14.x, 16.x, 17.x ]
 
     steps:
       - uses: actions/checkout@v3
