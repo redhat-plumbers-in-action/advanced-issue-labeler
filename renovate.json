@@ -1,6 +1,17 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base"
-  ]
+  "extends": ["config:base"],
+
+  "labels": ["type: dependencies"],
+  "github-actions": {
+    "addLabels": ["github-actions"]
+  },
+
+  "js": {
+    "addLabels": ["javascript"]
+  },
+
+  "docker": {
+    "addLabels": ["docker"]
+  }
 }
