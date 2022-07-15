@@ -1,4 +1,3 @@
-# Source: https://github.com/release-drafter/release-drafter/blob/f551477c43766f7020024aa95f1074aeeb96a0bf/.github/release-drafter.yml
 ---
 
 name-template: 'v$RESOLVED_VERSION'
@@ -16,21 +15,24 @@ categories:
     label: 'type: feature'
 
   - title: 'Bug Fixes'
-    label: 'type: bug'
+    label: 'type: bugfix'
 
   - title: 'Maintenance'
-    label: 'type: maintenance'
+    labels:
+      - 'type: maintenance'
+      - 'type: performance'
 
   - title: 'Documentation'
     label: 'type: documentation'
 
   - title: 'Other changes'
 
-  - title: 'Automation changes'
+  - title: 'Automation and CI changes'
     label: 'type: ci'
 
   - title: 'Dependency Updates'
     label: 'type: dependencies'
+    collapse-after: 5
 
 version-resolver:
   major:
