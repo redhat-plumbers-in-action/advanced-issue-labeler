@@ -12,10 +12,17 @@ inputs:
     required: true
     description: Representation of issue form in JSON type
 
+  template:
+    required: false
+    default: ''
+    description: Each issue form can have defined different labeling policy, this option is used to specify which policy should be used.
+
   section:
-    required: true
+    required: false
+    default: ''
     description: Section of form that is used to determine labels
 
+  # How to pass array to GA inputs: https://github.community/t/can-action-inputs-be-arrays/16457/2
   block-list:
     required: false
     default: ''

@@ -1,0 +1,380 @@
+// Vitest Snapshot v1
+
+exports[`Config Object > can get template policy 1`] = `
+PolicyItem {
+  "_section": [
+    SectionItem {
+      "_blockList": [],
+      "_id": [
+        "type",
+      ],
+      "_label": [
+        Label {
+          "_keys": [
+            "Bug Report",
+          ],
+          "_name": "bug 🐛",
+        },
+        Label {
+          "_keys": [
+            "Feature Request",
+          ],
+          "_name": "RFE 🎁",
+        },
+      ],
+    },
+  ],
+  "_template": [],
+}
+`;
+
+exports[`Config Object > can get template policy 2`] = `
+PolicyItem {
+  "_section": [
+    SectionItem {
+      "_blockList": [
+        "Other",
+      ],
+      "_id": [
+        "type",
+      ],
+      "_label": [
+        Label {
+          "_keys": [
+            "Bug Report",
+          ],
+          "_name": "bug 🐛",
+        },
+        Label {
+          "_keys": [
+            "Feature Request",
+          ],
+          "_name": "RFE 🎁",
+        },
+      ],
+    },
+  ],
+  "_template": [
+    "issue-template.yml",
+  ],
+}
+`;
+
+exports[`Config Object > can get template policy 3`] = `
+PolicyItem {
+  "_section": [
+    SectionItem {
+      "_blockList": [
+        "Other",
+      ],
+      "_id": [
+        "type",
+      ],
+      "_label": [
+        Label {
+          "_keys": [
+            "Bug Report",
+          ],
+          "_name": "bug 🐛",
+        },
+        Label {
+          "_keys": [
+            "Feature Request",
+          ],
+          "_name": "RFE 🎁",
+        },
+      ],
+    },
+  ],
+  "_template": [
+    "issue-template.yml",
+  ],
+}
+`;
+
+exports[`Config Object > can get template policy 4`] = `
+PolicyItem {
+  "_section": [
+    SectionItem {
+      "_blockList": [
+        "Other",
+      ],
+      "_id": [
+        "type",
+      ],
+      "_label": [
+        Label {
+          "_keys": [
+            "Bug Report",
+          ],
+          "_name": "bug 🐛",
+        },
+        Label {
+          "_keys": [
+            "Feature Request",
+          ],
+          "_name": "RFE 🎁",
+        },
+      ],
+    },
+  ],
+  "_template": [
+    "issue-template.yml",
+    "template.yml",
+  ],
+}
+`;
+
+exports[`Config Object > get policy() 1`] = `
+[
+  PolicyItem {
+    "_section": [
+      SectionItem {
+        "_blockList": [],
+        "_id": [
+          "type",
+        ],
+        "_label": [
+          Label {
+            "_keys": [
+              "Bug Report",
+            ],
+            "_name": "bug 🐛",
+          },
+          Label {
+            "_keys": [
+              "Feature Request",
+            ],
+            "_name": "RFE 🎁",
+          },
+        ],
+      },
+    ],
+    "_template": [],
+  },
+]
+`;
+
+exports[`Config Object > get policy() 2`] = `
+[
+  PolicyItem {
+    "_section": [
+      SectionItem {
+        "_blockList": [
+          "Other",
+        ],
+        "_id": [
+          "type",
+        ],
+        "_label": [
+          Label {
+            "_keys": [
+              "Bug Report",
+            ],
+            "_name": "bug 🐛",
+          },
+          Label {
+            "_keys": [
+              "Feature Request",
+            ],
+            "_name": "RFE 🎁",
+          },
+        ],
+      },
+    ],
+    "_template": [
+      "issue-template.yml",
+    ],
+  },
+]
+`;
+
+exports[`Config Object > get policy() 3`] = `
+[
+  PolicyItem {
+    "_section": [
+      SectionItem {
+        "_blockList": [
+          "Other",
+        ],
+        "_id": [
+          "type",
+        ],
+        "_label": [
+          Label {
+            "_keys": [
+              "Bug Report",
+            ],
+            "_name": "bug 🐛",
+          },
+          Label {
+            "_keys": [
+              "Feature Request",
+            ],
+            "_name": "RFE 🎁",
+          },
+        ],
+      },
+    ],
+    "_template": [
+      "issue-template.yml",
+    ],
+  },
+  PolicyItem {
+    "_section": [
+      SectionItem {
+        "_blockList": [
+          "other",
+        ],
+        "_id": [
+          "id",
+        ],
+        "_label": [
+          Label {
+            "_keys": [
+              "label",
+            ],
+            "_name": "label",
+          },
+        ],
+      },
+    ],
+    "_template": [
+      "template1.yml",
+      "template1.yml",
+    ],
+  },
+]
+`;
+
+exports[`Config Object > get policy() 4`] = `
+[
+  PolicyItem {
+    "_section": [
+      SectionItem {
+        "_blockList": [
+          "Other",
+        ],
+        "_id": [
+          "type",
+        ],
+        "_label": [
+          Label {
+            "_keys": [
+              "Bug Report",
+            ],
+            "_name": "bug 🐛",
+          },
+          Label {
+            "_keys": [
+              "Feature Request",
+            ],
+            "_name": "RFE 🎁",
+          },
+        ],
+      },
+    ],
+    "_template": [
+      "issue-template.yml",
+      "template.yml",
+    ],
+  },
+  PolicyItem {
+    "_section": [
+      SectionItem {
+        "_blockList": [
+          "other",
+        ],
+        "_id": [
+          "id",
+        ],
+        "_label": [
+          Label {
+            "_keys": [
+              "label",
+            ],
+            "_name": "label",
+          },
+        ],
+      },
+    ],
+    "_template": [
+      "template1.yml",
+      "template1.yml",
+    ],
+  },
+]
+`;
+
+exports[`Config Object > is invalid 1`] = `
+[
+  {
+    "notes": {
+      "arrayMinSize": "_policy must contain at least 1 elements",
+    },
+    "property": "_policy",
+    "value": [],
+  },
+]
+`;
+
+exports[`Config Object > is invalid 2`] = `
+[
+  {
+    "notes": {
+      "arrayMinSize": "_policy must contain at least 1 elements",
+    },
+    "property": "_policy",
+    "value": [],
+  },
+]
+`;
+
+exports[`Config Object > is invalid 3`] = `
+[
+  {
+    "notes": {
+      "arrayMinSize": "_policy must contain at least 1 elements",
+    },
+    "property": "_policy",
+    "value": [],
+  },
+]
+`;
+
+exports[`Config Object > is invalid 4`] = `
+[
+  {
+    "notes": {
+      "arrayMinSize": "_label must contain at least 1 elements",
+    },
+    "property": "_policy.0._section.0._label",
+    "value": [],
+  },
+]
+`;
+
+exports[`Config Object > is invalid 5`] = `
+[
+  {
+    "notes": {
+      "arrayMinSize": "_section must contain at least 1 elements",
+    },
+    "property": "_policy.0._section",
+    "value": [],
+  },
+]
+`;
+
+exports[`Config Object > is invalid 6`] = `
+[
+  {
+    "notes": {
+      "isString": "each value in _keys must be a string",
+      "minLength": "each value in _keys must be longer than or equal to 1 characters",
+    },
+    "property": "_policy.0._section.0._label.1._keys",
+    "value": undefined,
+  },
+]
+`;
