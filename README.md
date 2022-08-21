@@ -31,40 +31,45 @@
 
 <!-- -->
 
+Advanced Issue Labeler is a GitHub action that can automatically label issues based on user input. The idea for this project came from and was first introduced in [@systemd/systemd](https://github.com/systemd/systemd). Systemd repository has a very active community with many issues to process. Automatic labeling helps with issue triaging.
+
 ## How does it work
 
-... TBD ...
+Advanced Issue Labeler take advantage of GitHub [issue forms](https://github.blog/changelog/2021-06-23-issues-forms-beta-for-public-repositories) (special kind of issue templates), to provide better developer experience by labeling issues based on provided input. Currently it is possible to label issues only based on [dropdowns](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-githubs-form-schema#dropdown).
+
+Advanced Issue Labeler is expected to work in cooperation with [@stefanbuck/github-issue-parser](https://github.com/stefanbuck/github-issue-parser) GitHub action. Parser action provides JSON representation of the submitted issue, where KEYs represent IDs described in the issue-form YAML configuration. Issue labeler understands it and can label issues based on selected values from dropdown. Dropdown values could directly represent labels or be mapped to policy configuration for more complex labeling requirements.
 
 ## Features
 
-* TBA ...
+* Ability to label issues based on issue form dropdown values
+* Ability to specify [policy](#policy) for mapping certain key-words to labels
+* Ability to exclude certain words from labeling process ([`block-list`](#block-list))
 
 ## Usage
 
-Following example shows how to automatically label issues based on components, that user describes in issue form. In issue form, there is defined dropdown listing all components (**Important is to set correct ID**):
+The following example shows how to automatically label issues based on the severity that the user describes in issue form. In issue form, there is a defined dropdown listing all components:
 
 ```yml
 - type: dropdown
-  id: component
+  id: severity
   attributes:
-    label: Component
-    description: Please chose component related to this issue.
-    multiple: true
+    label: Severity Impact
+    description: Please chose severity impact of this issue.
+    multiple: false
     options:
-      - 'systemd-analyze'
-      - 'systemd-ask-password'
-      - 'systemd-binfmt'
-      - 'systemd-cgtop'
-      - 'systemd-cryptsetup'
-      - 'systemd-delta'
-      - 'systemd-env-generator'
-      - '30-systemd-environment-d-generator'
+      - 'None'
+      - 'Low'
+      - 'Medium'
+      - 'High'
+      - 'Urgent'
       - 'other'
   validations:
     required: true
 ```
 
-GitHub workflow that automaticly marks issues with componnent labels:
+> **Note**: It's important to set correct ID in issue-form
+
+GitHub workflow that automaticly marks issues with severity labels:
 
 ```yml
 name: Issue labeler
@@ -78,22 +83,19 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-
       - name: Parse issue form
         uses: stefanbuck/github-issue-praser@v2
         id: issue-parser
         with:
           template-path: .github/ISSUE_TEMPLATE/bug.yml
 
-      - name: Set labels based on component field
+      - name: Set labels based on severity field
         uses: redhat-plumbers-in-action/advanced-issue-labeler@v1
         with:
           issue-form: ${{ steps.issue-parser.outputs.jsonString }}
-          section: component
+          section: severity
           block-list: |
+            None
             other
           token: ${{ secrets.GITHUB_TOKEN }}
 ```
@@ -121,7 +123,7 @@ Action currently accept following options:
 
 ### issue-form
 
-Issue form parsed into `JSON` file. Supported format is generated using [@stefanbuck/github-issue-parser](https://github.com/stefanbuck/github-issue-parser) GitHub action.
+Issue-form parsed into `JSON` file. Supported format is generated using [@stefanbuck/github-issue-parser](https://github.com/stefanbuck/github-issue-parser) GitHub action.
 
 * default value: `undefined`
 * requirements: `required`
@@ -140,7 +142,7 @@ List of forbiden labels. Theese labels won't be set.
 * default value: `undefined`
 * requirements: `optional`
 
-_⚠️ Please notice the `|` in the example above ☝️. That let's you effectively declare a multi-line yaml string. You can learn more about multi-line yaml syntax [here](https://yaml-multiline.info). This syntax is require when block-listing multiple labels._
+> **Note**: _Please notice the `|` in the example above ☝️. That let's you effectively declare a multi-line yaml string. You can learn more about multi-line yaml syntax [here](https://yaml-multiline.info). This syntax is require when block-listing multiple labels._
 
 ### token
 
@@ -156,13 +158,10 @@ It's possible to define labeling policy to further customize the labeling proces
 
 ```yml
 policy:
-  analyze: ['systemd-analyze']
-  ask-password: ['systemd-ask-password']
-  binfmt: ['systemd-binfmt']
-  cgtop: ['systemd-cgtop']
-  cryptsetup: ['systemd-cryptsetup']
-  delta: ['systemd-delta']
-  env: ['systemd-env-generator', '30-systemd-environment-d-generator']
+  'severity: Low': ['Low', 'None']
+  'severity: Medium': ['Medium']
+  'severity: High': ['High']
+  'severity: Urgent': ['Urgent']
   # ...
 ```
 
@@ -170,4 +169,4 @@ Each keyword in the policy section represents the final label when one of keywor
 
 ## Limitations
 
-* ⚠️ Currently it's not possible to use strings containing `,␣` in the dropdown menu. This pattern is used in the separation process when the dropdown option `multiple` is set to `true`.
+* Currently it's not possible to use strings containing `,␣` in the dropdown menu. This pattern is used in the separation process when the dropdown option `multiple` is set to `true`.
