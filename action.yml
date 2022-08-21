@@ -1,3 +1,5 @@
+---
+
 name: Advanced Issue Labeler
 description: Label issues based on values from issue form dropdown.
 
@@ -9,14 +11,17 @@ inputs:
   issue-form:
     required: true
     description: Representation of issue form in JSON type
+
   section:
     required: true
     description: Section of form that is used to determine labels
-  # How to pass array to GA inputs: https://github.community/t/can-action-inputs-be-arrays/16457/2
+
   block-list:
     required: false
     default: ''
+    # How to pass array to GA inputs: https://github.community/t/can-action-inputs-be-arrays/16457/2
     description: Array of words excluded from labeling process, these words won't be set as labels. Use yaml `|` syntax when setting multiple values.
+
   token:
     required: true
     description: GitHub token used to set issue labels
