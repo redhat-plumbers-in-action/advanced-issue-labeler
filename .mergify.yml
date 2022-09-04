@@ -12,7 +12,6 @@ pull_request_rules:
       - check-success=CodeQL
       - check-success=Linters
       - check-success=Super Linter
-      - check-success=Unit Tests - Node.js (14.x)
       - check-success=Unit Tests - Node.js (16.x)
       - check-success=Unit Tests - Node.js (17.x)
       - -draft
