@@ -1,6 +1,6 @@
 {
   "threshold": 0,
   "reporters": ["consoleFull"],
-  "ignore": ["**/__snapshots__/**", "**/fixtures/**"],
+  "ignore": ["**/__snapshots__/**", "**/fixtures/**", ".mergify.yml"],
   "absolute": true
 }
