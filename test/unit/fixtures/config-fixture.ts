@@ -1,12 +1,12 @@
 import { Config } from '../../../src/config';
 import { TConfigObject } from '../../../src/types';
 
-export interface ConfigTestContext {
+export interface IConfigTestContext {
   configs: Config[];
   invalid: Config[];
 }
 
-export const configContextFixture: ConfigTestContext = {
+export const configContextFixture: IConfigTestContext = {
   configs: [
     new Config({
       policy: [

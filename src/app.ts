@@ -38,10 +38,9 @@ const app = (probot: Probot) => {
       if (validationResult.length > 0) {
         for (const [index, message] of validationResult.entries()) {
           // TODO: Probably needs some care:
-          probot.log.info(
+          debug(
             `{ property: ${message.property}, value: ${message.value}, notes: ${message.notes}`
           );
-          probot.log.warning(`[${index}] ~ Config validation: '${message}'`);
         }
         return;
       }
