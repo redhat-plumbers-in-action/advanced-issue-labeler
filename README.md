@@ -31,13 +31,13 @@
 
 <!-- -->
 
-Advanced Issue Labeler is a GitHub action that can automatically label issues based on user input. The idea for this project came from and was first introduced in [@systemd/systemd](https://github.com/systemd/systemd). Systemd repository has a very active community with many issues to process. Automatic labeling helps with issue triaging.
+Advanced Issue Labeler is a GitHub Action that can automatically label issues based on user input. The idea for this project came from and was first introduced in [@systemd/systemd](https://github.com/systemd/systemd). Systemd repository has a very active community with many issues to process. Automatic labeling helps with issue triaging.
 
 ## How does it work
 
 Advanced Issue Labeler takes advantage of GitHub [issue forms](https://github.blog/changelog/2021-06-23-issues-forms-beta-for-public-repositories) (special kind of issue templates) to provide a better developer experience by labeling issues based on provided input. It is currently possible to label issues based only on [dropdowns](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-githubs-form-schema#dropdown).
 
-Advanced Issue Labeler is expected to work in cooperation with [@stefanbuck/github-issue-parser](https://github.com/stefanbuck/github-issue-parser) GitHub action. Parser action provides JSON representation of the submitted issue, where KEYs represent IDs described in the issue-form YAML configuration. Issue labeler understands it and can label issues based on selected values from dropdown. Dropdown values could directly represent labels or be mapped to policy configuration for more complex labeling requirements.
+Advanced Issue Labeler is expected to work in cooperation with [@stefanbuck/github-issue-parser](https://github.com/stefanbuck/github-issue-parser) GitHub Action. Parser action provides JSON representation of the submitted issue, where KEYs represent IDs described in the issue-form YAML configuration. Issue labeler understands it and can label issues based on selected values from dropdown. Dropdown values could directly represent labels or be mapped to policy configuration for more complex labeling requirements.
 
 ## Features
 
@@ -148,7 +148,7 @@ Let's define a policy that will allow us to map animals to their types. Policy n
 
 ```yml
 policy:
-    section:
+  - section:
       - id: [animals]
         block-list: ['None', 'Other']
         label:
@@ -197,6 +197,8 @@ jobs:
 
 * [`systemd/systemd`](https://sourcegraph.com/search?q=context:global+repo:%5Egithub%5C.com/systemd/systemd%24+file:%5E%5C.github/workflows+redhat-plumbers-in-action/advanced-issue-labeler&patternType=literal) [![GitHub Repo stars](https://img.shields.io/github/stars/systemd/systemd?style=social)](https://github.com/systemd/systemd)
 * [`blueedgetechno/win11React`](https://sourcegraph.com/search?q=context:global+repo:%5Egithub%5C.com/blueedgetechno/win11React%24+file:%5E%5C.github/workflows+redhat-plumbers-in-action/advanced-issue-labeler&patternType=literal) [![GitHub Repo stars](https://img.shields.io/github/stars/blueedgetechno/win11React?style=social)](https://github.com/blueedgetechno/win11React)
+
+Feel free to try `advanced-issue-labeler` in template repository - [`@redhat-plumbers-in-action/issue-forms-automation`](https://github.com/redhat-plumbers-in-action/issue-forms-automation)
 
 ## Configuration options
 
