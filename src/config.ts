@@ -47,7 +47,6 @@ export class Config {
 
     // ?: When template name is undefined look for section that undefined template field
     debug(`Looking for default policy ...`);
-    // TODO: Doesn't work: https://github.com/jamacku/systemd/actions/runs/2949182983
     return this.policy.find(
       pItem =>
         !pItem?.template ||

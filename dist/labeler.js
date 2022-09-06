@@ -4,7 +4,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-import { debug, warning } from '@actions/core';
+import { debug } from '@actions/core';
 import { ValidateIf, validate, ValidateNested, Allow } from 'class-validator';
 import { ValidationFeedback } from './validation-feedback';
 export class Labeler {
@@ -73,15 +73,12 @@ export class Labeler {
         return keywords;
     }
     configBasedLabels() {
-        var _a, _b, _c;
+        var _a, _b;
         const labels = [];
         // Pick correct policy from config based on template input
         const selectedPolicy = (_a = this.config) === null || _a === void 0 ? void 0 : _a.getTemplatePolicy((_b = this.inputs) === null || _b === void 0 ? void 0 : _b.template);
-        warning(`input: ${(_c = this.inputs) === null || _c === void 0 ? void 0 : _c.template}`);
-        warning(`policy: ${this.config}`);
-        debug(`template: ${selectedPolicy}`);
         if (!selectedPolicy) {
-            warning(`Policy wasn't provided!`);
+            debug(`Policy wasn't provided!`);
             return;
         }
         // For each section of policy

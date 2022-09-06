@@ -1,4 +1,4 @@
-import { debug, warning } from '@actions/core';
+import { debug } from '@actions/core';
 import { ValidateIf, validate, ValidateNested, Allow } from 'class-validator';
 
 import { Config } from './config';
@@ -111,12 +111,9 @@ export class Labeler {
     const selectedPolicy = this.config?.getTemplatePolicy(
       this.inputs?.template
     );
-    warning(`input: ${this.inputs?.template}`);
-    warning(`policy: ${this.config}`);
-    debug(`template: ${selectedPolicy}`);
 
     if (!selectedPolicy) {
-      warning(`Policy wasn't provided!`);
+      debug(`Policy wasn't provided!`);
       return;
     }
 
