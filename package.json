@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": false,
   "description": "Label GitHub issues based on input",
-  "main": "dist/main.js",
+  "main": "src/main.ts",
   "scripts": {
     "build": "tsc",
     "format": "prettier --write '**/*.ts'",
