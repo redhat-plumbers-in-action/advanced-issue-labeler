@@ -90,7 +90,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Parse issue form
-        uses: stefanbuck/github-issue-praser@v2
+        uses: stefanbuck/github-issue-parser@v2
         id: issue-parser
         with:
           template-path: .github/ISSUE_TEMPLATE/bug.yml
@@ -181,7 +181,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Parse issue form
-        uses: stefanbuck/github-issue-praser@v2
+        uses: stefanbuck/github-issue-parser@v2
         id: issue-parser
         with:
           template-path: .github/ISSUE_TEMPLATE/bug.yml
