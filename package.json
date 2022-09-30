@@ -33,7 +33,7 @@
     "class-validator": "^0.13.2"
   },
   "devDependencies": {
-    "@actions/github": "5.1.0",
+    "@actions/github": "5.1.1",
     "@types/node": "18.0.4",
     "@typescript-eslint/parser": "5.38.1",
     "@vercel/ncc": "0.34.0",
