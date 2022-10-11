@@ -872,13 +872,13 @@
   resolved "https://registry.yarnpkg.com/@vercel/ncc/-/ncc-0.34.0.tgz#d0139528320e46670d949c82967044a8f66db054"
   integrity sha512-G9h5ZLBJ/V57Ou9vz5hI8pda/YQX5HQszCs3AmIus3XzsmRn/0Ptic5otD3xVST8QLKk7AMk7AqpsyQGN7MZ9A==
 
-"@vitest/coverage-c8@0.24.0":
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/@vitest/coverage-c8/-/coverage-c8-0.24.0.tgz#d5d309f616b25b4fce5828d9acf3a672eb618c61"
-  integrity sha512-Ho5256BOrLnsJgEgE368ED17cr8rOAXrxvwpZ+XZUA4yAcMBxGAX08cCeG4dibmNVD2NE9Hcpd2foMZsTge3wA==
+"@vitest/coverage-c8@0.24.1":
+  version "0.24.1"
+  resolved "https://registry.yarnpkg.com/@vitest/coverage-c8/-/coverage-c8-0.24.1.tgz#a7b4ed0d41c70c710d8771a559c58d493301d46d"
+  integrity sha512-cOFHXRHB9WHtGgsHE4FX4Ef1c9Hon668RNJQOJvqSy1/1Y7zIYIBhFWmuFKLZRCMV4jGT5CRiuB9KtdNsOc3og==
   dependencies:
     c8 "^7.12.0"
-    vitest "0.24.0"
+    vitest "0.24.1"
 
 abort-controller@^3.0.0:
   version "3.0.0"
@@ -3714,7 +3714,7 @@ through2@^4.0.2:
   dependencies:
     readable-stream "3"
 
-tinybench@^2.2.1:
+tinybench@^2.2.1, tinybench@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/tinybench/-/tinybench-2.3.0.tgz#febb2e697c735c0cdb8eb1e43cb1d2fa1821f983"
   integrity sha512-zs1gMVBwyyG2QbVchYIbnabRhMOCGvrwZz/q+SV+LIMa9q5YDQZi2kkI6ZRqV2Bz7ba1uvrc7ieUoE4KWnGeKg==
@@ -3944,6 +3944,23 @@ vitest@0.24.0:
     local-pkg "^0.4.2"
     strip-literal "^0.4.2"
     tinybench "^2.2.1"
+    tinypool "^0.3.0"
+    tinyspy "^1.0.2"
+    vite "^3.0.0"
+
+vitest@0.24.1:
+  version "0.24.1"
+  resolved "https://registry.yarnpkg.com/vitest/-/vitest-0.24.1.tgz#4b4ceb3d9c6710e8fb7a3b936b740f9c9f9cde10"
+  integrity sha512-NKkK1xnDIOOr42pKBfGQQl6b6IWdFVBpG6ZS1T+nUlJuqcOiZ7lxjVwHy9wrtTYpJ0BWww9y6bSGYXubD29Nag==
+  dependencies:
+    "@types/chai" "^4.3.3"
+    "@types/chai-subset" "^1.3.3"
+    "@types/node" "*"
+    chai "^4.3.6"
+    debug "^4.3.4"
+    local-pkg "^0.4.2"
+    strip-literal "^0.4.2"
+    tinybench "^2.3.0"
     tinypool "^0.3.0"
     tinyspy "^1.0.2"
     vite "^3.0.0"
