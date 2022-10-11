@@ -39,7 +39,7 @@
     "@vercel/ncc": "0.34.0",
     "@vitest/coverage-c8": "0.24.1",
     "eslint": "8.25.0",
-    "eslint-plugin-github": "4.3.7",
+    "eslint-plugin-github": "4.4.0",
     "eslint-plugin-prettier": "4.2.1",
     "js-yaml": "4.1.0",
     "nock": "13.2.9",

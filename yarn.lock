@@ -87,6 +87,11 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
+"@github/browserslist-config@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@github/browserslist-config/-/browserslist-config-1.0.0.tgz#952fe6da3e6b8ed6a368f3a1a08a9d2ef84e8d04"
+  integrity sha512-gIhjdJp/c2beaIWWIlsXdqXVRUz3r2BxBCpfz/F3JXHvSAQ1paMYjLH+maEATtENg+k5eLV7gA+9yPp762ieuw==
+
 "@hapi/bourne@^2.0.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@hapi/bourne/-/bourne-2.1.0.tgz#66aff77094dc3080bd5df44ec63881f2676eb020"
@@ -1686,10 +1691,10 @@ eslint-module-utils@^2.7.3:
   dependencies:
     debug "^3.2.7"
 
-eslint-plugin-escompat@^3.1.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-escompat/-/eslint-plugin-escompat-3.2.0.tgz#7d40efe8721d8fccb5d300f4fbda44f350a27301"
-  integrity sha512-obXAKKiZE/wB2fgIw0ZxCmp+8vpDsUw2inkaok1i7OVxY4cEds4Y9YCoky0f5V+q8rqZpTUJDv1R9ykWbXLX8Q==
+eslint-plugin-escompat@^3.3.3:
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-escompat/-/eslint-plugin-escompat-3.3.3.tgz#81e30cc81f54772c8b65713c0579b6689b29c04d"
+  integrity sha512-rB3t15s0d504y3kwHotSt3wkFQG/dhS6SS5DIKL86mPILzoMcYeFN+hWim+Au7nvXGtkR1dOuq2sU5qKlOKhkA==
   dependencies:
     browserslist "^4.21.0"
 
@@ -1711,21 +1716,22 @@ eslint-plugin-filenames@^1.3.2:
     lodash.snakecase "4.1.1"
     lodash.upperfirst "4.3.1"
 
-eslint-plugin-github@4.3.7:
-  version "4.3.7"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-github/-/eslint-plugin-github-4.3.7.tgz#596416a81240dcd1d3ba1cab6ddfed0a1827bf1a"
-  integrity sha512-tYZdXvAEz4JCMrC4NHIUoJTsLUvydCxff5OqB5hgU0vQbLmMkw6VOipN2KNe+T06pEhAWs1KBEwyq9cmMWRe7A==
+eslint-plugin-github@4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-github/-/eslint-plugin-github-4.4.0.tgz#3d1bf4bce00bbda81b6e98e49102da4b146dce15"
+  integrity sha512-jmVjy86WqVblKuvWnAQAEUMPZnAWbOUuV2hmAjQ54BvmukUW5PBml84NnyKe1QMt6k5a6JoIrbkLkyISTUDSxA==
   dependencies:
+    "@github/browserslist-config" "^1.0.0"
     "@typescript-eslint/eslint-plugin" "^5.1.0"
     "@typescript-eslint/parser" "^5.1.0"
     eslint-config-prettier ">=8.0.0"
-    eslint-plugin-escompat "^3.1.0"
+    eslint-plugin-escompat "^3.3.3"
     eslint-plugin-eslint-comments "^3.2.0"
     eslint-plugin-filenames "^1.3.2"
     eslint-plugin-i18n-text "^1.0.1"
     eslint-plugin-import "^2.25.2"
     eslint-plugin-jsx-a11y "^6.6.0"
-    eslint-plugin-no-only-tests "^2.6.0"
+    eslint-plugin-no-only-tests "^3.0.0"
     eslint-plugin-prettier "^4.0.0"
     eslint-rule-documentation ">=1.0.0"
     jsx-ast-utils "^3.3.2"
@@ -1775,10 +1781,10 @@ eslint-plugin-jsx-a11y@^6.6.0:
     minimatch "^3.1.2"
     semver "^6.3.0"
 
-eslint-plugin-no-only-tests@^2.6.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-no-only-tests/-/eslint-plugin-no-only-tests-2.6.0.tgz#19f6c9620bda02b9b9221b436c5f070e42628d76"
-  integrity sha512-T9SmE/g6UV1uZo1oHAqOvL86XWl7Pl2EpRpnLI8g/bkJu+h7XBCB+1LnubRZ2CUQXj805vh4/CYZdnqtVaEo2Q==
+eslint-plugin-no-only-tests@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-no-only-tests/-/eslint-plugin-no-only-tests-3.0.0.tgz#026cbc8cb069c8da6b7e19d03654be7ad49893f6"
+  integrity sha512-I0PeXMs1vu21ap45hey4HQCJRqpcoIvGcNTPJe+UhUm8TwjQ6//mCrDqF8q0WS6LgmRDwQ4ovQej0AQsAHb5yg==
 
 eslint-plugin-prettier@4.2.1, eslint-plugin-prettier@^4.0.0:
   version "4.2.1"
@@ -3714,7 +3720,7 @@ through2@^4.0.2:
   dependencies:
     readable-stream "3"
 
-tinybench@^2.2.1, tinybench@^2.3.0:
+tinybench@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/tinybench/-/tinybench-2.3.0.tgz#febb2e697c735c0cdb8eb1e43cb1d2fa1821f983"
   integrity sha512-zs1gMVBwyyG2QbVchYIbnabRhMOCGvrwZz/q+SV+LIMa9q5YDQZi2kkI6ZRqV2Bz7ba1uvrc7ieUoE4KWnGeKg==
@@ -3930,23 +3936,6 @@ vite@^3.0.0:
     rollup "~2.78.0"
   optionalDependencies:
     fsevents "~2.3.2"
-
-vitest@0.24.0:
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/vitest/-/vitest-0.24.0.tgz#61555b7b56e07f04a1692352de7d4803de0f5c88"
-  integrity sha512-k5j3FPTor+MJx2x0pDW2gtVk+s9VC6nSHT3SoqOIk9Je5fFpPgict+Xy2eAVXUogvSixs45Ya1oZk+oK93BO0w==
-  dependencies:
-    "@types/chai" "^4.3.3"
-    "@types/chai-subset" "^1.3.3"
-    "@types/node" "*"
-    chai "^4.3.6"
-    debug "^4.3.4"
-    local-pkg "^0.4.2"
-    strip-literal "^0.4.2"
-    tinybench "^2.2.1"
-    tinypool "^0.3.0"
-    tinyspy "^1.0.2"
-    vite "^3.0.0"
 
 vitest@0.24.1:
   version "0.24.1"
