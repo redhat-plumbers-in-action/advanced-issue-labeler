@@ -96,7 +96,7 @@ jobs:
           template-path: .github/ISSUE_TEMPLATE/bug.yml
 
       - name: Set labels based on severity field
-        uses: redhat-plumbers-in-action/advanced-issue-labeler@latest
+        uses: redhat-plumbers-in-action/advanced-issue-labeler@v2
         with:
           issue-form: ${{ steps.issue-parser.outputs.jsonString }}
           section: severity
@@ -187,7 +187,7 @@ jobs:
           template-path: .github/ISSUE_TEMPLATE/bug.yml
 
       - name: Set labels based on animals field
-        uses: redhat-plumbers-in-action/advanced-issue-labeler@latest
+        uses: redhat-plumbers-in-action/advanced-issue-labeler@v2
         with:
           issue-form: ${{ steps.issue-parser.outputs.jsonString }}
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -207,7 +207,7 @@ Action currently accepts the following options:
 ```yml
 # ...
 
-- uses: redhat-plumbers-in-action/advanced-issue-labeler@v1
+- uses: redhat-plumbers-in-action/advanced-issue-labeler@v2
   with:
     issue-form: <issue-form.json>
     template:   <template-name.yml>
