@@ -14,15 +14,15 @@ const app = (probot) => {
         labeler.config = await Config.getConfig(context);
         // If no config was provided try inputs
         if (!labeler.isConfig) {
-            labeler.inputs = {
+            labeler.setInputs({
                 section: getInput('section'),
                 blockList: getInput('block-list').split('\n', 25),
-            };
+            });
         }
         // Config requires template as well
-        labeler.inputs = {
+        labeler.setInputs({
             template: getInput('template'),
-        };
+        });
         const validationResult = await Labeler.validate(labeler);
         if (validationResult.length > 0) {
             for (const [index, message] of validationResult.entries()) {

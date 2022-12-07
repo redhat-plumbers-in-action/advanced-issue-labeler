@@ -4,15 +4,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-import { debug } from '@actions/core';
+import { debug, error } from '@actions/core';
 import { ValidateIf, validate, ValidateNested, Allow } from 'class-validator';
 import { ValidationFeedback } from './validation-feedback';
+import { Inputs } from './inputs';
 export class Labeler {
     constructor(issueForm) {
         // State holders
         this._isConfig = undefined;
         this._isInputs = undefined;
         this._issueForm = issueForm;
+        this._inputs = new Inputs({});
     }
     get config() {
         return this._config;
@@ -24,7 +26,21 @@ export class Labeler {
         return this._inputs;
     }
     set inputs(inputs) {
-        this._inputs = Object.assign({}, inputs);
+        this._inputs = inputs;
+    }
+    //? FIXME: This should be done better...
+    setInputs(inputs) {
+        var _a, _b, _c;
+        if (inputs.template)
+            this._inputs.template =
+                ((_a = inputs.template) === null || _a === void 0 ? void 0 : _a.length) === 0 ? undefined : inputs.template;
+        if (inputs.section)
+            this._inputs.section =
+                ((_b = inputs.section) === null || _b === void 0 ? void 0 : _b.length) === 0 ? undefined : inputs.section;
+        if (inputs.blockList)
+            this._inputs.blockList =
+                ((_c = inputs.blockList) === null || _c === void 0 ? void 0 : _c.length) === 0 ? undefined : inputs.blockList;
+        error(`${inputs.blockList}, ${inputs.section}, ${inputs.template} | ${this.inputs.blockList}, ${this.inputs.section}, ${this.inputs.template}`);
     }
     get isConfig() {
         if (this._isConfig === undefined)
@@ -113,8 +129,9 @@ export class Labeler {
             whitelist: true,
             forbidNonWhitelisted: true,
         });
-        const results = validationResult.map(error => {
-            return ValidationFeedback.composeFeedbackObject(error);
+        error(validationResult.toString());
+        const results = validationResult.map(e => {
+            return ValidationFeedback.composeFeedbackObject(e);
         });
         return results;
     }

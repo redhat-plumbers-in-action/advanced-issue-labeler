@@ -4,7 +4,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-import { IsArray, IsString, MinLength, ValidateIf } from 'class-validator';
+import { IsArray, IsOptional, IsString, MinLength, } from 'class-validator';
 export class Inputs {
     constructor(inputs) {
         this._template = inputs === null || inputs === void 0 ? void 0 : inputs.template;
@@ -14,15 +14,24 @@ export class Inputs {
     get template() {
         return this._template;
     }
+    set template(template) {
+        this._template = template;
+    }
     get section() {
         return this._section;
+    }
+    set section(section) {
+        this._section = section;
     }
     get blockList() {
         return this._blockList;
     }
+    set blockList(blockList) {
+        this._blockList = blockList;
+    }
 }
 __decorate([
-    ValidateIf(instance => instance._template),
+    IsOptional(),
     IsString(),
     MinLength(1)
 ], Inputs.prototype, "_template", void 0);
@@ -31,7 +40,7 @@ __decorate([
     MinLength(1)
 ], Inputs.prototype, "_section", void 0);
 __decorate([
-    ValidateIf(instance => instance._blockList),
+    IsOptional(),
     IsArray(),
     IsString({ each: true }),
     MinLength(1, { each: true })
