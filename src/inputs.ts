@@ -1,9 +1,15 @@
-import { IsArray, IsString, MinLength, ValidateIf } from 'class-validator';
+import {
+  IsArray,
+  IsOptional,
+  IsString,
+  MinLength,
+  ValidateIf,
+} from 'class-validator';
 
 import { TInputs } from './types.d';
 
 export class Inputs {
-  @ValidateIf(instance => instance._template)
+  @IsOptional()
   @IsString()
   @MinLength(1)
   private _template?: string | undefined;
@@ -12,7 +18,7 @@ export class Inputs {
   @MinLength(1)
   private _section?: string | undefined;
 
-  @ValidateIf(instance => instance._blockList)
+  @IsOptional()
   @IsArray()
   @IsString({ each: true })
   @MinLength(1, { each: true })
@@ -28,11 +34,23 @@ export class Inputs {
     return this._template;
   }
 
+  set template(template: string | undefined) {
+    this._template = template;
+  }
+
   get section() {
     return this._section;
   }
 
+  set section(section: string | undefined) {
+    this._section = section;
+  }
+
   get blockList() {
     return this._blockList;
+  }
+
+  set blockList(blockList: string[] | undefined) {
+    this._blockList = blockList;
   }
 }

@@ -1,9 +1,10 @@
-import { debug } from '@actions/core';
+import { debug, error } from '@actions/core';
 import { ValidateIf, validate, ValidateNested, Allow } from 'class-validator';
 
 import { Config } from './config';
 import { IssueForm } from './issue-form';
 import { ValidationFeedback } from './validation-feedback';
+import { Inputs } from './inputs';
 import { TInputs } from './types.d';
 
 export class Labeler {
@@ -13,7 +14,7 @@ export class Labeler {
 
   @ValidateIf(instance => !instance._config)
   @ValidateNested()
-  private _inputs?: TInputs;
+  private _inputs: Inputs;
 
   @Allow()
   private _issueForm: IssueForm;
@@ -26,6 +27,7 @@ export class Labeler {
 
   constructor(issueForm: IssueForm) {
     this._issueForm = issueForm;
+    this._inputs = new Inputs({});
   }
 
   get config() {
@@ -40,8 +42,27 @@ export class Labeler {
     return this._inputs;
   }
 
-  set inputs(inputs: TInputs | undefined) {
-    this._inputs = { ...inputs };
+  set inputs(inputs: Inputs) {
+    this._inputs = inputs;
+  }
+
+  //? FIXME: This should be done better...
+  setInputs(inputs: TInputs) {
+    if (inputs.template)
+      this._inputs.template =
+        inputs.template?.length === 0 ? undefined : inputs.template;
+
+    if (inputs.section)
+      this._inputs.section =
+        inputs.section?.length === 0 ? undefined : inputs.section;
+
+    if (inputs.blockList)
+      this._inputs.blockList =
+        inputs.blockList?.length === 0 ? undefined : inputs.blockList;
+
+    error(
+      `${inputs.blockList}, ${inputs.section}, ${inputs.template} | ${this.inputs.blockList}, ${this.inputs.section}, ${this.inputs.template}`
+    );
   }
 
   get isConfig() {
@@ -161,8 +182,10 @@ export class Labeler {
       forbidNonWhitelisted: true,
     });
 
-    const results = validationResult.map(error => {
-      return ValidationFeedback.composeFeedbackObject(error);
+    error(validationResult.toString());
+
+    const results = validationResult.map(e => {
+      return ValidationFeedback.composeFeedbackObject(e);
     });
 
     return results;
