@@ -90,7 +90,7 @@ export class Config {
   }
 }
 
-class PolicyItem {
+export class PolicyItem {
   @IsString({ each: true })
   @MinLength(0, { each: true })
   private _template?: string[];
@@ -117,7 +117,7 @@ class PolicyItem {
   }
 }
 
-class SectionItem {
+export class SectionItem {
   @IsString({ each: true })
   @MinLength(1, { each: true })
   private _id: string[];
@@ -134,7 +134,9 @@ class SectionItem {
 
   constructor(item: TSectionItem) {
     this._id = item?.id;
-    this._blockList = item['block-list'] ?? [];
+    this._blockList = item?.hasOwnProperty('block-list')
+      ? item['block-list'] ?? []
+      : [];
     this._label = Array.isArray(item?.label)
       ? item.label.map(labelItem => new Label(labelItem))
       : [];
@@ -153,7 +155,7 @@ class SectionItem {
   }
 }
 
-class Label {
+export class Label {
   @IsString()
   @MinLength(1)
   private _name: string;

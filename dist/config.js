@@ -56,7 +56,7 @@ __decorate([
     ArrayMinSize(1)
     // @Type(() => SectionItem)
 ], Config.prototype, "_policy", void 0);
-class PolicyItem {
+export class PolicyItem {
     constructor(item) {
         var _a;
         this._template = (_a = item === null || item === void 0 ? void 0 : item.template) !== null && _a !== void 0 ? _a : [];
@@ -81,11 +81,13 @@ __decorate([
     ArrayMinSize(1)
     // @Type(() => SectionItem)
 ], PolicyItem.prototype, "_section", void 0);
-class SectionItem {
+export class SectionItem {
     constructor(item) {
         var _a;
         this._id = item === null || item === void 0 ? void 0 : item.id;
-        this._blockList = (_a = item['block-list']) !== null && _a !== void 0 ? _a : [];
+        this._blockList = (item === null || item === void 0 ? void 0 : item.hasOwnProperty('block-list'))
+            ? (_a = item['block-list']) !== null && _a !== void 0 ? _a : []
+            : [];
         this._label = Array.isArray(item === null || item === void 0 ? void 0 : item.label)
             ? item.label.map(labelItem => new Label(labelItem))
             : [];
@@ -114,7 +116,7 @@ __decorate([
     ArrayMinSize(1)
     // @Type(() => SectionItem)
 ], SectionItem.prototype, "_label", void 0);
-class Label {
+export class Label {
     constructor(item) {
         this._name = item === null || item === void 0 ? void 0 : item.name;
         this._keys = item === null || item === void 0 ? void 0 : item.keys;
