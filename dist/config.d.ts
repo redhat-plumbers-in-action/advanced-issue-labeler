@@ -18,14 +18,14 @@ export declare class Config {
         } | undefined;
     }[]>;
 }
-declare class PolicyItem {
+export declare class PolicyItem {
     private _template?;
     private _section;
     constructor(item: TPolicyItem);
     get template(): string[] | undefined;
     get section(): SectionItem[];
 }
-declare class SectionItem {
+export declare class SectionItem {
     private _id;
     private _blockList;
     private _label;
@@ -34,4 +34,10 @@ declare class SectionItem {
     get blockList(): string[];
     get label(): TLabelItem[];
 }
-export {};
+export declare class Label {
+    private _name;
+    private _keys;
+    constructor(item: TLabelItem);
+    get name(): string;
+    get keys(): string[];
+}
