@@ -23,5 +23,5 @@ jobs:
       - name: Update tag
         uses: Actions-R-Us/actions-tagger@v2
         with:
-          publish_latest_tag: true
+          publish_latest_tag: false
           token: ${{ secrets.GITHUB_TOKEN }}
