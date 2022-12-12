@@ -19,7 +19,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [ 16.x, 17.x ]
+        node-version: [ 16.x, 18.x ]
 
     steps:
       - uses: actions/checkout@v3
@@ -44,5 +44,5 @@ jobs:
         run: yarn test
 
       - name: Codecov
-        if: ${{ matrix.node-version == '17.x' }}
+        if: ${{ matrix.node-version == '18.x' }}
         uses: codecov/codecov-action@v3
