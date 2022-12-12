@@ -1,5 +1,4 @@
 import { Inputs } from '../../../src/inputs';
-import { TInputs } from '../../../src/types';
 
 export interface IInputsTestContext {
   inputs: Inputs[];
