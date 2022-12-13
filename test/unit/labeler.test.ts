@@ -31,6 +31,7 @@ describe('IssueForm Object', () => {
   test.todo('set inputs()');
 
   test('setInputs()', () => {
+    //! FIXME: There is probably a better way how to do this ...
     let labeler = new Labeler(new IssueForm({}));
     labeler.setInputs({ section: 'section' });
     expect(labeler.inputs).toMatchInlineSnapshot(`
@@ -111,7 +112,10 @@ describe('IssueForm Object', () => {
   test.todo('get issueForm()');
   test.todo('set issueForm()');
 
-  test.todo('gatherLabels()');
+  test<ILabelerTestContext>('gatherLabels()', context =>
+    context.labelers.map(labelerItem =>
+      expect(labelerItem.gatherLabels()).toMatchSnapshot()
+    ));
 
   // private
   test.todo('inputBasedLabels()');
@@ -120,8 +124,12 @@ describe('IssueForm Object', () => {
   it<ILabelerTestContext>('is valid', async context =>
     context.labelers.map(async labelerItem => {
       //! FIXME: There is probably a better way how to do this ...
-      labelerItem.setInputs({ section: 'section' });
-      expect(Labeler.validate(labelerItem)).resolves.toMatchObject([]);
+      let localLabeler = Object.assign(
+        Object.create(Object.getPrototypeOf(labelerItem)),
+        labelerItem
+      );
+      localLabeler.setInputs({ section: 'section' });
+      expect(Labeler.validate(localLabeler)).resolves.toMatchObject([]);
     }));
 
   it<ILabelerTestContext>('is invalid', async context =>
