@@ -157,9 +157,9 @@ policy:
           - name: 'kind: birds'
             keys: ['🐓 Rooster', '🐦 Bird', '🐧 Penguin']
           - name: 'kind: fish'
-            keys: ['🐬 Dolphin', '🐟 Fish']
+            keys: ['🐟 Fish']
           - name: 'kind: mammals'
-            keys: ['🦍 Gorilla', '🐶 Dog', '🐺 Wolf', '🦊 Fox', '🐴 Horse']
+            keys: ['🦍 Gorilla', '🐶 Dog', '🐬 Dolphin', '🐺 Wolf', '🦊 Fox', '🐴 Horse']
           - name: 'kind: reptiles'
             keys: ['🐊 Crocodile']
           - name: 'invertebrates'
@@ -283,9 +283,9 @@ policy:
           - name: 'birds'
             keys: ['🐓 Rooster', '🐦 Bird', '🐧 Penguin']
           - name: 'fish'
-            keys: ['🐬 Dolphin', '🐟 Fish']
+            keys: ['🐟 Fish']
           - name: 'mammals'
-            keys: ['🦍 Gorilla', '🐶 Dog', '🐺 Wolf', '🦊 Fox', '🐴 Horse']
+            keys: ['🦍 Gorilla', '🐶 Dog', '🐬 Dolphin', '🐺 Wolf', '🦊 Fox', '🐴 Horse']
           - name: 'reptiles'
             keys: ['🐊 Crocodile']
           - name: 'invertebrates'
