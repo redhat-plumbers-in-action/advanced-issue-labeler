@@ -131,7 +131,9 @@ The following example shows how to automatically label issues based on animal ty
       - '🐧 Penguin'
       - '🐸 Frog'
       - '🐬 Dolphin'
+      - '🐡 Blowfish'
       - '🐟 Fish'
+      - '🦈 Shark'
       - '🐛 Bug'
       - '🕷️ Spider'
       - '🐊 Crocodile'
@@ -157,7 +159,7 @@ policy:
           - name: 'kind: birds'
             keys: ['🐓 Rooster', '🐦 Bird', '🐧 Penguin']
           - name: 'kind: fish'
-            keys: ['🐟 Fish']
+            keys: ['🐡 Blowfish', '🐟 Fish', '🦈 Shark']
           - name: 'kind: mammals'
             keys: ['🦍 Gorilla', '🐶 Dog', '🐬 Dolphin', '🐺 Wolf', '🦊 Fox', '🐴 Horse']
           - name: 'kind: reptiles'
@@ -283,7 +285,7 @@ policy:
           - name: 'birds'
             keys: ['🐓 Rooster', '🐦 Bird', '🐧 Penguin']
           - name: 'fish'
-            keys: ['🐟 Fish']
+            keys: ['🐡 Blowfish', '🐟 Fish', '🦈 Shark']
           - name: 'mammals'
             keys: ['🦍 Gorilla', '🐶 Dog', '🐬 Dolphin', '🐺 Wolf', '🦊 Fox', '🐴 Horse']
           - name: 'reptiles'
