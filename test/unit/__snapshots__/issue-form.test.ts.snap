@@ -1,0 +1,86 @@
+// Vitest Snapshot v1
+
+exports[`IssueForm Object > getProperty() 1`] = `undefined`;
+
+exports[`IssueForm Object > getProperty() 2`] = `"Security guidelines provided by GitHub: [Security hardening for GitHub Actions ](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#overview)"`;
+
+exports[`IssueForm Object > getProperty() 3`] = `undefined`;
+
+exports[`IssueForm Object > getSafeProperty() 1`] = `undefined`;
+
+exports[`IssueForm Object > getSafeProperty() 2`] = `"Security guidelines provided by GitHub: [Security hardening for GitHub Actions ](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#overview)"`;
+
+exports[`IssueForm Object > getSafeProperty() 3`] = `undefined`;
+
+exports[`IssueForm Object > isProperty() 1`] = `false`;
+
+exports[`IssueForm Object > isProperty() 2`] = `true`;
+
+exports[`IssueForm Object > isProperty() 3`] = `false`;
+
+exports[`IssueForm Object > listKeywords() 1`] = `undefined`;
+
+exports[`IssueForm Object > listKeywords() 2`] = `undefined`;
+
+exports[`IssueForm Object > listKeywords() 3`] = `undefined`;
+
+exports[`IssueForm Object > listKeywords() 4`] = `undefined`;
+
+exports[`IssueForm Object > listKeywords() 5`] = `undefined`;
+
+exports[`IssueForm Object > listKeywords() 6`] = `undefined`;
+
+exports[`IssueForm Object > listKeywords() 7`] = `
+[
+  "Feature Request",
+  "none",
+  "other",
+]
+`;
+
+exports[`IssueForm Object > listKeywords() 8`] = `undefined`;
+
+exports[`IssueForm Object > listKeywords() 9`] = `
+[
+  "Feature Request",
+  "none",
+]
+`;
+
+exports[`IssueForm Object > listKeywords() 10`] = `undefined`;
+
+exports[`IssueForm Object > listKeywords() 11`] = `
+[
+  "Feature Request",
+]
+`;
+
+exports[`IssueForm Object > listKeywords() 12`] = `undefined`;
+
+exports[`IssueForm Object > listKeywords() 13`] = `undefined`;
+
+exports[`IssueForm Object > listKeywords() 14`] = `
+[
+  "bootctl",
+  "systemd-boot",
+  "other",
+]
+`;
+
+exports[`IssueForm Object > listKeywords() 15`] = `undefined`;
+
+exports[`IssueForm Object > listKeywords() 16`] = `
+[
+  "bootctl",
+  "systemd-boot",
+]
+`;
+
+exports[`IssueForm Object > listKeywords() 17`] = `undefined`;
+
+exports[`IssueForm Object > listKeywords() 18`] = `
+[
+  "bootctl",
+  "systemd-boot",
+]
+`;

@@ -1,5 +1,7 @@
 // Vitest Snapshot v1
 
+exports[`IssueForm Object > gatherLabels() 1`] = `undefined`;
+
 exports[`IssueForm Object > get config() 1`] = `undefined`;
 
 exports[`IssueForm Object > get inputs() 1`] = `
