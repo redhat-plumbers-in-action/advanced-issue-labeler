@@ -20,10 +20,10 @@ jobs:
         template: [ issue-template.yml ]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@dc323e67f16fb5f7663d20ff7941f27f5809e9b6
 
       - name: Parse issue form
-        uses: stefanbuck/github-issue-parser@v2
+        uses: stefanbuck/github-issue-parser@c1a559d78bfb8dd05216dab9ffd2b91082ff5324
         id: issue-parser
         with:
           template-path: .github/ISSUE_TEMPLATE/${{ matrix.template }}
