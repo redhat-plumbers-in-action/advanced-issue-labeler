@@ -19,12 +19,12 @@ jobs:
 
     steps:
       - name: Repository checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@dc323e67f16fb5f7663d20ff7941f27f5809e9b6
         with:
           fetch-depth: 0
 
       - name: Lint Code Base
-        uses: github/super-linter@v4
+        uses: github/super-linter@bb2d833b08b6c288608686672b93a8a4589cdc49
         env:
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: main
@@ -36,10 +36,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@dc323e67f16fb5f7663d20ff7941f27f5809e9b6
 
       - name: Use Node.js 18.x
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516
         with:
           node-version: 18
           cache: yarn
