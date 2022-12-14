@@ -40,7 +40,6 @@ export class Labeler {
         if (inputs.blockList)
             this._inputs.blockList =
                 ((_c = inputs.blockList) === null || _c === void 0 ? void 0 : _c.length) === 0 ? undefined : inputs.blockList;
-        error(`${inputs.blockList}, ${inputs.section}, ${inputs.template} | ${this.inputs.blockList}, ${this.inputs.section}, ${this.inputs.template}`);
     }
     get isConfig() {
         if (this._isConfig === undefined)
