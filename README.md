@@ -4,7 +4,9 @@
   <h1 align="center">Advanced Issue Labeler</h1>
 </p>
 
-[![GitHub Marketplace][market-status]][market] [![Lint Code Base][linter-status]][linter] [![Unit Tests][test-status]][test] [![CodeQL][codeql-status]][codeql] [![Check dist/][check-dist-status]][check-dist] [![codecov][codecov-status]][codecov] [![Mergify Status][mergify-status]][mergify]
+[![GitHub Marketplace][market-status]][market] [![Lint Code Base][linter-status]][linter] [![Unit Tests][test-status]][test] [![CodeQL][codeql-status]][codeql] [![Check dist/][check-dist-status]][check-dist]
+
+[![Demo][demo-status]][demo] [![codecov][codecov-status]][codecov] [![Mergify Status][mergify-status]][mergify]
 
 <!-- Status links -->
 
@@ -22,6 +24,9 @@
 
 [check-dist]: https://github.com/redhat-plumbers-in-action/advanced-issue-labeler/actions/workflows/check-dist.yml
 [check-dist-status]: https://github.com/redhat-plumbers-in-action/advanced-issue-labeler/actions/workflows/check-dist.yml/badge.svg
+
+[demo]: https://github.com/redhat-plumbers-in-action/issue-forms-automation/issues/new/choose
+[demo-status]: https://img.shields.io/badge/Demo-Issue%20Forms%20Automation-blue
 
 [codecov]: https://codecov.io/gh/redhat-plumbers-in-action/advanced-issue-labeler
 [codecov-status]: https://codecov.io/gh/redhat-plumbers-in-action/advanced-issue-labeler/branch/main/graph/badge.svg
@@ -47,7 +52,7 @@ Advanced Issue Labeler is expected to work in cooperation with [@stefanbuck/gith
 
 ## Usage
 
-### Simple usecase
+### 1. Simple usecase
 
 The following example shows how to automatically label issues based on the severity that the user describes in issue form. In issue form, there is a defined dropdown listing all severity levels:
 
@@ -73,7 +78,7 @@ The following example shows how to automatically label issues based on the sever
 # ...
 ```
 
-> **Note**: It's essential to set the correct ID in issue-form
+> **Warning**: It's essential to set the correct ID in issue-form
 
 GitHub workflow that automatically marks issues with severity labels:
 
@@ -90,7 +95,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Parse issue form
-        uses: stefanbuck/github-issue-parser@v2
+        uses: stefanbuck/github-issue-parser@v3
         id: issue-parser
         with:
           template-path: .github/ISSUE_TEMPLATE/bug.yml
@@ -106,7 +111,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-### More complex usecase
+### 2. More complex usecase
 
 The following example shows how to automatically label issues based on animal types. In issue form, there is a defined dropdown listing all animals:
 
@@ -144,7 +149,7 @@ The following example shows how to automatically label issues based on animal ty
 # ...
 ```
 
-> **Note**: It's essential to set the correct ID in issue-form
+> **Warning**: It's essential to set the correct ID in issue-form
 
 Let's define a policy that will allow us to map animals to their types. Policy needs to be stored in `.github/advanced-issue-labeler.yml`.
 
@@ -183,7 +188,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Parse issue form
-        uses: stefanbuck/github-issue-parser@v2
+        uses: stefanbuck/github-issue-parser@v3
         id: issue-parser
         with:
           template-path: .github/ISSUE_TEMPLATE/bug.yml
@@ -198,7 +203,16 @@ jobs:
 ### Real-life examples
 
 * [`systemd/systemd`](https://sourcegraph.com/search?q=context:global+repo:%5Egithub%5C.com/systemd/systemd%24+file:%5E%5C.github/workflows+redhat-plumbers-in-action/advanced-issue-labeler&patternType=literal) [![GitHub Repo stars](https://img.shields.io/github/stars/systemd/systemd?style=social)](https://github.com/systemd/systemd)
+
 * [`blueedgetechno/win11React`](https://sourcegraph.com/search?q=context:global+repo:%5Egithub%5C.com/blueedgetechno/win11React%24+file:%5E%5C.github/workflows+redhat-plumbers-in-action/advanced-issue-labeler&patternType=literal) [![GitHub Repo stars](https://img.shields.io/github/stars/blueedgetechno/win11React?style=social)](https://github.com/blueedgetechno/win11React)
+
+* [`microsoft/mu_basecore`](https://github.com/microsoft/mu_basecore) [![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/mu_basecore?style=social)](https://github.com/microsoft/mu_basecore)
+
+* [`microsoft/mu_plus`](https://github.com/microsoft/mu_plus) [![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/mu_plus?style=social)](https://github.com/microsoft/mu_plus)
+
+* [`systemd/systemd-stable`](https://sourcegraph.com/search?q=context:global+repo:%5Egithub%5C.com/systemd/systemd-stable%24+file:%5E%5C.github/workflows+redhat-plumbers-in-action/advanced-issue-labeler&patternType=literal) [![GitHub Repo stars](https://img.shields.io/github/stars/systemd/systemd-stable?style=social)](https://github.com/systemd/systemd-stable)
+
+* more examples - [here](https://github.com/redhat-plumbers-in-action/advanced-issue-labeler/network/dependents)
 
 Feel free to try `advanced-issue-labeler` in template repository - [`@redhat-plumbers-in-action/issue-forms-automation`](https://github.com/redhat-plumbers-in-action/issue-forms-automation)
 
