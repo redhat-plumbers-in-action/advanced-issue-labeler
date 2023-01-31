@@ -9,7 +9,7 @@ import { Labeler } from './labeler';
 const app = (probot: Probot) => {
   probot.on(
     events.issue,
-    async (context: Context<typeof events.issue[number]>) => {
+    async (context: Context<(typeof events.issue)[number]>) => {
       const issueFormInput = getInput('issue-form');
 
       if (!issueFormInput) {

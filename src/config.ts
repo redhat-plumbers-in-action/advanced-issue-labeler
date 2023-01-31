@@ -56,7 +56,7 @@ export class Config {
 
   static async getConfig(
     context: {
-      [K in keyof typeof events]: Context<typeof events[K][number]>;
+      [K in keyof typeof events]: Context<(typeof events)[K][number]>;
     }[keyof typeof events]
   ) {
     const retrievedConfig = await context.config<TConfigObject>(
