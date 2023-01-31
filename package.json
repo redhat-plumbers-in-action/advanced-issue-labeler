@@ -1,7 +1,6 @@
 {
   "name": "advanced-issue-labeler",
   "version": "1.0.0",
-  "private": false,
   "description": "Label GitHub issues based on input",
   "main": "src/main.ts",
   "scripts": {
@@ -26,6 +25,7 @@
   ],
   "author": "jamacku@redhat.com",
   "license": "MIT",
+  "packageManager": "yarn@3.3.1",
   "dependencies": {
     "@actions/core": "1.10.0",
     "@octokit/rest": "19.0.7",
