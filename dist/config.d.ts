@@ -7,7 +7,7 @@ export declare class Config {
     get policy(): PolicyItem[];
     getTemplatePolicy(template: string | undefined): PolicyItem | undefined;
     static getConfig(context: {
-        [K in keyof typeof events]: Context<typeof events[K][number]>;
+        [K in keyof typeof events]: Context<(typeof events)[K][number]>;
     }[keyof typeof events]): Promise<Config | null>;
     static isConfigEmpty(config: TConfigObject | null | unknown): boolean;
     static validate(instance: Config): Promise<{
