@@ -1,11 +1,12 @@
 import { setFailed } from '@actions/core';
 import run from '@probot/adapter-github-actions';
-import app from './app';
+import action from './action';
 try {
-    await run.run(app);
+    await run.run(action);
 }
 catch (error) {
-    if (error instanceof Error)
-        setFailed(error.message);
+    error instanceof Error
+        ? setFailed(error.message)
+        : setFailed(error);
 }
 //# sourceMappingURL=main.js.map
