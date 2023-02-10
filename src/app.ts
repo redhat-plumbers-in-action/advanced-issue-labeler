@@ -10,7 +10,7 @@ const app = (probot: Probot) => {
   probot.on(
     events.issue,
     async (context: Context<(typeof events.issue)[number]>) => {
-      const issueFormInput = getInput('issue-form');
+      const issueFormInput = getInput('issue-form', { required: true });
 
       if (!issueFormInput) {
         context.log.error(`Parameter issue-form is required!`);
