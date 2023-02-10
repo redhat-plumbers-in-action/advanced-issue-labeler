@@ -88,9 +88,21 @@ on:
   issues:
     types: [ opened ]
 
+permissions:
+  contents: read
+
 jobs:
   label-component:
     runs-on: ubuntu-latest
+
+    permissions:
+      # required for all workflows
+      issues: write
+
+      # only required for workflows in private repositories
+      actions: read
+      contents: read
+
     steps:
       - uses: actions/checkout@v3
 
@@ -181,9 +193,21 @@ on:
   issues:
     types: [ opened ]
 
+permissions:
+  contents: read
+
 jobs:
   label-component:
     runs-on: ubuntu-latest
+
+    permissions:
+      # required for all workflows
+      issues: write
+
+      # only required for workflows in private repositories
+      actions: read
+      contents: read
+
     steps:
       - uses: actions/checkout@v3
 
