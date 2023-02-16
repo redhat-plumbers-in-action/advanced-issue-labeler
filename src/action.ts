@@ -1,5 +1,5 @@
 import { Context, Probot } from 'probot';
-import { getInput, debug } from '@actions/core';
+import { getInput, debug, info } from '@actions/core';
 
 import { events } from './events';
 import { Config } from './config';
@@ -12,18 +12,13 @@ const action = (probot: Probot) => {
     async (context: Context<(typeof events.issue)[number]>) => {
       const issueFormInput = getInput('issue-form', { required: true });
 
-      if (!issueFormInput) {
-        context.log.error(`Parameter issue-form is required!`);
-        return;
-      }
-
       const labeler = new Labeler(new IssueForm(JSON.parse(issueFormInput)));
       labeler.config = await Config.getConfig(context);
 
       // If no config was provided try inputs
       if (!labeler.isConfig) {
         labeler.setInputs({
-          section: getInput('section'),
+          section: getInput('section', { required: true }),
           blockList: getInput('block-list').split('\n', 25),
         });
       }
@@ -49,17 +44,17 @@ const action = (probot: Probot) => {
 
       // Check if there are some labels to be set
       if (!labels || (Array.isArray(labels) && labels?.length < 1)) {
-        debug('Nothing to do here. CY@');
+        info('Nothing to do here. CY@');
         return;
       }
 
-      debug(`Labels to be set: ${labels}`);
+      info(`Labels to be set: ${labels}`);
 
       const response = await context.octokit.rest.issues.addLabels(
         context.issue({ labels })
       );
 
-      debug(`GitHub API response: ${response}`);
+      debug(`GitHub API response status: [${response.status}]`);
     }
   );
 };
