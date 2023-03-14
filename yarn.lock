@@ -1045,10 +1045,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:18.14.2":
-  version: 18.14.2
-  resolution: "@types/node@npm:18.14.2"
-  checksum: 53c07e721f6ae33de71306f6a0b75dae6066a4f55bd5484c93bd59ff25f0c5f004ceafeef509a4d0cb9e24a247efc34d50489bcc1b05a53ecc68e2fc088e65cb
+"@types/node@npm:18.15.3":
+  version: 18.15.3
+  resolution: "@types/node@npm:18.15.3"
+  checksum: 31b1d92475a82c30de29aa6c0771b18a276552d191283b4423ba2d61b3f01159bf0d02576c0b7cc834b043997893800db6bb47f246083ed85aa45e79c80875d7
   languageName: node
   linkType: hard
 
@@ -1375,7 +1375,7 @@ __metadata:
     "@actions/github": 5.1.1
     "@octokit/rest": 19.0.7
     "@probot/adapter-github-actions": 3.1.3
-    "@types/node": 18.14.2
+    "@types/node": 18.15.3
     "@typescript-eslint/eslint-plugin": 5.50.0
     "@typescript-eslint/parser": 5.48.2
     "@vercel/ncc": 0.36.1
