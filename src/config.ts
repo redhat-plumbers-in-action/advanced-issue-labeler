@@ -1,39 +1,15 @@
 import { debug } from '@actions/core';
 import { Context } from 'probot';
-// import { Type } from 'class-transformer';
-import {
-  ArrayMinSize,
-  IsArray,
-  IsString,
-  MinLength,
-  validate,
-  ValidateNested,
-} from 'class-validator';
 
 import { events } from './events';
-import {
-  TConfigObject,
-  TPolicyItem,
-  TSectionItem,
-  TLabelItem,
-} from './types.d';
-import { ValidationFeedback } from './validation-feedback';
+
+import { ConfigPolicy, configSchema } from './schema/config';
 
 export class Config {
-  @IsArray()
-  @ValidateNested({ each: true })
-  @ArrayMinSize(1)
-  // @Type(() => SectionItem)
-  private _policy: PolicyItem[];
+  policy: ConfigPolicy[];
 
-  constructor(config: TConfigObject) {
-    this._policy = Array.isArray(config?.policy)
-      ? config.policy.map(item => new PolicyItem(item))
-      : [];
-  }
-
-  get policy() {
-    return this._policy;
+  constructor(config: unknown) {
+    this.policy = configSchema.parse(config).policy;
   }
 
   getTemplatePolicy(template: string | undefined) {
@@ -59,121 +35,16 @@ export class Config {
       [K in keyof typeof events]: Context<(typeof events)[K][number]>;
     }[keyof typeof events]
   ) {
-    const retrievedConfig = await context.config<TConfigObject>(
-      'advanced-issue-labeler.yml'
-    );
+    const retrievedConfig = await context.config('advanced-issue-labeler.yml');
 
     if (Config.isConfigEmpty(retrievedConfig)) {
       return null;
     }
 
-    const config = new this(retrievedConfig as Config);
-
-    return config;
+    return new Config(retrievedConfig);
   }
 
-  static isConfigEmpty(config: TConfigObject | null | unknown) {
-    return config === null;
-  }
-
-  static async validate(instance: Config) {
-    const validationResult = await validate(instance, {
-      whitelist: true,
-      forbidNonWhitelisted: true,
-    });
-
-    const results = validationResult.map(error => {
-      return ValidationFeedback.composeFeedbackObject(error);
-    });
-
-    return results;
-  }
-}
-
-export class PolicyItem {
-  @IsString({ each: true })
-  @MinLength(0, { each: true })
-  private _template?: string[];
-
-  @IsArray()
-  @ValidateNested({ each: true })
-  @ArrayMinSize(1)
-  // @Type(() => SectionItem)
-  private _section: SectionItem[];
-
-  constructor(item: TPolicyItem) {
-    this._template = item?.template ?? [];
-    this._section = Array.isArray(item?.section)
-      ? item.section.map(sectionItem => new SectionItem(sectionItem))
-      : [];
-  }
-
-  get template() {
-    return this._template;
-  }
-
-  get section() {
-    return this._section;
-  }
-}
-
-export class SectionItem {
-  @IsString({ each: true })
-  @MinLength(1, { each: true })
-  private _id: string[];
-
-  @IsString({ each: true })
-  @MinLength(0, { each: true })
-  private _blockList: string[];
-
-  @IsArray()
-  @ValidateNested({ each: true })
-  @ArrayMinSize(1)
-  // @Type(() => SectionItem)
-  private _label: TLabelItem[];
-
-  constructor(item: TSectionItem) {
-    this._id = item?.id;
-    this._blockList = item?.hasOwnProperty('block-list')
-      ? item['block-list'] ?? []
-      : [];
-    this._label = Array.isArray(item?.label)
-      ? item.label.map(labelItem => new Label(labelItem))
-      : [];
-  }
-
-  get id() {
-    return this._id;
-  }
-
-  get blockList() {
-    return this._blockList;
-  }
-
-  get label() {
-    return this._label;
-  }
-}
-
-export class Label {
-  @IsString()
-  @MinLength(1)
-  private _name: string;
-
-  @IsString({ each: true })
-  @MinLength(1, { each: true })
-  private _keys: string[];
-
-  constructor(item: TLabelItem) {
-    this._name = item?.name;
-    this._keys = item?.keys;
-  }
-
-  get name() {
-    return this._name;
-  }
-
-  get keys() {
-    return this._keys;
+  static isConfigEmpty(config: unknown) {
+    return config === null || config === undefined;
   }
 }

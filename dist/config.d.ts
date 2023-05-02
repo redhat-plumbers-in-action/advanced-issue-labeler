@@ -1,43 +1,22 @@
 import { Context } from 'probot';
 import { events } from './events';
-import { TConfigObject, TPolicyItem, TSectionItem, TLabelItem } from './types.d';
+import { ConfigPolicy } from './schema/config';
 export declare class Config {
-    private _policy;
-    constructor(config: TConfigObject);
-    get policy(): PolicyItem[];
-    getTemplatePolicy(template: string | undefined): PolicyItem | undefined;
+    policy: ConfigPolicy[];
+    constructor(config: unknown);
+    getTemplatePolicy(template: string | undefined): {
+        template: string[];
+        section: {
+            id: string[];
+            blockList: string[];
+            label: {
+                name: string;
+                keys: string[];
+            }[];
+        }[];
+    } | undefined;
     static getConfig(context: {
         [K in keyof typeof events]: Context<(typeof events)[K][number]>;
     }[keyof typeof events]): Promise<Config | null>;
-    static isConfigEmpty(config: TConfigObject | null | unknown): boolean;
-    static validate(instance: Config): Promise<{
-        property: string;
-        value: any;
-        notes: {
-            [type: string]: string;
-        } | undefined;
-    }[]>;
-}
-export declare class PolicyItem {
-    private _template?;
-    private _section;
-    constructor(item: TPolicyItem);
-    get template(): string[] | undefined;
-    get section(): SectionItem[];
-}
-export declare class SectionItem {
-    private _id;
-    private _blockList;
-    private _label;
-    constructor(item: TSectionItem);
-    get id(): string[];
-    get blockList(): string[];
-    get label(): TLabelItem[];
-}
-export declare class Label {
-    private _name;
-    private _keys;
-    constructor(item: TLabelItem);
-    get name(): string;
-    get keys(): string[];
+    static isConfigEmpty(config: unknown): boolean;
 }
