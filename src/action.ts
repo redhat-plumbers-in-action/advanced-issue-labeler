@@ -3,42 +3,31 @@ import { getInput, debug, info } from '@actions/core';
 
 import { events } from './events';
 import { Config } from './config';
-import { IssueForm } from './issue-form';
 import { Labeler } from './labeler';
+import { InputType } from './schema/input';
+import { Input } from './input';
 
 const action = (probot: Probot) => {
   probot.on(
     events.issue,
     async (context: Context<(typeof events.issue)[number]>) => {
-      const issueFormInput = getInput('issue-form', { required: true });
+      const inputs: Partial<InputType> = {};
+      inputs.issueForm = getInput('issue-form', {
+        required: true,
+      }) as unknown as InputType['issueForm'];
 
-      const labeler = new Labeler(new IssueForm(JSON.parse(issueFormInput)));
-      labeler.config = await Config.getConfig(context);
+      const config = await Config.getConfig(context);
 
       // If no config was provided try inputs
-      if (!labeler.isConfig) {
-        labeler.setInputs({
-          section: getInput('section', { required: true }),
-          blockList: getInput('block-list').split('\n', 25),
-        });
+      if (Config.isConfigEmpty(config)) {
+        inputs.section = getInput('section', { required: true });
+        inputs.blockList = getInput('block-list').split('\n', 25);
       }
 
       // Config requires template as well
-      labeler.setInputs({
-        template: getInput('template'),
-      });
+      inputs.template = getInput('template');
 
-      const validationResult = await Labeler.validate(labeler);
-
-      if (validationResult.length > 0) {
-        for (const [index, message] of validationResult.entries()) {
-          // TODO: Probably needs some care:
-          debug(
-            `{ property: ${message.property}, value: ${message.value}, notes: ${message.notes}`
-          );
-        }
-        return;
-      }
+      const labeler = new Labeler(config, new Input(inputs));
 
       const labels = labeler.gatherLabels();
 

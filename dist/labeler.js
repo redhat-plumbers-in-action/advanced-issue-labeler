@@ -1,85 +1,17 @@
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-import { debug, error } from '@actions/core';
-import { ValidateIf, validate, ValidateNested, Allow } from 'class-validator';
-import { ValidationFeedback } from './validation-feedback';
-import { Inputs } from './inputs';
+import { debug } from '@actions/core';
+import { IssueForm } from './issue-form';
 export class Labeler {
-    constructor(issueForm) {
-        // State holders
-        this._isConfig = undefined;
-        this._isInputs = undefined;
-        this._issueForm = issueForm;
-        this._inputs = new Inputs({});
+    constructor(config, inputs) {
+        this.config = config;
+        this.inputs = inputs;
+        this.issueForm = new IssueForm(inputs.issueForm);
     }
-    get config() {
-        return this._config;
-    }
-    set config(config) {
-        this._config = config;
-    }
-    get inputs() {
-        return this._inputs;
-    }
-    set inputs(inputs) {
-        this._inputs = inputs;
-    }
-    //? FIXME: This should be done better...
-    setInputs(inputs) {
+    get isInputBased() {
         var _a, _b;
-        if (inputs.template)
-            this._inputs.template =
-                ((_a = inputs.template) === null || _a === void 0 ? void 0 : _a.length) === 0 ? undefined : inputs.template;
-        if (inputs.section)
-            this._inputs.section =
-                ((_b = inputs.section) === null || _b === void 0 ? void 0 : _b.length) === 0 ? undefined : inputs.section;
-        // ! FIXME: Should be handled by zod in future ...
-        if (inputs.blockList) {
-            if (inputs.blockList.length === 0) {
-                this._inputs.blockList = undefined;
-                return;
-            }
-            if (Array.isArray(inputs.blockList) && inputs.blockList.length > 0) {
-                if (inputs.blockList[0].length === 0) {
-                    this._inputs.blockList = undefined;
-                    return;
-                }
-            }
-            this._inputs.blockList = inputs.blockList;
-        }
-    }
-    get isConfig() {
-        if (this._isConfig === undefined)
-            this.isConfig = !!this.config;
-        return this._isConfig;
-    }
-    set isConfig(value) {
-        this._isConfig = value;
-    }
-    get isInputs() {
-        var _a;
-        if (this._isInputs === undefined) {
-            // TODO: This needs rework!
-            // template is required
-            this.isInputs = !!((_a = this.inputs) === null || _a === void 0 ? void 0 : _a.section) && this.inputs.section !== '';
-        }
-        return this._isInputs;
-    }
-    set isInputs(value) {
-        this._isInputs = value;
-    }
-    get issueForm() {
-        return this._issueForm;
-    }
-    set issueForm(issueForm) {
-        this._issueForm = issueForm;
+        return !!((_a = this.inputs) === null || _a === void 0 ? void 0 : _a.section) && ((_b = this.inputs) === null || _b === void 0 ? void 0 : _b.section) !== '';
     }
     gatherLabels() {
-        if (this.isInputs) {
+        if (this.isInputBased) {
             return this.inputBasedLabels();
         }
         return this.configBasedLabels();
@@ -134,33 +66,5 @@ export class Labeler {
         }
         return labels;
     }
-    static async validate(instance) {
-        const validationResult = await validate(instance, {
-            whitelist: true,
-            forbidNonWhitelisted: true,
-        });
-        error(validationResult.toString());
-        const results = validationResult.map(e => {
-            return ValidationFeedback.composeFeedbackObject(e);
-        });
-        return results;
-    }
 }
-__decorate([
-    ValidateIf(instance => !instance._inputs),
-    ValidateNested()
-], Labeler.prototype, "_config", void 0);
-__decorate([
-    ValidateIf(instance => !instance._config),
-    ValidateNested()
-], Labeler.prototype, "_inputs", void 0);
-__decorate([
-    Allow()
-], Labeler.prototype, "_issueForm", void 0);
-__decorate([
-    Allow()
-], Labeler.prototype, "_isConfig", void 0);
-__decorate([
-    Allow()
-], Labeler.prototype, "_isInputs", void 0);
 //# sourceMappingURL=labeler.js.map

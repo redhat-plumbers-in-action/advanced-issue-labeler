@@ -1,0 +1,30 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Inputs Object > get blockList() 1`] = `[]`;
+
+exports[`Inputs Object > get blockList() 2`] = `[]`;
+
+exports[`Inputs Object > get blockList() 3`] = `
+[
+  "block1",
+  "block2",
+]
+`;
+
+exports[`Inputs Object > get blockList() 4`] = `[]`;
+
+exports[`Inputs Object > get section() 1`] = `"section"`;
+
+exports[`Inputs Object > get section() 2`] = `"section"`;
+
+exports[`Inputs Object > get section() 3`] = `"section"`;
+
+exports[`Inputs Object > get section() 4`] = `"section"`;
+
+exports[`Inputs Object > get template() 1`] = `undefined`;
+
+exports[`Inputs Object > get template() 2`] = `undefined`;
+
+exports[`Inputs Object > get template() 3`] = `undefined`;
+
+exports[`Inputs Object > get template() 4`] = `"template"`;
