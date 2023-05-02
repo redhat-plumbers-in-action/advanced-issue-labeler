@@ -3,6 +3,8 @@ import run from '@probot/adapter-github-actions';
 
 import action from './action';
 
+import '@total-typescript/ts-reset';
+
 try {
   await run.run(action);
 } catch (error) {
