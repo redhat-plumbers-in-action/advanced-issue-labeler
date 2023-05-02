@@ -45,9 +45,7 @@ describe('IssueForm Object', () => {
     labeler.setInputs({ blockList: [''], template: 'template' });
     expect(labeler.inputs).toMatchInlineSnapshot(`
       Inputs {
-        "_blockList": [
-          "",
-        ],
+        "_blockList": undefined,
         "_section": "section",
         "_template": "template",
       }
@@ -69,9 +67,7 @@ describe('IssueForm Object', () => {
     labeler.setInputs({ section: '', template: '', blockList: [''] });
     expect(labeler.inputs).toMatchInlineSnapshot(`
       Inputs {
-        "_blockList": [
-          "",
-        ],
+        "_blockList": undefined,
         "_section": "section",
         "_template": "template",
       }
@@ -85,9 +81,7 @@ describe('IssueForm Object', () => {
     });
     expect(labeler.inputs).toMatchInlineSnapshot(`
       Inputs {
-        "_blockList": [
-          "",
-        ],
+        "_blockList": undefined,
         "_section": "section",
         "_template": "template",
       }
