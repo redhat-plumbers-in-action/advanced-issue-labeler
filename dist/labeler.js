@@ -30,16 +30,27 @@ export class Labeler {
     }
     //? FIXME: This should be done better...
     setInputs(inputs) {
-        var _a, _b, _c;
+        var _a, _b;
         if (inputs.template)
             this._inputs.template =
                 ((_a = inputs.template) === null || _a === void 0 ? void 0 : _a.length) === 0 ? undefined : inputs.template;
         if (inputs.section)
             this._inputs.section =
                 ((_b = inputs.section) === null || _b === void 0 ? void 0 : _b.length) === 0 ? undefined : inputs.section;
-        if (inputs.blockList)
-            this._inputs.blockList =
-                ((_c = inputs.blockList) === null || _c === void 0 ? void 0 : _c.length) === 0 ? undefined : inputs.blockList;
+        // ! FIXME: Should be handled by zod in future ...
+        if (inputs.blockList) {
+            if (inputs.blockList.length === 0) {
+                this._inputs.blockList = undefined;
+                return;
+            }
+            if (Array.isArray(inputs.blockList) && inputs.blockList.length > 0) {
+                if (inputs.blockList[0].length === 0) {
+                    this._inputs.blockList = undefined;
+                    return;
+                }
+            }
+            this._inputs.blockList = inputs.blockList;
+        }
     }
     get isConfig() {
         if (this._isConfig === undefined)

@@ -8,6 +8,7 @@ export interface IInputsTestContext {
 export const inputsContextFixture: IInputsTestContext = {
   inputs: [
     new Inputs({ section: 'section' }),
+    new Inputs({ section: 'section', blockList: undefined }),
     new Inputs({ section: 'section', blockList: ['block1', 'block2'] }),
     new Inputs({ section: 'section', template: 'template' }),
   ],

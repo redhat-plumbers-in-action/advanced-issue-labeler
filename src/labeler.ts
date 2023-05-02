@@ -56,9 +56,22 @@ export class Labeler {
       this._inputs.section =
         inputs.section?.length === 0 ? undefined : inputs.section;
 
-    if (inputs.blockList)
-      this._inputs.blockList =
-        inputs.blockList?.length === 0 ? undefined : inputs.blockList;
+    // ! FIXME: Should be handled by zod in future ...
+    if (inputs.blockList) {
+      if (inputs.blockList.length === 0) {
+        this._inputs.blockList = undefined;
+        return;
+      }
+
+      if (Array.isArray(inputs.blockList) && inputs.blockList.length > 0) {
+        if (inputs.blockList[0].length === 0) {
+          this._inputs.blockList = undefined;
+          return;
+        }
+      }
+
+      this._inputs.blockList = inputs.blockList;
+    }
   }
 
   get isConfig() {
