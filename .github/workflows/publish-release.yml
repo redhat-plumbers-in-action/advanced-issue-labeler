@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@f095bcc56b7c2baf48f3ac70d6d6782f4f553222
 
       - name: Update tag
-        uses: Actions-R-Us/actions-tagger@330ddfac760021349fef7ff62b372f2f691c20fb
+        uses: Actions-R-Us/actions-tagger@v2
         with:
           publish_latest_tag: false
           token: ${{ secrets.GITHUB_TOKEN }}
