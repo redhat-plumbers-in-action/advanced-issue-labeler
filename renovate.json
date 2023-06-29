@@ -9,7 +9,7 @@
   },
 
   "js": {
-    "extends": ["schedule:weekly"],
+    "extends": ["schedule:monthly"],
     "addLabels": ["javascript"]
   }
 }
