@@ -13,24 +13,6 @@ permissions:
   contents: read
 
 jobs:
-  super-linter:
-    name: Super Linter
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Repository checkout
-        uses: actions/checkout@96f53100ba2a5449eb71d2e6604bbcd94b9449b5
-        with:
-          fetch-depth: 0
-
-      - name: Lint Code Base
-        uses: github/super-linter@bb2d833b08b6c288608686672b93a8a4589cdc49
-        env:
-          VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: main
-          VALIDATE_TYPESCRIPT_STANDARD: false
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   lint:
     name: Linters
     runs-on: ubuntu-latest
