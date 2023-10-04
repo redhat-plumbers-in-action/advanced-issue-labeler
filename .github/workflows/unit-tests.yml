@@ -45,4 +45,4 @@ jobs:
 
       - name: Codecov
         if: ${{ matrix.node-version == '18.x' }}
-        uses: codecov/codecov-action@eaaf4bedf32dbdc6b720b63067d99c4d77d6047d
+        uses: codecov/codecov-action@ef2b0df87fbbd2569a553208e78409b1bc2fb469
