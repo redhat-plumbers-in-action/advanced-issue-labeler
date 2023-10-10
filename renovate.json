@@ -2,7 +2,7 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:base"],
 
-  "labels": ["type: dependencies", "merge-strategy: rebase"],
+  "labels": ["type: dependencies"],
   "github-actions": {
     "extends": ["schedule:monthly"],
     "addLabels": ["github-actions"]

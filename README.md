@@ -6,7 +6,7 @@
 
 [![GitHub Marketplace][market-status]][market] [![Lint Code Base][linter-status]][linter] [![Unit Tests][test-status]][test] [![CodeQL][codeql-status]][codeql] [![Check dist/][check-dist-status]][check-dist]
 
-[![Demo][demo-status]][demo] [![codecov][codecov-status]][codecov] [![Mergify Status][mergify-status]][mergify]
+[![Demo][demo-status]][demo] [![codecov][codecov-status]][codecov]
 
 <!-- Status links -->
 
@@ -30,9 +30,6 @@
 
 [codecov]: https://codecov.io/gh/redhat-plumbers-in-action/advanced-issue-labeler
 [codecov-status]: https://codecov.io/gh/redhat-plumbers-in-action/advanced-issue-labeler/branch/main/graph/badge.svg
-
-[mergify]: https://mergify.com
-[mergify-status]: https://img.shields.io/endpoint.svg?url=https://api.mergify.com/v1/badges/redhat-plumbers-in-action/advanced-issue-labeler&style=flat
 
 <!-- -->
 
