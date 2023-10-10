@@ -35,8 +35,8 @@
   "devDependencies": {
     "@actions/github": "5.1.1",
     "@types/node": "18.18.4",
-    "@typescript-eslint/eslint-plugin": "5.60.1",
-    "@typescript-eslint/parser": "5.60.1",
+    "@typescript-eslint/eslint-plugin": "5.62.0",
+    "@typescript-eslint/parser": "5.62.0",
     "@vercel/ncc": "0.38.0",
     "@vitest/coverage-v8": "^0.32.2",
     "eslint": "8.43.0",
