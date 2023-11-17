@@ -1,3 +1,3 @@
-import { Probot } from 'probot';
-declare const action: (probot: Probot) => void;
+import { CustomOctokit } from './octokit';
+declare function action(octokit: CustomOctokit): Promise<void>;
 export default action;

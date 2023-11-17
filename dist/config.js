@@ -5,9 +5,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { debug } from '@actions/core';
-// import { Type } from 'class-transformer';
 import { ArrayMinSize, IsArray, IsString, MinLength, validate, ValidateNested, } from 'class-validator';
 import { ValidationFeedback } from './validation-feedback';
+import { context } from '@actions/github';
 export class Config {
     constructor(config) {
         this._policy = Array.isArray(config === null || config === void 0 ? void 0 : config.policy)
@@ -28,13 +28,14 @@ export class Config {
         return this.policy.find(pItem => !(pItem === null || pItem === void 0 ? void 0 : pItem.template) ||
             (Array.isArray(pItem === null || pItem === void 0 ? void 0 : pItem.template) && (pItem === null || pItem === void 0 ? void 0 : pItem.template.length) === 0));
     }
-    static async getConfig(context) {
-        const retrievedConfig = await context.config('advanced-issue-labeler.yml');
+    static async getConfig(octokit) {
+        const path = 'advanced-issue-labeler.yml';
+        const retrievedConfig = (await octokit.config.get(Object.assign(Object.assign({}, context.repo), { path }))).config;
+        debug(`Configuration '${path}': ${JSON.stringify(retrievedConfig)}`);
         if (Config.isConfigEmpty(retrievedConfig)) {
-            return null;
+            throw new Error(`Missing configuration. Please setup 'Tracker Validator' Action using 'tracker-validator.yml' file.`);
         }
-        const config = new this(retrievedConfig);
-        return config;
+        return new this(retrievedConfig);
     }
     static isConfigEmpty(config) {
         return config === null;
@@ -54,7 +55,6 @@ __decorate([
     IsArray(),
     ValidateNested({ each: true }),
     ArrayMinSize(1)
-    // @Type(() => SectionItem)
 ], Config.prototype, "_policy", void 0);
 export class PolicyItem {
     constructor(item) {
@@ -79,7 +79,6 @@ __decorate([
     IsArray(),
     ValidateNested({ each: true }),
     ArrayMinSize(1)
-    // @Type(() => SectionItem)
 ], PolicyItem.prototype, "_section", void 0);
 export class SectionItem {
     constructor(item) {
@@ -114,7 +113,6 @@ __decorate([
     IsArray(),
     ValidateNested({ each: true }),
     ArrayMinSize(1)
-    // @Type(() => SectionItem)
 ], SectionItem.prototype, "_label", void 0);
 export class Label {
     constructor(item) {

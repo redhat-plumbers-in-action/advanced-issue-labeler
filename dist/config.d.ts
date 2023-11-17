@@ -1,14 +1,11 @@
-import { Context } from 'probot';
-import { events } from './events';
 import { TConfigObject, TPolicyItem, TSectionItem, TLabelItem } from './types.d';
+import { CustomOctokit } from './octokit';
 export declare class Config {
     private _policy;
     constructor(config: TConfigObject);
     get policy(): PolicyItem[];
     getTemplatePolicy(template: string | undefined): PolicyItem | undefined;
-    static getConfig(context: {
-        [K in keyof typeof events]: Context<(typeof events)[K][number]>;
-    }[keyof typeof events]): Promise<Config | null>;
+    static getConfig(octokit: CustomOctokit): Promise<Config>;
     static isConfigEmpty(config: TConfigObject | null | unknown): boolean;
     static validate(instance: Config): Promise<{
         property: string;

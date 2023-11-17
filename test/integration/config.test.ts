@@ -1,24 +1,10 @@
-import { getInput, error, warning, info, debug } from '@actions/core';
-import {
-  vi,
-  describe,
-  beforeAll,
-  beforeEach,
-  afterAll,
-  test,
-  expect,
-  assert,
-  it,
-} from 'vitest';
+import { getInput } from '@actions/core';
+import { vi, describe, beforeAll, beforeEach, afterAll, test } from 'vitest';
 import { context } from '@actions/github';
-import { resolve, join } from 'path';
-import run from '@probot/adapter-github-actions';
 
 // import * as fsHelper from '../lib/fs-helper';
 // import * as inputHelper from '../lib/input-helper';
 // import { IGitSourceSettings } from '../lib/git-source-settings';
-
-import app from '../../src/app';
 
 // const originalGitHubWorkspace = process.env['GITHUB_WORKSPACE'];
 // const gitHubWorkspace = resolve('/checkout-tests/workspace');
