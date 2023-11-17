@@ -1,6 +1,4 @@
 import { debug } from '@actions/core';
-import { Context } from 'probot';
-// import { Type } from 'class-transformer';
 import {
   ArrayMinSize,
   IsArray,
@@ -10,7 +8,6 @@ import {
   ValidateNested,
 } from 'class-validator';
 
-import { events } from './events';
 import {
   TConfigObject,
   TPolicyItem,
@@ -18,12 +15,13 @@ import {
   TLabelItem,
 } from './types.d';
 import { ValidationFeedback } from './validation-feedback';
+import { context } from '@actions/github';
+import { CustomOctokit } from './octokit';
 
 export class Config {
   @IsArray()
   @ValidateNested({ each: true })
   @ArrayMinSize(1)
-  // @Type(() => SectionItem)
   private _policy: PolicyItem[];
 
   constructor(config: TConfigObject) {
@@ -54,22 +52,25 @@ export class Config {
     );
   }
 
-  static async getConfig(
-    context: {
-      [K in keyof typeof events]: Context<(typeof events)[K][number]>;
-    }[keyof typeof events]
-  ) {
-    const retrievedConfig = await context.config<TConfigObject>(
-      'advanced-issue-labeler.yml'
-    );
+  static async getConfig(octokit: CustomOctokit): Promise<Config> {
+    const path = 'advanced-issue-labeler.yml';
+
+    const retrievedConfig = (
+      await octokit.config.get({
+        ...context.repo,
+        path,
+      })
+    ).config;
+
+    debug(`Configuration '${path}': ${JSON.stringify(retrievedConfig)}`);
 
     if (Config.isConfigEmpty(retrievedConfig)) {
-      return null;
+      throw new Error(
+        `Missing configuration. Please setup 'Tracker Validator' Action using 'tracker-validator.yml' file.`
+      );
     }
 
-    const config = new this(retrievedConfig as Config);
-
-    return config;
+    return new this(retrievedConfig as TConfigObject);
   }
 
   static isConfigEmpty(config: TConfigObject | null | unknown) {
@@ -98,7 +99,6 @@ export class PolicyItem {
   @IsArray()
   @ValidateNested({ each: true })
   @ArrayMinSize(1)
-  // @Type(() => SectionItem)
   private _section: SectionItem[];
 
   constructor(item: TPolicyItem) {
@@ -129,7 +129,6 @@ export class SectionItem {
   @IsArray()
   @ValidateNested({ each: true })
   @ArrayMinSize(1)
-  // @Type(() => SectionItem)
   private _label: TLabelItem[];
 
   constructor(item: TSectionItem) {

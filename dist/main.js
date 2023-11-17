@@ -1,12 +1,19 @@
-import { setFailed } from '@actions/core';
-import run from '@probot/adapter-github-actions';
+import { getInput, setFailed } from '@actions/core';
+// import '@total-typescript/ts-reset';
 import action from './action';
+import { getOctokit } from './octokit';
+const octokit = getOctokit(getInput('token', { required: true }));
 try {
-    await run.run(action);
+    await action(octokit);
 }
 catch (error) {
-    error instanceof Error
-        ? setFailed(error.message)
-        : setFailed(error);
+    let message;
+    if (error instanceof Error) {
+        message = error.message;
+    }
+    else {
+        message = JSON.stringify(error);
+    }
+    setFailed(message);
 }
 //# sourceMappingURL=main.js.map
