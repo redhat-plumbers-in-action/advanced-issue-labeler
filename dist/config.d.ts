@@ -8,7 +8,7 @@ export declare class Config {
         template: string[];
         section: {
             id: string[];
-            blockList: string[];
+            'block-list': string[];
             label: {
                 name: string;
                 keys: string[];

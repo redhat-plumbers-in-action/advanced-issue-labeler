@@ -8,29 +8,242 @@ import {
 
 describe('Config Object', () => {
   beforeEach<IConfigTestContext>(context => {
-    context.configs = configContextFixture.configs;
+    context.basicConfig = configContextFixture.basicConfig;
+    context.configWithTemplate = configContextFixture.configWithTemplate;
+    context.configWithMultiplePolicies =
+      configContextFixture.configWithMultiplePolicies;
   });
 
-  it<IConfigTestContext>('can be instantiated', context =>
-    context.configs.map(configItem => expect(configItem).toBeDefined()));
+  it<IConfigTestContext>('can be instantiated', context => {
+    let configInstance = new Config(null, '');
+    expect(configInstance.policy).toMatchInlineSnapshot('undefined');
 
-  test<IConfigTestContext>('get policy()', context =>
-    context.configs.map(configItem =>
-      expect(configItem.policy).toMatchSnapshot()
-    ));
+    configInstance = new Config(context.basicConfig, '');
+    expect(configInstance.policy).toMatchInlineSnapshot(`
+      [
+        {
+          "section": [
+            {
+              "block-list": [],
+              "id": [
+                "type",
+              ],
+              "label": [
+                {
+                  "keys": [
+                    "Bug Report",
+                  ],
+                  "name": "bug 🐛",
+                },
+                {
+                  "keys": [
+                    "Feature Request",
+                  ],
+                  "name": "RFE 🎁",
+                },
+              ],
+            },
+          ],
+          "template": [],
+        },
+      ]
+    `);
 
-  it<IConfigTestContext>('can get template policy', context =>
-    context.configs.map(async configItem =>
-      expect(
-        configItem.getTemplatePolicy('issue-template.yml')
-      ).toMatchSnapshot()
-    ));
+    configInstance = new Config(context.configWithTemplate, '');
+    expect(configInstance.policy).toMatchInlineSnapshot(`
+      [
+        {
+          "section": [
+            {
+              "block-list": [],
+              "id": [
+                "type",
+              ],
+              "label": [
+                {
+                  "keys": [
+                    "Bug Report",
+                  ],
+                  "name": "bug 🐛",
+                },
+                {
+                  "keys": [
+                    "Feature Request",
+                  ],
+                  "name": "RFE 🎁",
+                },
+              ],
+            },
+          ],
+          "template": [
+            "issue-template.yml",
+          ],
+        },
+      ]
+    `);
 
-  test<IConfigTestContext>('is config empty', context => {
-    context.configs.map(async configItem =>
-      expect(configItem.isPolicyEmpty()).toEqual(false)
-    );
+    configInstance = new Config(context.configWithMultiplePolicies, '');
+    expect(configInstance.policy).toMatchInlineSnapshot(`
+      [
+        {
+          "section": [
+            {
+              "block-list": [
+                "Other",
+              ],
+              "id": [
+                "type",
+              ],
+              "label": [
+                {
+                  "keys": [
+                    "Bug Report",
+                  ],
+                  "name": "bug 🐛",
+                },
+                {
+                  "keys": [
+                    "Feature Request",
+                  ],
+                  "name": "RFE 🎁",
+                },
+              ],
+            },
+          ],
+          "template": [
+            "issue-template.yml",
+          ],
+        },
+        {
+          "section": [
+            {
+              "block-list": [
+                "other",
+              ],
+              "id": [
+                "id",
+              ],
+              "label": [
+                {
+                  "keys": [
+                    "label",
+                  ],
+                  "name": "label",
+                },
+              ],
+            },
+          ],
+          "template": [
+            "template1.yml",
+            "template2.yml",
+          ],
+        },
+      ]
+    `);
 
-    expect(new Config(null, '').isPolicyEmpty()).toEqual(true);
+    expect(configInstance).toBeInstanceOf(Config);
+  });
+
+  it<IConfigTestContext>('can get template policy', context => {
+    let configInstance = new Config(context.configWithTemplate, '');
+    expect(configInstance.getTemplatePolicy('issue-template.yml'))
+      .toMatchInlineSnapshot(`
+        {
+          "section": [
+            {
+              "block-list": [],
+              "id": [
+                "type",
+              ],
+              "label": [
+                {
+                  "keys": [
+                    "Bug Report",
+                  ],
+                  "name": "bug 🐛",
+                },
+                {
+                  "keys": [
+                    "Feature Request",
+                  ],
+                  "name": "RFE 🎁",
+                },
+              ],
+            },
+          ],
+          "template": [
+            "issue-template.yml",
+          ],
+        }
+      `);
+
+    configInstance = new Config(context.configWithMultiplePolicies, '');
+    expect(configInstance.getTemplatePolicy('issue-template.yml'))
+      .toMatchInlineSnapshot(`
+      {
+        "section": [
+          {
+            "block-list": [
+              "Other",
+            ],
+            "id": [
+              "type",
+            ],
+            "label": [
+              {
+                "keys": [
+                  "Bug Report",
+                ],
+                "name": "bug 🐛",
+              },
+              {
+                "keys": [
+                  "Feature Request",
+                ],
+                "name": "RFE 🎁",
+              },
+            ],
+          },
+        ],
+        "template": [
+          "issue-template.yml",
+        ],
+      }
+    `);
+    expect(configInstance.getTemplatePolicy('template2.yml'))
+      .toMatchInlineSnapshot(`
+      {
+        "section": [
+          {
+            "block-list": [
+              "other",
+            ],
+            "id": [
+              "id",
+            ],
+            "label": [
+              {
+                "keys": [
+                  "label",
+                ],
+                "name": "label",
+              },
+            ],
+          },
+        ],
+        "template": [
+          "template1.yml",
+          "template2.yml",
+        ],
+      }
+    `);
+  });
+
+  test<IConfigTestContext>('is policy empty', context => {
+    let configInstance = new Config(null, '');
+    expect(configInstance.isPolicyEmpty()).toEqual(true);
+
+    configInstance = new Config(context.basicConfig, '');
+    expect(configInstance.isPolicyEmpty()).toEqual(false);
   });
 });

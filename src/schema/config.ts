@@ -9,7 +9,7 @@ export type ConfigLabel = z.infer<typeof configLabelSchema>;
 
 export const configSectionSchema = z.object({
   id: z.array(z.string().min(1)),
-  blockList: z.array(z.string().min(1)).default([]),
+  'block-list': z.array(z.string().min(1)).default([]),
   label: z.array(configLabelSchema).default([]),
 });
 
@@ -28,3 +28,5 @@ export const configSchema = z
   })
   .optional()
   .nullable();
+
+export type ConfigType = z.infer<typeof configSchema>;

@@ -60,7 +60,7 @@ export class Labeler {
                     debug(`Issue form doesn't contain section: ${singleID}`);
                     continue;
                 }
-                const keywords = this.issueForm.listKeywords(singleID, sectionItem.blockList);
+                const keywords = this.issueForm.listKeywords(singleID, sectionItem['block-list']);
                 if (!keywords || (keywords === null || keywords === void 0 ? void 0 : keywords.length) === 0) {
                     debug(`Section field is empty.`);
                     continue;

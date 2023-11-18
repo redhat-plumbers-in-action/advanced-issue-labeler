@@ -1,108 +1,68 @@
-import { Config } from '../../../src/config';
+import { ConfigType } from '../../../src/schema/config';
 
 export interface IConfigTestContext {
-  configs: Config[];
+  basicConfig: ConfigType;
+  configWithTemplate: ConfigType;
+  configWithMultiplePolicies: ConfigType;
 }
 
 export const configContextFixture: IConfigTestContext = {
-  configs: [
-    new Config(
+  basicConfig: {
+    policy: [
       {
-        policy: [
+        section: [
           {
-            section: [
-              {
-                id: ['type'],
-                label: [
-                  { name: 'bug 🐛', keys: ['Bug Report'] },
-                  { name: 'RFE 🎁', keys: ['Feature Request'] },
-                ],
-              },
+            id: ['type'],
+            label: [
+              { name: 'bug 🐛', keys: ['Bug Report'] },
+              { name: 'RFE 🎁', keys: ['Feature Request'] },
             ],
           },
         ],
       },
-      'advanced-issue-labeler.yml'
-    ),
-    new Config(
+    ],
+  } as ConfigType,
+  configWithTemplate: {
+    policy: [
       {
-        policy: [
+        template: ['issue-template.yml'],
+        section: [
           {
-            template: ['issue-template.yml'],
-            section: [
-              {
-                id: ['type'],
-                'block-list': ['Other'],
-                label: [
-                  { name: 'bug 🐛', keys: ['Bug Report'] },
-                  { name: 'RFE 🎁', keys: ['Feature Request'] },
-                ],
-              },
+            id: ['type'],
+            label: [
+              { name: 'bug 🐛', keys: ['Bug Report'] },
+              { name: 'RFE 🎁', keys: ['Feature Request'] },
             ],
           },
         ],
       },
-      'advanced-issue-labeler.yml'
-    ),
-    new Config(
+    ],
+  } as ConfigType,
+  configWithMultiplePolicies: {
+    policy: [
       {
-        policy: [
+        template: ['issue-template.yml'],
+        section: [
           {
-            template: ['issue-template.yml'],
-            section: [
-              {
-                id: ['type'],
-                'block-list': ['Other'],
-                label: [
-                  { name: 'bug 🐛', keys: ['Bug Report'] },
-                  { name: 'RFE 🎁', keys: ['Feature Request'] },
-                ],
-              },
-            ],
-          },
-          {
-            template: ['template1.yml', 'template1.yml'],
-            section: [
-              {
-                id: ['id'],
-                'block-list': ['other'],
-                label: [{ name: 'label', keys: ['label'] }],
-              },
+            id: ['type'],
+            'block-list': ['Other'],
+            label: [
+              { name: 'bug 🐛', keys: ['Bug Report'] },
+              { name: 'RFE 🎁', keys: ['Feature Request'] },
             ],
           },
         ],
       },
-      'advanced-issue-labeler.yml'
-    ),
-    new Config(
       {
-        policy: [
+        template: ['template1.yml', 'template2.yml'],
+        section: [
           {
-            template: ['issue-template.yml', 'template.yml'],
-            section: [
-              {
-                id: ['type'],
-                'block-list': ['Other'],
-                label: [
-                  { name: 'bug 🐛', keys: ['Bug Report'] },
-                  { name: 'RFE 🎁', keys: ['Feature Request'] },
-                ],
-              },
-            ],
-          },
-          {
-            template: ['template1.yml', 'template1.yml'],
-            section: [
-              {
-                id: ['id'],
-                'block-list': ['other'],
-                label: [{ name: 'label', keys: ['label'] }],
-              },
-            ],
+            id: ['id'],
+            'block-list': ['other'],
+            label: [{ name: 'label', keys: ['label'] }],
           },
         ],
       },
-      'advanced-issue-labeler.yml'
-    ),
-  ],
+    ],
+  },
 };

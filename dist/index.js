@@ -38075,7 +38075,7 @@ const configLabelSchema = z.object({
 });
 const configSectionSchema = z.object({
     id: z.array(z.string().min(1)),
-    blockList: z.array(z.string().min(1)).default([]),
+    'block-list': z.array(z.string().min(1)).default([]),
     label: z.array(configLabelSchema).default([]),
 });
 const configPolicySchema = z.object({
@@ -38219,7 +38219,7 @@ class Labeler {
                     (0,core.debug)(`Issue form doesn't contain section: ${singleID}`);
                     continue;
                 }
-                const keywords = this.issueForm.listKeywords(singleID, sectionItem.blockList);
+                const keywords = this.issueForm.listKeywords(singleID, sectionItem['block-list']);
                 if (!keywords || (keywords === null || keywords === void 0 ? void 0 : keywords.length) === 0) {
                     (0,core.debug)(`Section field is empty.`);
                     continue;
