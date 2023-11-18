@@ -1,4 +1,4 @@
-import { debug } from '@actions/core';
+import { debug, getInput } from '@actions/core';
 import { context } from '@actions/github';
 
 import { CustomOctokit } from './octokit';
@@ -40,7 +40,7 @@ export class Config {
   }
 
   static async getConfig(octokit: CustomOctokit): Promise<Config> {
-    const path = '.github/advanced-issue-labeler.yml';
+    const path = getInput('config-path', { required: true });
 
     const retrievedConfig = (
       await octokit.config.get({

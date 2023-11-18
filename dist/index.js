@@ -38114,7 +38114,7 @@ class Config {
             (Array.isArray(pItem === null || pItem === void 0 ? void 0 : pItem.template) && (pItem === null || pItem === void 0 ? void 0 : pItem.template.length) === 0));
     }
     static async getConfig(octokit) {
-        const path = '.github/advanced-issue-labeler.yml';
+        const path = (0,core.getInput)('config-path', { required: true });
         const retrievedConfig = (await octokit.config.get(Object.assign(Object.assign({}, github.context.repo), { path }))).config;
         (0,core.debug)(`Configuration '${path}': ${JSON.stringify(retrievedConfig)}`);
         return new this(retrievedConfig, path);
