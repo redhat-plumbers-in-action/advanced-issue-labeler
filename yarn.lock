@@ -677,13 +677,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/validator@npm:^13.7.10":
-  version: 13.11.2
-  resolution: "@types/validator@npm:13.11.2"
-  checksum: 7fceb65a9729c2d0fca7f21acd13eaf93bd5e1a0367817dc1afd160f3053cd6fefbb2ba368134c1d864b9f3bfcc99b588f069c9db400481b96265b827e53562e
-  languageName: node
-  linkType: hard
-
 "@typescript-eslint/eslint-plugin@npm:6.7.5":
   version: 6.7.5
   resolution: "@typescript-eslint/eslint-plugin@npm:6.7.5"
@@ -938,7 +931,6 @@ __metadata:
     "@typescript-eslint/parser": 6.7.5
     "@vercel/ncc": 0.38.0
     "@vitest/coverage-v8": ^0.34.0
-    class-validator: ^0.14.0
     eslint: 8.51.0
     eslint-plugin-prettier: 5.0.0
     js-yaml: 4.1.0
@@ -946,6 +938,7 @@ __metadata:
     ts-node: 10.9.1
     typescript: 5.2.2
     vitest: 0.34.6
+    zod: ^3.22.4
   languageName: unknown
   linkType: soft
 
@@ -1210,17 +1203,6 @@ __metadata:
   version: 2.0.0
   resolution: "chownr@npm:2.0.0"
   checksum: c57cf9dd0791e2f18a5ee9c1a299ae6e801ff58fee96dc8bfd0dcb4738a6ce58dd252a3605b1c93c6418fe4f9d5093b28ffbf4d66648cb2a9c67eaef9679be2f
-  languageName: node
-  linkType: hard
-
-"class-validator@npm:^0.14.0":
-  version: 0.14.0
-  resolution: "class-validator@npm:0.14.0"
-  dependencies:
-    "@types/validator": ^13.7.10
-    libphonenumber-js: ^1.10.14
-    validator: ^13.7.0
-  checksum: f62e4a0ad24cee68f4b2bc70d32b96de90cb598f96bde362b4dbf4234151af8eb6ae225458312a38fc49fa3959844cf61c60e731a8205e9a570454cff8de2710
   languageName: node
   linkType: hard
 
@@ -2310,13 +2292,6 @@ __metadata:
     prelude-ls: ^1.2.1
     type-check: ~0.4.0
   checksum: 12c5021c859bd0f5248561bf139121f0358285ec545ebf48bb3d346820d5c61a4309535c7f387ed7d84361cf821e124ce346c6b7cef8ee09a67c1473b46d0fc4
-  languageName: node
-  linkType: hard
-
-"libphonenumber-js@npm:^1.10.14":
-  version: 1.10.47
-  resolution: "libphonenumber-js@npm:1.10.47"
-  checksum: 04fd0a4e57fdcb5c3a566fb26ded46c36e17953559c4a34d2f2b42299228e424109a56aa9588f4d7020bf3dd500cf5010e622734eeeda45e478e5d36d31b113d
   languageName: node
   linkType: hard
 
@@ -3528,13 +3503,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"validator@npm:^13.7.0":
-  version: 13.11.0
-  resolution: "validator@npm:13.11.0"
-  checksum: d1e0c27022681420756da25bc03eb08d5f0c66fb008f8ff02ebc95812b77c6be6e03d3bd05cf80ca702e23eeb73dadd66b4b3683173ea2a0bc7cc72820bee131
-  languageName: node
-  linkType: hard
-
 "vite-node@npm:0.34.6":
   version: 0.34.6
   resolution: "vite-node@npm:0.34.6"
@@ -3737,5 +3705,12 @@ __metadata:
   version: 1.0.0
   resolution: "yocto-queue@npm:1.0.0"
   checksum: 2cac84540f65c64ccc1683c267edce396b26b1e931aa429660aefac8fbe0188167b7aee815a3c22fa59a28a58d898d1a2b1825048f834d8d629f4c2a5d443801
+  languageName: node
+  linkType: hard
+
+"zod@npm:^3.22.4":
+  version: 3.22.4
+  resolution: "zod@npm:3.22.4"
+  checksum: 80bfd7f8039b24fddeb0718a2ec7c02aa9856e4838d6aa4864335a047b6b37a3273b191ef335bf0b2002e5c514ef261ffcda5a589fb084a48c336ffc4cdbab7f
   languageName: node
   linkType: hard

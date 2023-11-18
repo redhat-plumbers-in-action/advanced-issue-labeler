@@ -1,5 +1,5 @@
 import { getInput, setFailed } from '@actions/core';
-// import '@total-typescript/ts-reset';
+import '@total-typescript/ts-reset';
 import action from './action';
 import { getOctokit } from './octokit';
 const octokit = getOctokit(getInput('token', { required: true }));

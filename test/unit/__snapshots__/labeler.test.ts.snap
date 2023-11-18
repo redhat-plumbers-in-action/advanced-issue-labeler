@@ -2,68 +2,23 @@
 
 exports[`IssueForm Object > gatherLabels() 1`] = `undefined`;
 
-exports[`IssueForm Object > get config() 1`] = `undefined`;
-
-exports[`IssueForm Object > get inputs() 1`] = `
-Inputs {
-  "_blockList": undefined,
-  "_section": undefined,
-  "_template": undefined,
+exports[`IssueForm Object > get config() 1`] = `
+Config {
+  "path": "advanced-issue-labeler.yml",
+  "policy": undefined,
 }
 `;
 
+exports[`IssueForm Object > get inputs() 1`] = `"severity"`;
+
+exports[`IssueForm Object > get inputs() 2`] = `
+[
+  "",
+]
+`;
+
+exports[`IssueForm Object > get inputs() 3`] = `""`;
+
 exports[`IssueForm Object > get isConfig() 1`] = `false`;
 
-exports[`IssueForm Object > get isInputs() 1`] = `false`;
-
-exports[`IssueForm Object > is invalid 1`] = `
-[
-  {
-    "notes": {
-      "isString": "_section must be a string",
-      "minLength": "_section must be longer than or equal to 1 characters",
-    },
-    "property": "_inputs._section",
-    "value": undefined,
-  },
-]
-`;
-
-exports[`IssueForm Object > is invalid 2`] = `
-[
-  {
-    "notes": {
-      "isString": "_section must be a string",
-      "minLength": "_section must be longer than or equal to 1 characters",
-    },
-    "property": "_inputs._section",
-    "value": undefined,
-  },
-]
-`;
-
-exports[`IssueForm Object > is invalid 3`] = `
-[
-  {
-    "notes": {
-      "isString": "_section must be a string",
-      "minLength": "_section must be longer than or equal to 1 characters",
-    },
-    "property": "_inputs._section",
-    "value": undefined,
-  },
-]
-`;
-
-exports[`IssueForm Object > is invalid 4`] = `
-[
-  {
-    "notes": {
-      "isString": "_section must be a string",
-      "minLength": "_section must be longer than or equal to 1 characters",
-    },
-    "property": "_inputs._section",
-    "value": undefined,
-  },
-]
-`;
+exports[`IssueForm Object > get isInputs() 1`] = `true`;

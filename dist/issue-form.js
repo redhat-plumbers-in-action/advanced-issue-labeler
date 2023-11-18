@@ -1,9 +1,6 @@
 export class IssueForm {
-    constructor(parsedIssue) {
-        this._parsed = parsedIssue;
-    }
-    get parsed() {
-        return this._parsed;
+    constructor(parsed) {
+        this.parsed = parsed;
     }
     isProperty(key) {
         return this.parsed.hasOwnProperty(key);
@@ -19,6 +16,9 @@ export class IssueForm {
     listKeywords(key, blockList) {
         const propertySection = this.getSafeProperty(key);
         if (!propertySection)
+            return undefined;
+        // Array can be only checkbox type - currently unsupported
+        if (Array.isArray(propertySection))
             return undefined;
         return propertySection
             .split(', ', 25)

@@ -1,31 +1,17 @@
 import { getInput, debug, info } from '@actions/core';
+import { context } from '@actions/github';
 import { Config } from './config';
 import { IssueForm } from './issue-form';
 import { Labeler } from './labeler';
-import { context } from '@actions/github';
+import { issueFormSchema } from './schema/input';
 async function action(octokit) {
-    const issueFormInput = getInput('issue-form', { required: true });
-    const labeler = new Labeler(new IssueForm(JSON.parse(issueFormInput)));
-    labeler.config = await Config.getConfig(octokit);
-    // If no config was provided try inputs
-    if (!labeler.isConfig) {
-        labeler.setInputs({
-            section: getInput('section', { required: true }),
-            blockList: getInput('block-list').split('\n', 25),
-        });
+    const parsedIssueForm = issueFormSchema.safeParse(JSON.parse(getInput('issue-form', { required: true })));
+    if (!parsedIssueForm.success) {
+        throw new Error(`Incorrect format of provided 'issue-form' input: ${parsedIssueForm.error.message}`);
     }
-    // Config requires template as well
-    labeler.setInputs({
-        template: getInput('template'),
-    });
-    const validationResult = await Labeler.validate(labeler);
-    if (validationResult.length > 0) {
-        for (const [index, message] of validationResult.entries()) {
-            // TODO: Probably needs some care:
-            debug(`{ property: ${message.property}, value: ${message.value}, notes: ${message.notes}`);
-        }
-        return;
-    }
+    const issueForm = new IssueForm(parsedIssueForm.data);
+    const config = await Config.getConfig(octokit);
+    const labeler = new Labeler(issueForm, config);
     const labels = labeler.gatherLabels();
     // Check if there are some labels to be set
     if (!labels || (Array.isArray(labels) && (labels === null || labels === void 0 ? void 0 : labels.length) < 1)) {
@@ -33,7 +19,7 @@ async function action(octokit) {
         return;
     }
     info(`Labels to be set: ${labels}`);
-    const response = await octokit.request('POST /repos/{owner}/{repo}/issues/{issue_number}/labels', Object.assign(Object.assign({}, context.repo), { issue_number: context.issue.number }));
+    const response = await octokit.request('POST /repos/{owner}/{repo}/issues/{issue_number}/labels', Object.assign(Object.assign({}, context.repo), { issue_number: context.issue.number, labels }));
     debug(`GitHub API response status: [${response.status}]`);
 }
 export default action;
