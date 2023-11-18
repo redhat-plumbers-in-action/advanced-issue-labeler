@@ -1,124 +1,118 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Config Object > can get template policy 1`] = `
-PolicyItem {
-  "_section": [
-    SectionItem {
-      "_blockList": [],
-      "_id": [
+{
+  "section": [
+    {
+      "blockList": [],
+      "id": [
         "type",
       ],
-      "_label": [
-        Label {
-          "_keys": [
+      "label": [
+        {
+          "keys": [
             "Bug Report",
           ],
-          "_name": "bug 🐛",
+          "name": "bug 🐛",
         },
-        Label {
-          "_keys": [
+        {
+          "keys": [
             "Feature Request",
           ],
-          "_name": "RFE 🎁",
+          "name": "RFE 🎁",
         },
       ],
     },
   ],
-  "_template": [],
+  "template": [],
 }
 `;
 
 exports[`Config Object > can get template policy 2`] = `
-PolicyItem {
-  "_section": [
-    SectionItem {
-      "_blockList": [
-        "Other",
-      ],
-      "_id": [
+{
+  "section": [
+    {
+      "blockList": [],
+      "id": [
         "type",
       ],
-      "_label": [
-        Label {
-          "_keys": [
+      "label": [
+        {
+          "keys": [
             "Bug Report",
           ],
-          "_name": "bug 🐛",
+          "name": "bug 🐛",
         },
-        Label {
-          "_keys": [
+        {
+          "keys": [
             "Feature Request",
           ],
-          "_name": "RFE 🎁",
+          "name": "RFE 🎁",
         },
       ],
     },
   ],
-  "_template": [
+  "template": [
     "issue-template.yml",
   ],
 }
 `;
 
 exports[`Config Object > can get template policy 3`] = `
-PolicyItem {
-  "_section": [
-    SectionItem {
-      "_blockList": [
-        "Other",
-      ],
-      "_id": [
+{
+  "section": [
+    {
+      "blockList": [],
+      "id": [
         "type",
       ],
-      "_label": [
-        Label {
-          "_keys": [
+      "label": [
+        {
+          "keys": [
             "Bug Report",
           ],
-          "_name": "bug 🐛",
+          "name": "bug 🐛",
         },
-        Label {
-          "_keys": [
+        {
+          "keys": [
             "Feature Request",
           ],
-          "_name": "RFE 🎁",
+          "name": "RFE 🎁",
         },
       ],
     },
   ],
-  "_template": [
+  "template": [
     "issue-template.yml",
   ],
 }
 `;
 
 exports[`Config Object > can get template policy 4`] = `
-PolicyItem {
-  "_section": [
-    SectionItem {
-      "_blockList": [
-        "Other",
-      ],
-      "_id": [
+{
+  "section": [
+    {
+      "blockList": [],
+      "id": [
         "type",
       ],
-      "_label": [
-        Label {
-          "_keys": [
+      "label": [
+        {
+          "keys": [
             "Bug Report",
           ],
-          "_name": "bug 🐛",
+          "name": "bug 🐛",
         },
-        Label {
-          "_keys": [
+        {
+          "keys": [
             "Feature Request",
           ],
-          "_name": "RFE 🎁",
+          "name": "RFE 🎁",
         },
       ],
     },
   ],
-  "_template": [
+  "template": [
     "issue-template.yml",
     "template.yml",
   ],
@@ -127,62 +121,60 @@ PolicyItem {
 
 exports[`Config Object > get policy() 1`] = `
 [
-  PolicyItem {
-    "_section": [
-      SectionItem {
-        "_blockList": [],
-        "_id": [
+  {
+    "section": [
+      {
+        "blockList": [],
+        "id": [
           "type",
         ],
-        "_label": [
-          Label {
-            "_keys": [
+        "label": [
+          {
+            "keys": [
               "Bug Report",
             ],
-            "_name": "bug 🐛",
+            "name": "bug 🐛",
           },
-          Label {
-            "_keys": [
+          {
+            "keys": [
               "Feature Request",
             ],
-            "_name": "RFE 🎁",
+            "name": "RFE 🎁",
           },
         ],
       },
     ],
-    "_template": [],
+    "template": [],
   },
 ]
 `;
 
 exports[`Config Object > get policy() 2`] = `
 [
-  PolicyItem {
-    "_section": [
-      SectionItem {
-        "_blockList": [
-          "Other",
-        ],
-        "_id": [
+  {
+    "section": [
+      {
+        "blockList": [],
+        "id": [
           "type",
         ],
-        "_label": [
-          Label {
-            "_keys": [
+        "label": [
+          {
+            "keys": [
               "Bug Report",
             ],
-            "_name": "bug 🐛",
+            "name": "bug 🐛",
           },
-          Label {
-            "_keys": [
+          {
+            "keys": [
               "Feature Request",
             ],
-            "_name": "RFE 🎁",
+            "name": "RFE 🎁",
           },
         ],
       },
     ],
-    "_template": [
+    "template": [
       "issue-template.yml",
     ],
   },
@@ -191,55 +183,51 @@ exports[`Config Object > get policy() 2`] = `
 
 exports[`Config Object > get policy() 3`] = `
 [
-  PolicyItem {
-    "_section": [
-      SectionItem {
-        "_blockList": [
-          "Other",
-        ],
-        "_id": [
+  {
+    "section": [
+      {
+        "blockList": [],
+        "id": [
           "type",
         ],
-        "_label": [
-          Label {
-            "_keys": [
+        "label": [
+          {
+            "keys": [
               "Bug Report",
             ],
-            "_name": "bug 🐛",
+            "name": "bug 🐛",
           },
-          Label {
-            "_keys": [
+          {
+            "keys": [
               "Feature Request",
             ],
-            "_name": "RFE 🎁",
+            "name": "RFE 🎁",
           },
         ],
       },
     ],
-    "_template": [
+    "template": [
       "issue-template.yml",
     ],
   },
-  PolicyItem {
-    "_section": [
-      SectionItem {
-        "_blockList": [
-          "other",
-        ],
-        "_id": [
+  {
+    "section": [
+      {
+        "blockList": [],
+        "id": [
           "id",
         ],
-        "_label": [
-          Label {
-            "_keys": [
+        "label": [
+          {
+            "keys": [
               "label",
             ],
-            "_name": "label",
+            "name": "label",
           },
         ],
       },
     ],
-    "_template": [
+    "template": [
       "template1.yml",
       "template1.yml",
     ],
@@ -249,928 +237,54 @@ exports[`Config Object > get policy() 3`] = `
 
 exports[`Config Object > get policy() 4`] = `
 [
-  PolicyItem {
-    "_section": [
-      SectionItem {
-        "_blockList": [
-          "Other",
-        ],
-        "_id": [
+  {
+    "section": [
+      {
+        "blockList": [],
+        "id": [
           "type",
         ],
-        "_label": [
-          Label {
-            "_keys": [
+        "label": [
+          {
+            "keys": [
               "Bug Report",
             ],
-            "_name": "bug 🐛",
+            "name": "bug 🐛",
           },
-          Label {
-            "_keys": [
+          {
+            "keys": [
               "Feature Request",
             ],
-            "_name": "RFE 🎁",
+            "name": "RFE 🎁",
           },
         ],
       },
     ],
-    "_template": [
+    "template": [
       "issue-template.yml",
       "template.yml",
     ],
   },
-  PolicyItem {
-    "_section": [
-      SectionItem {
-        "_blockList": [
-          "other",
-        ],
-        "_id": [
+  {
+    "section": [
+      {
+        "blockList": [],
+        "id": [
           "id",
         ],
-        "_label": [
-          Label {
-            "_keys": [
+        "label": [
+          {
+            "keys": [
               "label",
             ],
-            "_name": "label",
+            "name": "label",
           },
         ],
       },
     ],
-    "_template": [
+    "template": [
       "template1.yml",
       "template1.yml",
-    ],
-  },
-]
-`;
-
-exports[`Config Object > is invalid 1`] = `
-[
-  {
-    "notes": {
-      "arrayMinSize": "_policy must contain at least 1 elements",
-    },
-    "property": "_policy",
-    "value": [],
-  },
-]
-`;
-
-exports[`Config Object > is invalid 2`] = `
-[
-  {
-    "notes": {
-      "arrayMinSize": "_policy must contain at least 1 elements",
-    },
-    "property": "_policy",
-    "value": [],
-  },
-]
-`;
-
-exports[`Config Object > is invalid 3`] = `
-[
-  {
-    "notes": {
-      "arrayMinSize": "_policy must contain at least 1 elements",
-    },
-    "property": "_policy",
-    "value": [],
-  },
-]
-`;
-
-exports[`Config Object > is invalid 4`] = `
-[
-  {
-    "notes": {
-      "arrayMinSize": "_label must contain at least 1 elements",
-    },
-    "property": "_policy.0._section.0._label",
-    "value": [],
-  },
-]
-`;
-
-exports[`Config Object > is invalid 5`] = `
-[
-  {
-    "notes": {
-      "arrayMinSize": "_section must contain at least 1 elements",
-    },
-    "property": "_policy.0._section",
-    "value": [],
-  },
-]
-`;
-
-exports[`Config Object > is invalid 6`] = `
-[
-  {
-    "notes": {
-      "isString": "each value in _keys must be a string",
-      "minLength": "each value in _keys must be longer than or equal to 1 characters",
-    },
-    "property": "_policy.0._section.0._label.1._keys",
-    "value": undefined,
-  },
-]
-`;
-
-exports[`Label Object > get keys() 1`] = `
-[
-  "Bug Report",
-]
-`;
-
-exports[`Label Object > get name() 1`] = `"bug 🐛"`;
-
-exports[`Label Object > is invalid 1`] = `
-[
-  ValidationError {
-    "children": [],
-    "constraints": {
-      "isString": "_name must be a string",
-      "minLength": "_name must be longer than or equal to 1 characters",
-    },
-    "property": "_name",
-    "target": Label {
-      "_keys": undefined,
-      "_name": undefined,
-    },
-    "value": undefined,
-  },
-  ValidationError {
-    "children": [],
-    "constraints": {
-      "isString": "each value in _keys must be a string",
-      "minLength": "each value in _keys must be longer than or equal to 1 characters",
-    },
-    "property": "_keys",
-    "target": Label {
-      "_keys": undefined,
-      "_name": undefined,
-    },
-    "value": undefined,
-  },
-]
-`;
-
-exports[`Label Object > is invalid 2`] = `
-[
-  ValidationError {
-    "children": [],
-    "constraints": {
-      "isString": "_name must be a string",
-      "minLength": "_name must be longer than or equal to 1 characters",
-    },
-    "property": "_name",
-    "target": Label {
-      "_keys": undefined,
-      "_name": undefined,
-    },
-    "value": undefined,
-  },
-  ValidationError {
-    "children": [],
-    "constraints": {
-      "isString": "each value in _keys must be a string",
-      "minLength": "each value in _keys must be longer than or equal to 1 characters",
-    },
-    "property": "_keys",
-    "target": Label {
-      "_keys": undefined,
-      "_name": undefined,
-    },
-    "value": undefined,
-  },
-]
-`;
-
-exports[`Label Object > is invalid 3`] = `
-[
-  ValidationError {
-    "children": [],
-    "constraints": {
-      "minLength": "_name must be longer than or equal to 1 characters",
-    },
-    "property": "_name",
-    "target": Label {
-      "_keys": undefined,
-      "_name": "",
-    },
-    "value": "",
-  },
-  ValidationError {
-    "children": [],
-    "constraints": {
-      "isString": "each value in _keys must be a string",
-      "minLength": "each value in _keys must be longer than or equal to 1 characters",
-    },
-    "property": "_keys",
-    "target": Label {
-      "_keys": undefined,
-      "_name": "",
-    },
-    "value": undefined,
-  },
-]
-`;
-
-exports[`Label Object > is invalid 4`] = `
-[
-  ValidationError {
-    "children": [],
-    "constraints": {
-      "isString": "_name must be a string",
-      "minLength": "_name must be longer than or equal to 1 characters",
-    },
-    "property": "_name",
-    "target": Label {
-      "_keys": [
-        "",
-      ],
-      "_name": undefined,
-    },
-    "value": undefined,
-  },
-  ValidationError {
-    "children": [],
-    "constraints": {
-      "minLength": "each value in _keys must be longer than or equal to 1 characters",
-    },
-    "property": "_keys",
-    "target": Label {
-      "_keys": [
-        "",
-      ],
-      "_name": undefined,
-    },
-    "value": [
-      "",
-    ],
-  },
-]
-`;
-
-exports[`PolicyItem Object > get section() 1`] = `
-[
-  SectionItem {
-    "_blockList": [],
-    "_id": [
-      "type",
-    ],
-    "_label": [
-      Label {
-        "_keys": [
-          "Bug Report",
-        ],
-        "_name": "bug 🐛",
-      },
-      Label {
-        "_keys": [
-          "Feature Request",
-        ],
-        "_name": "RFE 🎁",
-      },
-    ],
-  },
-]
-`;
-
-exports[`PolicyItem Object > get section() 2`] = `
-[
-  SectionItem {
-    "_blockList": [
-      "Other",
-    ],
-    "_id": [
-      "type",
-    ],
-    "_label": [
-      Label {
-        "_keys": [
-          "Bug Report",
-        ],
-        "_name": "bug 🐛",
-      },
-      Label {
-        "_keys": [
-          "Feature Request",
-        ],
-        "_name": "RFE 🎁",
-      },
-    ],
-  },
-]
-`;
-
-exports[`PolicyItem Object > get section() 3`] = `
-[
-  SectionItem {
-    "_blockList": [
-      "other",
-    ],
-    "_id": [
-      "id",
-    ],
-    "_label": [
-      Label {
-        "_keys": [
-          "label",
-        ],
-        "_name": "label",
-      },
-    ],
-  },
-]
-`;
-
-exports[`PolicyItem Object > get section() 4`] = `
-[
-  SectionItem {
-    "_blockList": [
-      "Other",
-    ],
-    "_id": [
-      "type",
-    ],
-    "_label": [
-      Label {
-        "_keys": [
-          "Bug Report",
-        ],
-        "_name": "bug 🐛",
-      },
-      Label {
-        "_keys": [
-          "Feature Request",
-        ],
-        "_name": "RFE 🎁",
-      },
-    ],
-  },
-]
-`;
-
-exports[`PolicyItem Object > get template() 1`] = `[]`;
-
-exports[`PolicyItem Object > get template() 2`] = `
-[
-  "issue-template.yml",
-]
-`;
-
-exports[`PolicyItem Object > get template() 3`] = `
-[
-  "template1.yml",
-  "template1.yml",
-]
-`;
-
-exports[`PolicyItem Object > get template() 4`] = `
-[
-  "issue-template.yml",
-  "template.yml",
-]
-`;
-
-exports[`PolicyItem Object > is invalid 1`] = `
-[
-  ValidationError {
-    "children": [],
-    "constraints": {
-      "arrayMinSize": "_section must contain at least 1 elements",
-    },
-    "property": "_section",
-    "target": PolicyItem {
-      "_section": [],
-      "_template": [],
-    },
-    "value": [],
-  },
-]
-`;
-
-exports[`PolicyItem Object > is invalid 2`] = `
-[
-  ValidationError {
-    "children": [],
-    "constraints": {
-      "arrayMinSize": "_section must contain at least 1 elements",
-    },
-    "property": "_section",
-    "target": PolicyItem {
-      "_section": [],
-      "_template": [],
-    },
-    "value": [],
-  },
-]
-`;
-
-exports[`PolicyItem Object > is invalid 3`] = `
-[
-  ValidationError {
-    "children": [],
-    "constraints": {
-      "arrayMinSize": "_section must contain at least 1 elements",
-    },
-    "property": "_section",
-    "target": PolicyItem {
-      "_section": [],
-      "_template": [],
-    },
-    "value": [],
-  },
-]
-`;
-
-exports[`PolicyItem Object > is invalid 4`] = `
-[
-  ValidationError {
-    "children": [
-      ValidationError {
-        "children": [
-          ValidationError {
-            "children": [],
-            "constraints": {
-              "arrayMinSize": "_label must contain at least 1 elements",
-            },
-            "property": "_label",
-            "target": SectionItem {
-              "_blockList": [],
-              "_id": [],
-              "_label": [],
-            },
-            "value": [],
-          },
-        ],
-        "property": "0",
-        "target": [
-          SectionItem {
-            "_blockList": [],
-            "_id": [],
-            "_label": [],
-          },
-        ],
-        "value": SectionItem {
-          "_blockList": [],
-          "_id": [],
-          "_label": [],
-        },
-      },
-    ],
-    "property": "_section",
-    "target": PolicyItem {
-      "_section": [
-        SectionItem {
-          "_blockList": [],
-          "_id": [],
-          "_label": [],
-        },
-      ],
-      "_template": [],
-    },
-    "value": [
-      SectionItem {
-        "_blockList": [],
-        "_id": [],
-        "_label": [],
-      },
-    ],
-  },
-]
-`;
-
-exports[`PolicyItem Object > is invalid 5`] = `
-[
-  ValidationError {
-    "children": [],
-    "constraints": {
-      "arrayMinSize": "_section must contain at least 1 elements",
-    },
-    "property": "_section",
-    "target": PolicyItem {
-      "_section": [],
-      "_template": [
-        "issue-template.yml",
-      ],
-    },
-    "value": [],
-  },
-]
-`;
-
-exports[`PolicyItem Object > is invalid 6`] = `
-[
-  ValidationError {
-    "children": [
-      ValidationError {
-        "children": [
-          ValidationError {
-            "children": [
-              ValidationError {
-                "children": [
-                  ValidationError {
-                    "children": [],
-                    "constraints": {
-                      "isString": "each value in _keys must be a string",
-                      "minLength": "each value in _keys must be longer than or equal to 1 characters",
-                    },
-                    "property": "_keys",
-                    "target": Label {
-                      "_keys": undefined,
-                      "_name": "RFE 🎁",
-                    },
-                    "value": undefined,
-                  },
-                ],
-                "property": "1",
-                "target": [
-                  Label {
-                    "_keys": [
-                      "Bug Report",
-                    ],
-                    "_name": "bug 🐛",
-                  },
-                  Label {
-                    "_keys": undefined,
-                    "_name": "RFE 🎁",
-                  },
-                ],
-                "value": Label {
-                  "_keys": undefined,
-                  "_name": "RFE 🎁",
-                },
-              },
-            ],
-            "property": "_label",
-            "target": SectionItem {
-              "_blockList": [
-                "Other",
-              ],
-              "_id": [
-                "type",
-              ],
-              "_label": [
-                Label {
-                  "_keys": [
-                    "Bug Report",
-                  ],
-                  "_name": "bug 🐛",
-                },
-                Label {
-                  "_keys": undefined,
-                  "_name": "RFE 🎁",
-                },
-              ],
-            },
-            "value": [
-              Label {
-                "_keys": [
-                  "Bug Report",
-                ],
-                "_name": "bug 🐛",
-              },
-              Label {
-                "_keys": undefined,
-                "_name": "RFE 🎁",
-              },
-            ],
-          },
-        ],
-        "property": "0",
-        "target": [
-          SectionItem {
-            "_blockList": [
-              "Other",
-            ],
-            "_id": [
-              "type",
-            ],
-            "_label": [
-              Label {
-                "_keys": [
-                  "Bug Report",
-                ],
-                "_name": "bug 🐛",
-              },
-              Label {
-                "_keys": undefined,
-                "_name": "RFE 🎁",
-              },
-            ],
-          },
-        ],
-        "value": SectionItem {
-          "_blockList": [
-            "Other",
-          ],
-          "_id": [
-            "type",
-          ],
-          "_label": [
-            Label {
-              "_keys": [
-                "Bug Report",
-              ],
-              "_name": "bug 🐛",
-            },
-            Label {
-              "_keys": undefined,
-              "_name": "RFE 🎁",
-            },
-          ],
-        },
-      },
-    ],
-    "property": "_section",
-    "target": PolicyItem {
-      "_section": [
-        SectionItem {
-          "_blockList": [
-            "Other",
-          ],
-          "_id": [
-            "type",
-          ],
-          "_label": [
-            Label {
-              "_keys": [
-                "Bug Report",
-              ],
-              "_name": "bug 🐛",
-            },
-            Label {
-              "_keys": undefined,
-              "_name": "RFE 🎁",
-            },
-          ],
-        },
-      ],
-      "_template": [
-        "issue-template.yml",
-      ],
-    },
-    "value": [
-      SectionItem {
-        "_blockList": [
-          "Other",
-        ],
-        "_id": [
-          "type",
-        ],
-        "_label": [
-          Label {
-            "_keys": [
-              "Bug Report",
-            ],
-            "_name": "bug 🐛",
-          },
-          Label {
-            "_keys": undefined,
-            "_name": "RFE 🎁",
-          },
-        ],
-      },
-    ],
-  },
-]
-`;
-
-exports[`SectionItem Object > get blockList() 1`] = `[]`;
-
-exports[`SectionItem Object > get blockList() 2`] = `
-[
-  "Other",
-]
-`;
-
-exports[`SectionItem Object > get blockList() 3`] = `
-[
-  "other",
-]
-`;
-
-exports[`SectionItem Object > get id() 1`] = `
-[
-  "type",
-]
-`;
-
-exports[`SectionItem Object > get id() 2`] = `
-[
-  "type",
-]
-`;
-
-exports[`SectionItem Object > get id() 3`] = `
-[
-  "id",
-]
-`;
-
-exports[`SectionItem Object > get label() 1`] = `
-[
-  Label {
-    "_keys": [
-      "Bug Report",
-    ],
-    "_name": "bug 🐛",
-  },
-  Label {
-    "_keys": [
-      "Feature Request",
-    ],
-    "_name": "RFE 🎁",
-  },
-]
-`;
-
-exports[`SectionItem Object > get label() 2`] = `
-[
-  Label {
-    "_keys": [
-      "Bug Report",
-    ],
-    "_name": "bug 🐛",
-  },
-  Label {
-    "_keys": [
-      "Feature Request",
-    ],
-    "_name": "RFE 🎁",
-  },
-]
-`;
-
-exports[`SectionItem Object > get label() 3`] = `
-[
-  Label {
-    "_keys": [
-      "label",
-    ],
-    "_name": "label",
-  },
-]
-`;
-
-exports[`SectionItem Object > is invalid 1`] = `
-[
-  ValidationError {
-    "children": [],
-    "constraints": {
-      "isString": "each value in _id must be a string",
-      "minLength": "each value in _id must be longer than or equal to 1 characters",
-    },
-    "property": "_id",
-    "target": SectionItem {
-      "_blockList": [],
-      "_id": undefined,
-      "_label": [],
-    },
-    "value": undefined,
-  },
-  ValidationError {
-    "children": [],
-    "constraints": {
-      "arrayMinSize": "_label must contain at least 1 elements",
-    },
-    "property": "_label",
-    "target": SectionItem {
-      "_blockList": [],
-      "_id": undefined,
-      "_label": [],
-    },
-    "value": [],
-  },
-]
-`;
-
-exports[`SectionItem Object > is invalid 2`] = `
-[
-  ValidationError {
-    "children": [],
-    "constraints": {
-      "isString": "each value in _id must be a string",
-      "minLength": "each value in _id must be longer than or equal to 1 characters",
-    },
-    "property": "_id",
-    "target": SectionItem {
-      "_blockList": [],
-      "_id": undefined,
-      "_label": [],
-    },
-    "value": undefined,
-  },
-  ValidationError {
-    "children": [],
-    "constraints": {
-      "arrayMinSize": "_label must contain at least 1 elements",
-    },
-    "property": "_label",
-    "target": SectionItem {
-      "_blockList": [],
-      "_id": undefined,
-      "_label": [],
-    },
-    "value": [],
-  },
-]
-`;
-
-exports[`SectionItem Object > is invalid 3`] = `
-[
-  ValidationError {
-    "children": [],
-    "constraints": {
-      "arrayMinSize": "_label must contain at least 1 elements",
-    },
-    "property": "_label",
-    "target": SectionItem {
-      "_blockList": [],
-      "_id": [],
-      "_label": [],
-    },
-    "value": [],
-  },
-]
-`;
-
-exports[`SectionItem Object > is invalid 4`] = `
-[
-  ValidationError {
-    "children": [
-      ValidationError {
-        "children": [
-          ValidationError {
-            "children": [],
-            "constraints": {
-              "isString": "each value in _keys must be a string",
-              "minLength": "each value in _keys must be longer than or equal to 1 characters",
-            },
-            "property": "_keys",
-            "target": Label {
-              "_keys": undefined,
-              "_name": "RFE 🎁",
-            },
-            "value": undefined,
-          },
-        ],
-        "property": "1",
-        "target": [
-          Label {
-            "_keys": [
-              "Bug Report",
-            ],
-            "_name": "bug 🐛",
-          },
-          Label {
-            "_keys": undefined,
-            "_name": "RFE 🎁",
-          },
-        ],
-        "value": Label {
-          "_keys": undefined,
-          "_name": "RFE 🎁",
-        },
-      },
-    ],
-    "property": "_label",
-    "target": SectionItem {
-      "_blockList": [
-        "Other",
-      ],
-      "_id": [
-        "type",
-      ],
-      "_label": [
-        Label {
-          "_keys": [
-            "Bug Report",
-          ],
-          "_name": "bug 🐛",
-        },
-        Label {
-          "_keys": undefined,
-          "_name": "RFE 🎁",
-        },
-      ],
-    },
-    "value": [
-      Label {
-        "_keys": [
-          "Bug Report",
-        ],
-        "_name": "bug 🐛",
-      },
-      Label {
-        "_keys": undefined,
-        "_name": "RFE 🎁",
-      },
     ],
   },
 ]

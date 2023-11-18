@@ -1,10 +1,10 @@
+import { IssueFormType } from './schema/input';
 export declare class IssueForm {
-    private _parsed;
-    constructor(parsedIssue: {});
-    private get parsed();
+    parsed: IssueFormType;
+    constructor(parsed: IssueFormType);
     isProperty(key: string): boolean;
-    getProperty(key: string): string;
-    getSafeProperty(key: string): string | undefined;
+    getProperty(key: string): string | string[];
+    getSafeProperty(key: string): string | string[] | undefined;
     listKeywords(key: string, blockList: string[]): string[] | undefined;
     isCompliant(policy: string[], keyword: string): boolean;
 }

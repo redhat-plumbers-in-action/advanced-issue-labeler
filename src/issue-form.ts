@@ -1,13 +1,7 @@
+import { IssueFormType } from './schema/input';
+
 export class IssueForm {
-  private _parsed: { [key: string]: string };
-
-  constructor(parsedIssue: {}) {
-    this._parsed = parsedIssue;
-  }
-
-  private get parsed() {
-    return this._parsed;
-  }
+  constructor(public parsed: IssueFormType) {}
 
   isProperty(key: string) {
     return this.parsed.hasOwnProperty(key);
@@ -27,6 +21,8 @@ export class IssueForm {
     const propertySection = this.getSafeProperty(key);
 
     if (!propertySection) return undefined;
+    // Array can be only checkbox type - currently unsupported
+    if (Array.isArray(propertySection)) return undefined;
 
     return propertySection
       .split(', ', 25)

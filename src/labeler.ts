@@ -1,109 +1,36 @@
-import { debug, error } from '@actions/core';
-import { ValidateIf, validate, ValidateNested, Allow } from 'class-validator';
+import { debug, getInput } from '@actions/core';
 
 import { Config } from './config';
 import { IssueForm } from './issue-form';
-import { ValidationFeedback } from './validation-feedback';
-import { Inputs } from './inputs';
-import { TInputs } from './types.d';
+
+import { BlockList, Section, Template } from './schema/input';
 
 export class Labeler {
-  @ValidateIf(instance => !instance._inputs)
-  @ValidateNested()
-  private _config?: Config | undefined | null;
+  section: Section | undefined = undefined;
+  blockList: BlockList | undefined = undefined;
+  template: Template;
 
-  @ValidateIf(instance => !instance._config)
-  @ValidateNested()
-  private _inputs: Inputs;
+  isConfig: boolean;
+  isInputs: boolean;
 
-  @Allow()
-  private _issueForm: IssueForm;
-
-  // State holders
-  @Allow()
-  private _isConfig?: boolean = undefined;
-  @Allow()
-  private _isInputs?: boolean = undefined;
-
-  constructor(issueForm: IssueForm) {
-    this._issueForm = issueForm;
-    this._inputs = new Inputs({});
-  }
-
-  get config() {
-    return this._config;
-  }
-
-  set config(config: Config | undefined | null) {
-    this._config = config;
-  }
-
-  get inputs() {
-    return this._inputs;
-  }
-
-  set inputs(inputs: Inputs) {
-    this._inputs = inputs;
-  }
-
-  //? FIXME: This should be done better...
-  setInputs(inputs: TInputs) {
-    if (inputs.template)
-      this._inputs.template =
-        inputs.template?.length === 0 ? undefined : inputs.template;
-
-    if (inputs.section)
-      this._inputs.section =
-        inputs.section?.length === 0 ? undefined : inputs.section;
-
-    // ! FIXME: Should be handled by zod in future ...
-    if (inputs.blockList) {
-      if (inputs.blockList.length === 0) {
-        this._inputs.blockList = undefined;
-        return;
-      }
-
-      if (Array.isArray(inputs.blockList) && inputs.blockList.length > 0) {
-        if (inputs.blockList[0].length === 0) {
-          this._inputs.blockList = undefined;
-          return;
-        }
-      }
-
-      this._inputs.blockList = inputs.blockList;
+  constructor(
+    public issueForm: IssueForm,
+    public config: Config
+  ) {
+    // If no config was provided try inputs
+    if (this.config.isPolicyEmpty()) {
+      debug(`Policy wasn't provided!`);
+      this.isConfig = false;
+      this.isInputs = true;
+      this.section = getInput('section', { required: true });
+      this.blockList = getInput('block-list').split('\n', 25);
+    } else {
+      debug(`Policy was provided!`);
+      this.isConfig = true;
+      this.isInputs = false;
     }
-  }
-
-  get isConfig() {
-    if (this._isConfig === undefined) this.isConfig = !!this.config;
-
-    return this._isConfig;
-  }
-
-  set isConfig(value: boolean | undefined) {
-    this._isConfig = value;
-  }
-
-  get isInputs() {
-    if (this._isInputs === undefined) {
-      // TODO: This needs rework!
-      // template is required
-      this.isInputs = !!this.inputs?.section && this.inputs.section !== '';
-    }
-
-    return this._isInputs;
-  }
-
-  set isInputs(value: boolean | undefined) {
-    this._isInputs = value;
-  }
-
-  private get issueForm() {
-    return this._issueForm;
-  }
-
-  private set issueForm(issueForm: IssueForm) {
-    this._issueForm = issueForm;
+    // Config requires template as well
+    this.template = getInput('template');
   }
 
   gatherLabels() {
@@ -115,11 +42,12 @@ export class Labeler {
   }
 
   // Expects that validation method was called in advance
-  private inputBasedLabels() {
-    const keywords = this.issueForm.listKeywords(
-      this.inputs?.section ?? '',
-      this.inputs?.blockList ?? ['']
-    );
+  inputBasedLabels() {
+    if (!this.section || !this.blockList) {
+      throw new Error('Section or block list is undefined!');
+    }
+
+    const keywords = this.issueForm.listKeywords(this.section, this.blockList);
 
     if (!keywords || keywords?.length === 0) {
       debug(`Section field is empty.`);
@@ -134,13 +62,11 @@ export class Labeler {
     return keywords;
   }
 
-  private configBasedLabels() {
+  configBasedLabels() {
     const labels: string[] = [];
 
     // Pick correct policy from config based on template input
-    const selectedPolicy = this.config?.getTemplatePolicy(
-      this.inputs?.template
-    );
+    const selectedPolicy = this.config?.getTemplatePolicy(this.template);
 
     if (!selectedPolicy) {
       debug(`Policy wasn't provided!`);
@@ -174,7 +100,9 @@ export class Labeler {
         // Apply policy on provided data via issue
         for (const rule of sectionItem.label) {
           if (
-            keywords.find(keyword => rule.keys.find(key => keyword === key))
+            keywords.find((keyword: string) =>
+              rule.keys.find(key => keyword === key)
+            )
           ) {
             labels.push(rule.name);
           }
@@ -183,20 +111,5 @@ export class Labeler {
     }
 
     return labels;
-  }
-
-  static async validate(instance: Labeler) {
-    const validationResult = await validate(instance, {
-      whitelist: true,
-      forbidNonWhitelisted: true,
-    });
-
-    error(validationResult.toString());
-
-    const results = validationResult.map(e => {
-      return ValidationFeedback.composeFeedbackObject(e);
-    });
-
-    return results;
   }
 }

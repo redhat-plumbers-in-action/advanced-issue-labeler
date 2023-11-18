@@ -1,33 +1,16 @@
 import { Config } from './config';
 import { IssueForm } from './issue-form';
-import { Inputs } from './inputs';
-import { TInputs } from './types.d';
+import { BlockList, Section, Template } from './schema/input';
 export declare class Labeler {
-    private _config?;
-    private _inputs;
-    private _issueForm;
-    private _isConfig?;
-    private _isInputs?;
-    constructor(issueForm: IssueForm);
-    get config(): Config | undefined | null;
-    set config(config: Config | undefined | null);
-    get inputs(): Inputs;
-    set inputs(inputs: Inputs);
-    setInputs(inputs: TInputs): void;
-    get isConfig(): boolean | undefined;
-    set isConfig(value: boolean | undefined);
-    get isInputs(): boolean | undefined;
-    set isInputs(value: boolean | undefined);
-    private get issueForm();
-    private set issueForm(value);
+    issueForm: IssueForm;
+    config: Config;
+    section: Section | undefined;
+    blockList: BlockList | undefined;
+    template: Template;
+    isConfig: boolean;
+    isInputs: boolean;
+    constructor(issueForm: IssueForm, config: Config);
     gatherLabels(): string[] | undefined;
-    private inputBasedLabels;
-    private configBasedLabels;
-    static validate(instance: Labeler): Promise<{
-        property: string;
-        value: any;
-        notes: {
-            [type: string]: string;
-        } | undefined;
-    }[]>;
+    inputBasedLabels(): string[] | undefined;
+    configBasedLabels(): string[] | undefined;
 }

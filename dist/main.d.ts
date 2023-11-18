@@ -1,1 +1,1 @@
-export {};
+import '@total-typescript/ts-reset';

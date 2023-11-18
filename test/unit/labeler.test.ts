@@ -1,6 +1,4 @@
 import { describe, it, expect, beforeEach, test } from 'vitest';
-import { IssueForm } from '../../src/issue-form';
-import { Labeler } from '../../src/labeler';
 
 import {
   ILabelerTestContext,
@@ -10,7 +8,6 @@ import {
 describe('IssueForm Object', () => {
   beforeEach<ILabelerTestContext>(context => {
     context.labelers = labelerContextFixture.labelers;
-    context.invalid = labelerContextFixture.invalid;
   });
 
   it<ILabelerTestContext>('can be instantiated', context =>
@@ -21,113 +18,25 @@ describe('IssueForm Object', () => {
       expect(labelerItem.config).toMatchSnapshot()
     ));
 
-  test.todo('set config()');
-
   test<ILabelerTestContext>('get inputs()', context =>
-    context.labelers.map(labelerItem =>
-      expect(labelerItem.inputs).toMatchSnapshot()
-    ));
-
-  test.todo('set inputs()');
-
-  test('setInputs()', () => {
-    //! FIXME: There is probably a better way how to do this ...
-    let labeler = new Labeler(new IssueForm({}));
-    labeler.setInputs({ section: 'section' });
-    expect(labeler.inputs).toMatchInlineSnapshot(`
-      Inputs {
-        "_blockList": undefined,
-        "_section": "section",
-        "_template": undefined,
-      }
-    `);
-
-    labeler.setInputs({ blockList: [''], template: 'template' });
-    expect(labeler.inputs).toMatchInlineSnapshot(`
-      Inputs {
-        "_blockList": undefined,
-        "_section": "section",
-        "_template": "template",
-      }
-    `);
-
-    labeler.setInputs({ blockList: ['block1', 'block2'] });
-    expect(labeler.inputs).toMatchInlineSnapshot(`
-      Inputs {
-        "_blockList": [
-          "block1",
-          "block2",
-        ],
-        "_section": "section",
-        "_template": "template",
-      }
-    `);
-
-    // ? Empty values doesn't overwrite exiting values
-    labeler.setInputs({ section: '', template: '', blockList: [''] });
-    expect(labeler.inputs).toMatchInlineSnapshot(`
-      Inputs {
-        "_blockList": undefined,
-        "_section": "section",
-        "_template": "template",
-      }
-    `);
-
-    // ? Undefined values doesn't overwrite exiting values
-    labeler.setInputs({
-      section: undefined,
-      template: undefined,
-      blockList: undefined,
-    });
-    expect(labeler.inputs).toMatchInlineSnapshot(`
-      Inputs {
-        "_blockList": undefined,
-        "_section": "section",
-        "_template": "template",
-      }
-    `);
-  });
+    context.labelers.map(labelerItem => {
+      expect(labelerItem.section).toMatchSnapshot();
+      expect(labelerItem.blockList).toMatchSnapshot();
+      expect(labelerItem.template).toMatchSnapshot();
+    }));
 
   test<ILabelerTestContext>('get isConfig()', context =>
     context.labelers.map(labelerItem =>
       expect(labelerItem.isConfig).toMatchSnapshot()
     ));
 
-  test.todo('set isConfig()');
-
   test<ILabelerTestContext>('get isInputs()', context =>
     context.labelers.map(labelerItem =>
       expect(labelerItem.isInputs).toMatchSnapshot()
     ));
 
-  test.todo('set isInputs()');
-
-  // private
-  test.todo('get issueForm()');
-  test.todo('set issueForm()');
-
   test<ILabelerTestContext>('gatherLabels()', context =>
     context.labelers.map(labelerItem =>
       expect(labelerItem.gatherLabels()).toMatchSnapshot()
-    ));
-
-  // private
-  test.todo('inputBasedLabels()');
-  test.todo('configBasedLabels()');
-
-  it<ILabelerTestContext>('is valid', async context =>
-    context.labelers.map(async labelerItem => {
-      //! FIXME: There is probably a better way how to do this ...
-      let localLabeler = Object.assign(
-        Object.create(Object.getPrototypeOf(labelerItem)),
-        labelerItem
-      );
-      localLabeler.setInputs({ section: 'section' });
-      expect(Labeler.validate(localLabeler)).resolves.toMatchObject([]);
-    }));
-
-  it<ILabelerTestContext>('is invalid', async context =>
-    context.invalid.map(async invalidItem =>
-      expect(Labeler.validate(invalidItem)).resolves.toMatchSnapshot()
     ));
 });
