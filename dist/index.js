@@ -37113,8 +37113,10 @@ __webpack_async_result__();
 
 const CustomOctokit = _octokit_core__WEBPACK_IMPORTED_MODULE_0__.Octokit.plugin(_probot_octokit_plugin_config__WEBPACK_IMPORTED_MODULE_1__.config);
 function getOctokit(token) {
+    var _a;
     return new CustomOctokit({
         auth: token,
+        baseUrl: (_a = process.env.GITHUB_API_URL) !== null && _a !== void 0 ? _a : 'https://api.github.com',
     });
 }
 
