@@ -12,7 +12,7 @@ export declare const configLabelSchema: z.ZodObject<{
 export type ConfigLabel = z.infer<typeof configLabelSchema>;
 export declare const configSectionSchema: z.ZodObject<{
     id: z.ZodArray<z.ZodString, "many">;
-    blockList: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+    'block-list': z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
     label: z.ZodDefault<z.ZodArray<z.ZodObject<{
         name: z.ZodString;
         keys: z.ZodArray<z.ZodString, "many">;
@@ -25,14 +25,14 @@ export declare const configSectionSchema: z.ZodObject<{
     }>, "many">>;
 }, "strip", z.ZodTypeAny, {
     id: string[];
-    blockList: string[];
+    'block-list': string[];
     label: {
         name: string;
         keys: string[];
     }[];
 }, {
     id: string[];
-    blockList?: string[] | undefined;
+    'block-list'?: string[] | undefined;
     label?: {
         name: string;
         keys: string[];
@@ -43,7 +43,7 @@ export declare const configPolicySchema: z.ZodObject<{
     template: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
     section: z.ZodDefault<z.ZodArray<z.ZodObject<{
         id: z.ZodArray<z.ZodString, "many">;
-        blockList: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+        'block-list': z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
         label: z.ZodDefault<z.ZodArray<z.ZodObject<{
             name: z.ZodString;
             keys: z.ZodArray<z.ZodString, "many">;
@@ -56,14 +56,14 @@ export declare const configPolicySchema: z.ZodObject<{
         }>, "many">>;
     }, "strip", z.ZodTypeAny, {
         id: string[];
-        blockList: string[];
+        'block-list': string[];
         label: {
             name: string;
             keys: string[];
         }[];
     }, {
         id: string[];
-        blockList?: string[] | undefined;
+        'block-list'?: string[] | undefined;
         label?: {
             name: string;
             keys: string[];
@@ -73,7 +73,7 @@ export declare const configPolicySchema: z.ZodObject<{
     template: string[];
     section: {
         id: string[];
-        blockList: string[];
+        'block-list': string[];
         label: {
             name: string;
             keys: string[];
@@ -83,7 +83,7 @@ export declare const configPolicySchema: z.ZodObject<{
     template?: string[] | undefined;
     section?: {
         id: string[];
-        blockList?: string[] | undefined;
+        'block-list'?: string[] | undefined;
         label?: {
             name: string;
             keys: string[];
@@ -96,7 +96,7 @@ export declare const configSchema: z.ZodNullable<z.ZodOptional<z.ZodObject<{
         template: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
         section: z.ZodDefault<z.ZodArray<z.ZodObject<{
             id: z.ZodArray<z.ZodString, "many">;
-            blockList: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+            'block-list': z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
             label: z.ZodDefault<z.ZodArray<z.ZodObject<{
                 name: z.ZodString;
                 keys: z.ZodArray<z.ZodString, "many">;
@@ -109,14 +109,14 @@ export declare const configSchema: z.ZodNullable<z.ZodOptional<z.ZodObject<{
             }>, "many">>;
         }, "strip", z.ZodTypeAny, {
             id: string[];
-            blockList: string[];
+            'block-list': string[];
             label: {
                 name: string;
                 keys: string[];
             }[];
         }, {
             id: string[];
-            blockList?: string[] | undefined;
+            'block-list'?: string[] | undefined;
             label?: {
                 name: string;
                 keys: string[];
@@ -126,7 +126,7 @@ export declare const configSchema: z.ZodNullable<z.ZodOptional<z.ZodObject<{
         template: string[];
         section: {
             id: string[];
-            blockList: string[];
+            'block-list': string[];
             label: {
                 name: string;
                 keys: string[];
@@ -136,7 +136,7 @@ export declare const configSchema: z.ZodNullable<z.ZodOptional<z.ZodObject<{
         template?: string[] | undefined;
         section?: {
             id: string[];
-            blockList?: string[] | undefined;
+            'block-list'?: string[] | undefined;
             label?: {
                 name: string;
                 keys: string[];
@@ -148,7 +148,7 @@ export declare const configSchema: z.ZodNullable<z.ZodOptional<z.ZodObject<{
         template: string[];
         section: {
             id: string[];
-            blockList: string[];
+            'block-list': string[];
             label: {
                 name: string;
                 keys: string[];
@@ -160,7 +160,7 @@ export declare const configSchema: z.ZodNullable<z.ZodOptional<z.ZodObject<{
         template?: string[] | undefined;
         section?: {
             id: string[];
-            blockList?: string[] | undefined;
+            'block-list'?: string[] | undefined;
             label?: {
                 name: string;
                 keys: string[];
@@ -168,3 +168,4 @@ export declare const configSchema: z.ZodNullable<z.ZodOptional<z.ZodObject<{
         }[] | undefined;
     }[] | null | undefined;
 }>>>;
+export type ConfigType = z.infer<typeof configSchema>;

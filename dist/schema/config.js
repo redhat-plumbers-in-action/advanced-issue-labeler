@@ -5,7 +5,7 @@ export const configLabelSchema = z.object({
 });
 export const configSectionSchema = z.object({
     id: z.array(z.string().min(1)),
-    blockList: z.array(z.string().min(1)).default([]),
+    'block-list': z.array(z.string().min(1)).default([]),
     label: z.array(configLabelSchema).default([]),
 });
 export const configPolicySchema = z.object({

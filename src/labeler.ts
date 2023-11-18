@@ -84,7 +84,7 @@ export class Labeler {
 
         const keywords = this.issueForm.listKeywords(
           singleID,
-          sectionItem.blockList
+          sectionItem['block-list']
         );
 
         if (!keywords || keywords?.length === 0) {
