@@ -75,7 +75,9 @@ The following example shows how to automatically label issues based on the sever
 # ...
 ```
 
-> **Warning**: It's essential to set the correct ID in issue-form
+> **Warning**
+>
+> It's essential to set the correct ID in issue-form
 
 GitHub workflow that automatically marks issues with severity labels:
 
@@ -158,7 +160,9 @@ The following example shows how to automatically label issues based on animal ty
 # ...
 ```
 
-> **Warning**: It's essential to set the correct ID in issue-form
+> **Warning**
+>
+> It's essential to set the correct ID in issue-form
 
 Let's define a policy that will allow us to map animals to their types. Policy needs to be stored in `.github/advanced-issue-labeler.yml`.
 
@@ -284,7 +288,9 @@ List of forbidden labels. These labels won't be set.
 * default value: `undefined`
 * requirements: `optional`
 
-> **Note**: _Please notice the `|` in the example above ☝️. That lets you effectively declare a multi-line YAML string. You can learn more about multi-line YAML syntax [here](https://yaml-multiline.info). This syntax is required when block-listing multiple labels._
+> **Note**
+>
+> _Please notice the `|` in the example above ☝️. That lets you effectively declare a multi-line YAML string. You can learn more about multi-line YAML syntax [here](https://yaml-multiline.info). This syntax is required when block-listing multiple labels._
 
 ### config-path
 
