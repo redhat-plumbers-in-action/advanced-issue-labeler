@@ -246,11 +246,12 @@ Action currently accepts the following options:
 
 - uses: redhat-plumbers-in-action/advanced-issue-labeler@v2
   with:
-    issue-form: <issue-form.json>
-    template:   <template-name.yml>
-    section:    <section-id>
-    block-list: <block-list>
-    token:      <GitHub token>
+    issue-form:   <issue-form.json>
+    template:     <template-name.yml>
+    section:      <section-id>
+    block-list:   <block-list>
+    config-path:  <path to config file>
+    token:        <GitHub token>
 
 # ...
 ```
@@ -284,6 +285,13 @@ List of forbidden labels. These labels won't be set.
 * requirements: `optional`
 
 > **Note**: _Please notice the `|` in the example above ☝️. That lets you effectively declare a multi-line YAML string. You can learn more about multi-line YAML syntax [here](https://yaml-multiline.info). This syntax is required when block-listing multiple labels._
+
+### config-path
+
+Path to configuration file. Configuration file format is described in: [Policy section](#policy).
+
+* default value: `.github/advanced-issue-labeler.yml`
+* requirements: `optional`
 
 ### token
 
