@@ -1,25 +1,59 @@
-import { describe, it, expect, beforeEach, test } from 'vitest';
+import { describe, expect, test } from 'vitest';
 
 import { Config } from '../../src/config';
-import {
-  configContextFixture,
-  IConfigTestContext,
-} from './fixtures/config.fixture';
 
-describe('Config Object', () => {
-  beforeEach<IConfigTestContext>(context => {
-    context.basicConfig = configContextFixture.basicConfig;
-    context.configWithTemplate = configContextFixture.configWithTemplate;
-    context.configWithMultiplePolicies =
-      configContextFixture.configWithMultiplePolicies;
-  });
+const emptyConfig = {};
 
-  it<IConfigTestContext>('can be instantiated', context => {
-    let configInstance = new Config(null, '');
-    expect(configInstance.policy).toMatchInlineSnapshot('undefined');
+const basicConfig = {
+  policy: [
+    {
+      section: [
+        {
+          id: ['type'],
+          label: [
+            { name: 'bug 🐛', keys: ['Bug Report'] },
+            { name: 'RFE 🎁', keys: ['Feature Request'] },
+          ],
+        },
+      ],
+    },
+  ],
+};
 
-    configInstance = new Config(context.basicConfig, '');
-    expect(configInstance.policy).toMatchInlineSnapshot(`
+const templateConfig = {
+  policy: [
+    {
+      template: ['bug.yml', 'feature.yml'],
+      section: [
+        {
+          id: ['type'],
+          label: [
+            { name: 'bug 🐛', keys: ['Bug Report'] },
+            { name: 'RFE 🎁', keys: ['Feature Request'] },
+          ],
+        },
+      ],
+    },
+    {
+      template: ['custom.yml'],
+      section: [
+        {
+          id: ['type'],
+          label: [
+            { name: 'custom1', keys: ['Custom 1'] },
+            { name: 'custom2', keys: ['Custom 2'] },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+describe('Test Config class', () => {
+  test('Config class is defined', () => {
+    const config = new Config(basicConfig, '.github/issue-labeler.yml');
+
+    expect(config.policy).toMatchInlineSnapshot(`
       [
         {
           "section": [
@@ -48,106 +82,13 @@ describe('Config Object', () => {
         },
       ]
     `);
-
-    configInstance = new Config(context.configWithTemplate, '');
-    expect(configInstance.policy).toMatchInlineSnapshot(`
-      [
-        {
-          "section": [
-            {
-              "block-list": [],
-              "id": [
-                "type",
-              ],
-              "label": [
-                {
-                  "keys": [
-                    "Bug Report",
-                  ],
-                  "name": "bug 🐛",
-                },
-                {
-                  "keys": [
-                    "Feature Request",
-                  ],
-                  "name": "RFE 🎁",
-                },
-              ],
-            },
-          ],
-          "template": [
-            "issue-template.yml",
-          ],
-        },
-      ]
-    `);
-
-    configInstance = new Config(context.configWithMultiplePolicies, '');
-    expect(configInstance.policy).toMatchInlineSnapshot(`
-      [
-        {
-          "section": [
-            {
-              "block-list": [
-                "Other",
-              ],
-              "id": [
-                "type",
-              ],
-              "label": [
-                {
-                  "keys": [
-                    "Bug Report",
-                  ],
-                  "name": "bug 🐛",
-                },
-                {
-                  "keys": [
-                    "Feature Request",
-                  ],
-                  "name": "RFE 🎁",
-                },
-              ],
-            },
-          ],
-          "template": [
-            "issue-template.yml",
-          ],
-        },
-        {
-          "section": [
-            {
-              "block-list": [
-                "other",
-              ],
-              "id": [
-                "id",
-              ],
-              "label": [
-                {
-                  "keys": [
-                    "label",
-                  ],
-                  "name": "label",
-                },
-              ],
-            },
-          ],
-          "template": [
-            "template1.yml",
-            "template2.yml",
-          ],
-        },
-      ]
-    `);
-
-    expect(configInstance).toBeInstanceOf(Config);
+    expect(config.path).toMatchInlineSnapshot(`".github/issue-labeler.yml"`);
   });
 
-  it<IConfigTestContext>('can get template policy', context => {
-    let configInstance = new Config(context.configWithTemplate, '');
-    expect(configInstance.getTemplatePolicy('issue-template.yml'))
-      .toMatchInlineSnapshot(`
+  describe('getTemplatePolicy()', () => {
+    test('default policy', () => {
+      const config = new Config(basicConfig, '.github/issue-labeler.yml');
+      expect(config.getTemplatePolicy(undefined)).toMatchInlineSnapshot(`
         {
           "section": [
             {
@@ -171,21 +112,14 @@ describe('Config Object', () => {
               ],
             },
           ],
-          "template": [
-            "issue-template.yml",
-          ],
+          "template": [],
         }
       `);
-
-    configInstance = new Config(context.configWithMultiplePolicies, '');
-    expect(configInstance.getTemplatePolicy('issue-template.yml'))
-      .toMatchInlineSnapshot(`
+      expect(config.getTemplatePolicy('')).toMatchInlineSnapshot(`
       {
         "section": [
           {
-            "block-list": [
-              "Other",
-            ],
+            "block-list": [],
             "id": [
               "type",
             ],
@@ -205,45 +139,121 @@ describe('Config Object', () => {
             ],
           },
         ],
-        "template": [
-          "issue-template.yml",
-        ],
+        "template": [],
       }
     `);
-    expect(configInstance.getTemplatePolicy('template2.yml'))
-      .toMatchInlineSnapshot(`
+      //? NOTE: Return default policy when requested template is not found
+      expect(config.getTemplatePolicy('bug.yml')).toMatchInlineSnapshot(`
       {
         "section": [
           {
-            "block-list": [
-              "other",
-            ],
+            "block-list": [],
             "id": [
-              "id",
+              "type",
             ],
             "label": [
               {
                 "keys": [
-                  "label",
+                  "Bug Report",
                 ],
-                "name": "label",
+                "name": "bug 🐛",
+              },
+              {
+                "keys": [
+                  "Feature Request",
+                ],
+                "name": "RFE 🎁",
               },
             ],
           },
         ],
-        "template": [
-          "template1.yml",
-          "template2.yml",
-        ],
+        "template": [],
       }
     `);
+    });
+
+    test('get policy for template', () => {
+      const config = new Config(templateConfig, '.github/issue-labeler.yml');
+
+      expect(config.getTemplatePolicy('bug.yml')).toEqual(
+        config.getTemplatePolicy('feature.yml')
+      );
+      expect(config.getTemplatePolicy('bug.yml')).toMatchInlineSnapshot(`
+        {
+          "section": [
+            {
+              "block-list": [],
+              "id": [
+                "type",
+              ],
+              "label": [
+                {
+                  "keys": [
+                    "Bug Report",
+                  ],
+                  "name": "bug 🐛",
+                },
+                {
+                  "keys": [
+                    "Feature Request",
+                  ],
+                  "name": "RFE 🎁",
+                },
+              ],
+            },
+          ],
+          "template": [
+            "bug.yml",
+            "feature.yml",
+          ],
+        }
+      `);
+
+      expect(config.getTemplatePolicy('custom.yml')).toMatchInlineSnapshot(`
+        {
+          "section": [
+            {
+              "block-list": [],
+              "id": [
+                "type",
+              ],
+              "label": [
+                {
+                  "keys": [
+                    "Custom 1",
+                  ],
+                  "name": "custom1",
+                },
+                {
+                  "keys": [
+                    "Custom 2",
+                  ],
+                  "name": "custom2",
+                },
+              ],
+            },
+          ],
+          "template": [
+            "custom.yml",
+          ],
+        }
+      `);
+    });
+
+    test('error when policy is empty', () => {
+      const config = new Config(emptyConfig, '.github/issue-labeler.yml');
+
+      expect(() => config.getTemplatePolicy(undefined)).toThrowError(
+        `Missing configuration. Please setup 'Advanced Issue Labeler' Action using '.github/issue-labeler.yml' file.`
+      );
+    });
   });
 
-  test<IConfigTestContext>('is policy empty', context => {
-    let configInstance = new Config(null, '');
-    expect(configInstance.isPolicyEmpty()).toEqual(true);
+  test('isPolicyEmpty()', () => {
+    let config = new Config(emptyConfig, '.github/issue-labeler.yml');
+    expect(config.isPolicyEmpty()).toBe(true);
 
-    configInstance = new Config(context.basicConfig, '');
-    expect(configInstance.isPolicyEmpty()).toEqual(false);
+    config = new Config(basicConfig, '.github/issue-labeler.yml');
+    expect(config.isPolicyEmpty()).toBe(false);
   });
 });
