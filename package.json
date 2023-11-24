@@ -33,6 +33,7 @@
     "@octokit/rest": "20.0.2",
     "@probot/octokit-plugin-config": "^2.0.1",
     "@total-typescript/ts-reset": "^0.5.1",
+    "node-fetch": "^3.3.2",
     "zod": "^3.22.4"
   },
   "devDependencies": {

@@ -36,5 +36,5 @@ inputs:
     description: GitHub token used to set issue labels
 
 runs:
-  using: node20
+  using: node16
   main: dist/index.js
