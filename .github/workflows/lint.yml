@@ -4,9 +4,9 @@ name: Linting suite
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, node16 ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, node16 ]
   workflow_dispatch:
 
 permissions:
