@@ -24,6 +24,9 @@ async function action(octokit: CustomOctokit) {
 
   const labels = labeler.gatherLabels();
 
+  setOutput('labels', JSON.stringify(labels ?? []));
+  setOutput('policy', JSON.stringify(labeler.outputPolicy));
+
   // Check if there are some labels to be set
   if (!labels || (Array.isArray(labels) && labels?.length < 1)) {
     info('Nothing to do here. CY@');
@@ -31,6 +34,7 @@ async function action(octokit: CustomOctokit) {
   }
 
   info(`Labels to be set: ${labels}`);
+  info(`Used policy: ${JSON.stringify(labeler.outputPolicy, null, 2)}`);
 
   const response = await octokit.request(
     'POST /repos/{owner}/{repo}/issues/{issue_number}/labels',
@@ -40,8 +44,6 @@ async function action(octokit: CustomOctokit) {
       labels,
     }
   );
-
-  setOutput('labels', JSON.stringify(labels));
 
   debug(`GitHub API response status: [${response.status}]`);
 }

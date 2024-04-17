@@ -321,6 +321,33 @@ List of labels that were set based on the provided policy. The output is a strin
 > element: ${{ fromJSON(steps.<step-id>.outputs.labels)[0] }}
 > ```
 
+### policy
+
+The representation of the policy that was used to set labels. The output is a stringified JSON object.
+
+Example output in JSON format where:
+
+* `template` - the name of the template that was used to parse the issue form
+* `section` - key-value pairs where the key is the ID of the issue-form section and the value is an array of the applied labels for the given section
+
+```json
+{
+  "template": "bug.yml",
+  "section": {
+    "severity": [ "low" ],
+    "priority": [ "high" ]
+  }
+}
+```
+
+> [!TIP]
+>
+> Use [`fromJSON`](https://docs.github.com/en/actions/learn-github-actions/expressions#fromjson) function to parse the output to get an object of policy.
+>
+> ```yml
+> severity: ${{ fromJSON(steps.<step-id>.outputs.policy).section.severity }}
+> ```
+
 ## Policy
 
 It's possible to define a labeling policy to further customize the labeling process. The policy can be defined using `.github/advanced-issue-labeler.yml` configuration file. The structure needs to be as follows:

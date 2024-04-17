@@ -4,6 +4,7 @@ import { Config } from './config';
 import { IssueForm } from './issue-form';
 
 import { BlockList, Section, Template } from './schema/input';
+import { OutputPolicy } from './schema/output';
 
 export class Labeler {
   section: Section | undefined = undefined;
@@ -12,6 +13,11 @@ export class Labeler {
 
   isConfig: boolean;
   isInputs: boolean;
+
+  outputPolicy: OutputPolicy = {
+    template: '',
+    section: {},
+  };
 
   constructor(
     public issueForm: IssueForm,
@@ -31,6 +37,7 @@ export class Labeler {
     }
     // Config requires template as well
     this.template = getInput('template');
+    this.outputPolicy.template = this.template;
   }
 
   gatherLabels() {
@@ -58,6 +65,8 @@ export class Labeler {
       debug(`Section field is empty.`);
       return;
     }
+
+    this.outputPolicy.section[this.section] = keywords;
 
     return keywords;
   }
@@ -105,6 +114,12 @@ export class Labeler {
             )
           ) {
             labels.push(rule.name);
+
+            if (!this.outputPolicy.section.hasOwnProperty(singleID)) {
+              this.outputPolicy.section[singleID] = [];
+            }
+
+            this.outputPolicy.section[singleID]?.push(rule.name);
           }
         }
       }

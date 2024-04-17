@@ -33205,6 +33205,10 @@ class Labeler {
         this.config = config;
         this.section = undefined;
         this.blockList = undefined;
+        this.outputPolicy = {
+            template: '',
+            section: {},
+        };
         // If no config was provided try inputs
         if (this.config.isPolicyEmpty()) {
             (0,core.debug)(`Policy wasn't provided!`);
@@ -33220,6 +33224,7 @@ class Labeler {
         }
         // Config requires template as well
         this.template = (0,core.getInput)('template');
+        this.outputPolicy.template = this.template;
     }
     gatherLabels() {
         if (this.isInputs) {
@@ -33241,10 +33246,11 @@ class Labeler {
             (0,core.debug)(`Section field is empty.`);
             return;
         }
+        this.outputPolicy.section[this.section] = keywords;
         return keywords;
     }
     configBasedLabels() {
-        var _a;
+        var _a, _b;
         const labels = [];
         // Pick correct policy from config based on template input
         const selectedPolicy = (_a = this.config) === null || _a === void 0 ? void 0 : _a.getTemplatePolicy(this.template);
@@ -33273,6 +33279,10 @@ class Labeler {
                 for (const rule of sectionItem.label) {
                     if (keywords.find((keyword) => rule.keys.find(key => keyword === key))) {
                         labels.push(rule.name);
+                        if (!this.outputPolicy.section.hasOwnProperty(singleID)) {
+                            this.outputPolicy.section[singleID] = [];
+                        }
+                        (_b = this.outputPolicy.section[singleID]) === null || _b === void 0 ? void 0 : _b.push(rule.name);
                     }
                 }
             }
@@ -33304,14 +33314,16 @@ async function action(octokit) {
     const config = await Config.getConfig(octokit);
     const labeler = new Labeler(issueForm, config);
     const labels = labeler.gatherLabels();
+    (0,core.setOutput)('labels', JSON.stringify(labels !== null && labels !== void 0 ? labels : []));
+    (0,core.setOutput)('policy', JSON.stringify(labeler.outputPolicy));
     // Check if there are some labels to be set
     if (!labels || (Array.isArray(labels) && (labels === null || labels === void 0 ? void 0 : labels.length) < 1)) {
         (0,core.info)('Nothing to do here. CY@');
         return;
     }
     (0,core.info)(`Labels to be set: ${labels}`);
+    (0,core.info)(`Used policy: ${JSON.stringify(labeler.outputPolicy, null, 2)}`);
     const response = await octokit.request('POST /repos/{owner}/{repo}/issues/{issue_number}/labels', Object.assign(Object.assign({}, github.context.repo), { issue_number: github.context.issue.number, labels }));
-    (0,core.setOutput)('labels', JSON.stringify(labels));
     (0,core.debug)(`GitHub API response status: [${response.status}]`);
 }
 /* harmony default export */ const src_action = (action);

@@ -38,6 +38,8 @@ inputs:
 outputs:
   labels:
     description: Labels that were set on issue. Value is a stringified array.
+  policy:
+    description: Policy that was used to set labels on issue. Value is a stringified JSON object.
 
 runs:
   using: node20
