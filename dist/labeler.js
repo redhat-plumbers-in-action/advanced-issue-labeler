@@ -5,6 +5,10 @@ export class Labeler {
         this.config = config;
         this.section = undefined;
         this.blockList = undefined;
+        this.outputPolicy = {
+            template: '',
+            section: {},
+        };
         // If no config was provided try inputs
         if (this.config.isPolicyEmpty()) {
             debug(`Policy wasn't provided!`);
@@ -20,6 +24,7 @@ export class Labeler {
         }
         // Config requires template as well
         this.template = getInput('template');
+        this.outputPolicy.template = this.template;
     }
     gatherLabels() {
         if (this.isInputs) {
@@ -41,10 +46,11 @@ export class Labeler {
             debug(`Section field is empty.`);
             return;
         }
+        this.outputPolicy.section[this.section] = keywords;
         return keywords;
     }
     configBasedLabels() {
-        var _a;
+        var _a, _b;
         const labels = [];
         // Pick correct policy from config based on template input
         const selectedPolicy = (_a = this.config) === null || _a === void 0 ? void 0 : _a.getTemplatePolicy(this.template);
@@ -73,6 +79,10 @@ export class Labeler {
                 for (const rule of sectionItem.label) {
                     if (keywords.find((keyword) => rule.keys.find(key => keyword === key))) {
                         labels.push(rule.name);
+                        if (!this.outputPolicy.section.hasOwnProperty(singleID)) {
+                            this.outputPolicy.section[singleID] = [];
+                        }
+                        (_b = this.outputPolicy.section[singleID]) === null || _b === void 0 ? void 0 : _b.push(rule.name);
                     }
                 }
             }
