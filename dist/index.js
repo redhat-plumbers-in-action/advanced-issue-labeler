@@ -33311,6 +33311,7 @@ async function action(octokit) {
     }
     (0,core.info)(`Labels to be set: ${labels}`);
     const response = await octokit.request('POST /repos/{owner}/{repo}/issues/{issue_number}/labels', Object.assign(Object.assign({}, github.context.repo), { issue_number: github.context.issue.number, labels }));
+    (0,core.setOutput)('labels', JSON.stringify(labels));
     (0,core.debug)(`GitHub API response status: [${response.status}]`);
 }
 /* harmony default export */ const src_action = (action);
