@@ -75,7 +75,7 @@ The following example shows how to automatically label issues based on the sever
 # ...
 ```
 
-> **Warning**
+> [!IMPORTANT]
 >
 > It's essential to set the correct ID in issue-form
 
@@ -160,7 +160,7 @@ The following example shows how to automatically label issues based on animal ty
 # ...
 ```
 
-> **Warning**
+> [!IMPORTANT]
 >
 > It's essential to set the correct ID in issue-form
 
@@ -288,7 +288,7 @@ List of forbidden labels. These labels won't be set.
 * default value: `undefined`
 * requirements: `optional`
 
-> **Note**
+> [!TIP]
 >
 > _Please notice the `|` in the example above ☝️. That lets you effectively declare a multi-line YAML string. You can learn more about multi-line YAML syntax [here](https://yaml-multiline.info). This syntax is required when block-listing multiple labels._
 
