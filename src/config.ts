@@ -23,8 +23,8 @@ export class Config {
       );
     }
     // ?: When template name is provided look for section that match the template name
-    const templatePolicy = this.policy?.find(
-      pItem => pItem.template?.find(tItem => tItem === template)
+    const templatePolicy = this.policy?.find(pItem =>
+      pItem.template?.find(tItem => tItem === template)
     );
 
     // If exact policy for template exists ; return it
