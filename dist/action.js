@@ -1,4 +1,4 @@
-import { getInput, debug, info } from '@actions/core';
+import { getInput, debug, info, setOutput } from '@actions/core';
 import { context } from '@actions/github';
 import { Config } from './config';
 import { IssueForm } from './issue-form';
@@ -20,6 +20,7 @@ async function action(octokit) {
     }
     info(`Labels to be set: ${labels}`);
     const response = await octokit.request('POST /repos/{owner}/{repo}/issues/{issue_number}/labels', Object.assign(Object.assign({}, context.repo), { issue_number: context.issue.number, labels }));
+    setOutput('labels', JSON.stringify(labels));
     debug(`GitHub API response status: [${response.status}]`);
 }
 export default action;

@@ -307,6 +307,20 @@ Token used to set labels
 * requirements: `required`
 * recomended value: `secrets.GITHUB_TOKEN`
 
+## Outputs
+
+### labels
+
+List of labels that were set based on the provided policy. The output is a stringified JSON array.
+
+> [!TIP]
+>
+> Use [`fromJSON`](https://docs.github.com/en/actions/learn-github-actions/expressions#fromjson) function to parse the output to get an array of labels.
+>
+> ```yml
+> element: ${{ fromJSON(steps.<step-id>.outputs.labels)[0] }}
+> ```
+
 ## Policy
 
 It's possible to define a labeling policy to further customize the labeling process. The policy can be defined using `.github/advanced-issue-labeler.yml` configuration file. The structure needs to be as follows:

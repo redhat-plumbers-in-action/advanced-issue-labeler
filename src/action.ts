@@ -1,4 +1,4 @@
-import { getInput, debug, info } from '@actions/core';
+import { getInput, debug, info, setOutput } from '@actions/core';
 import { context } from '@actions/github';
 
 import { Config } from './config';
@@ -40,6 +40,8 @@ async function action(octokit: CustomOctokit) {
       labels,
     }
   );
+
+  setOutput('labels', JSON.stringify(labels));
 
   debug(`GitHub API response status: [${response.status}]`);
 }

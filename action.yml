@@ -35,6 +35,10 @@ inputs:
     required: true
     description: GitHub token used to set issue labels
 
+outputs:
+  labels:
+    description: Labels that were set on issue. Value is a stringified array.
+
 runs:
   using: node20
   main: dist/index.js
