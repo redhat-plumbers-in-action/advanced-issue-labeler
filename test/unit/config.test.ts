@@ -2,55 +2,10 @@ import { describe, expect, test } from 'vitest';
 
 import { Config } from '../../src/config';
 
-const emptyConfig = {};
-
-const basicConfig = {
-  policy: [
-    {
-      section: [
-        {
-          id: ['type'],
-          label: [
-            { name: 'bug 🐛', keys: ['Bug Report'] },
-            { name: 'RFE 🎁', keys: ['Feature Request'] },
-          ],
-        },
-      ],
-    },
-  ],
-};
-
-const templateConfig = {
-  policy: [
-    {
-      template: ['bug.yml', 'feature.yml'],
-      section: [
-        {
-          id: ['type'],
-          label: [
-            { name: 'bug 🐛', keys: ['Bug Report'] },
-            { name: 'RFE 🎁', keys: ['Feature Request'] },
-          ],
-        },
-      ],
-    },
-    {
-      template: ['custom.yml'],
-      section: [
-        {
-          id: ['type'],
-          label: [
-            { name: 'custom1', keys: ['Custom 1'] },
-            { name: 'custom2', keys: ['Custom 2'] },
-          ],
-        },
-      ],
-    },
-  ],
-};
+import { basicConfig, emptyConfig, templateConfig } from './config.fixture';
 
 describe('Test Config class', () => {
-  test('Config class is defined', () => {
+  test('smoke test', () => {
     const config = new Config(basicConfig, '.github/issue-labeler.yml');
 
     expect(config.policy).toMatchInlineSnapshot(`
@@ -198,6 +153,32 @@ describe('Test Config class', () => {
                     "Feature Request",
                   ],
                   "name": "RFE 🎁",
+                },
+              ],
+            },
+            {
+              "block-list": [],
+              "id": [
+                "severity",
+              ],
+              "label": [
+                {
+                  "keys": [
+                    "High",
+                  ],
+                  "name": "high",
+                },
+                {
+                  "keys": [
+                    "Medium",
+                  ],
+                  "name": "medium",
+                },
+                {
+                  "keys": [
+                    "Low",
+                  ],
+                  "name": "low",
                 },
               ],
             },

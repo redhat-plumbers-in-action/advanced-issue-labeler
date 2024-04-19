@@ -1,24 +1,10 @@
 import { describe, expect, test } from 'vitest';
 
 import { IssueForm } from '../../src/issue-form';
-
-const emptyForm = {};
-
-const basicForm = {
-  title: 'Test issue',
-  body: 'Test body',
-};
-
-const dropdownForm = {
-  title: 'Test issue',
-  body: 'Test body',
-  severity: 'high',
-  multiDropdown: 'one, two, other, none',
-  checkList: ['one', 'two', 'three'],
-};
+import { basicForm, dropdownForm } from './issue-form.fixture';
 
 describe('Test IssueForm class', () => {
-  test('IssueForm class is defined', () => {
+  test('smoke test', () => {
     const issueForm = new IssueForm(basicForm);
 
     expect(issueForm.parsed).toMatchInlineSnapshot(`
@@ -43,7 +29,7 @@ describe('Test IssueForm class', () => {
       `"Test issue"`
     );
     expect(issueForm.getSafeProperty('severity')).toMatchInlineSnapshot(
-      `"high"`
+      `"High"`
     );
     expect(issueForm.getSafeProperty('nonexistent')).toBeUndefined();
   });
@@ -53,17 +39,17 @@ describe('Test IssueForm class', () => {
 
     expect(issueForm.listKeywords('severity', ['none'])).toMatchInlineSnapshot(`
       [
-        "high",
+        "High",
       ]
     `);
 
-    expect(issueForm.listKeywords('multiDropdown', ['other', 'none']))
+    expect(issueForm.listKeywords('type', ['other', 'none']))
       .toMatchInlineSnapshot(`
-      [
-        "one",
-        "two",
-      ]
-    `);
+        [
+          "Bug Report",
+          "Feature Request",
+        ]
+      `);
 
     // Checklists are unsupported at the moment
     expect(issueForm.listKeywords('checkList', [])).toBeUndefined();
