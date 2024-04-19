@@ -5,13 +5,10 @@ export class IssueForm {
     isProperty(key) {
         return this.parsed.hasOwnProperty(key);
     }
-    getProperty(key) {
-        return this.parsed[key];
-    }
     getSafeProperty(key) {
         if (!this.isProperty(key))
             return undefined;
-        return this.getProperty(key);
+        return this.parsed[key];
     }
     listKeywords(key, blockList) {
         const propertySection = this.getSafeProperty(key);
