@@ -7,14 +7,10 @@ export class IssueForm {
     return this.parsed.hasOwnProperty(key);
   }
 
-  getProperty(key: string) {
-    return this.parsed[key];
-  }
-
   getSafeProperty(key: string) {
     if (!this.isProperty(key)) return undefined;
 
-    return this.getProperty(key);
+    return this.parsed[key];
   }
 
   listKeywords(key: string, blockList: string[]) {
