@@ -183,7 +183,7 @@ policy:
           - name: 'kind: reptiles'
             keys: ['🐊 Crocodile']
           - name: 'invertebrates'
-            keys: ['🐛 Bug', '🕷️ Spider'] 
+            keys: ['🐛 Bug', '🕷️ Spider']
 ```
 
 GitHub workflow that automatically marks issues with animal types labels:
