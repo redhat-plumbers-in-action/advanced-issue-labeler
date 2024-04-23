@@ -500,6 +500,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@octokit/plugin-throttling@npm:^9.2.0":
+  version: 9.2.0
+  resolution: "@octokit/plugin-throttling@npm:9.2.0"
+  dependencies:
+    "@octokit/types": "npm:^13.0.0"
+    bottleneck: "npm:^2.15.3"
+  peerDependencies:
+    "@octokit/core": ^6.0.0
+  checksum: 10c0/05ce22d1032177e692fe583ffecc81a2f492bc5a02528db12ece967143e7e168aa3a8546bddb3a1342f2da3b79fce25007b78258fba3a771b48d0797a733e77c
+  languageName: node
+  linkType: hard
+
 "@octokit/request-error@npm:^5.1.0":
   version: 5.1.0
   resolution: "@octokit/request-error@npm:5.1.0"
@@ -880,6 +892,7 @@ __metadata:
     "@actions/core": "npm:^1.10.1"
     "@actions/github": "npm:^6.0.0"
     "@octokit/core": "npm:^6.1.2"
+    "@octokit/plugin-throttling": "npm:^9.2.0"
     "@octokit/rest": "npm:^20.1.0"
     "@probot/octokit-plugin-config": "npm:^3.0.2"
     "@total-typescript/ts-reset": "npm:^0.5.1"
@@ -990,6 +1003,13 @@ __metadata:
   version: 3.0.2
   resolution: "before-after-hook@npm:3.0.2"
   checksum: 10c0/dea640f9e88a1085372c9bcc974b7bf379267490693da92ec102a7d8b515dd1e95f00ef575a146b83ca638104c57406c3427d37bdf082f602dde4b56d05bba14
+  languageName: node
+  linkType: hard
+
+"bottleneck@npm:^2.15.3":
+  version: 2.19.5
+  resolution: "bottleneck@npm:2.19.5"
+  checksum: 10c0/b0f72e45b2e0f56a21ba720183f16bef8e693452fb0495d997fa354e42904353a94bd8fd429868e6751bc85e54b6755190519eed5a0ae0a94a5185209ae7c6d0
   languageName: node
   linkType: hard
 
