@@ -3,6 +3,7 @@ export const emptyForm = {};
 export const basicForm = {
   title: 'Test issue',
   body: 'Test body',
+  severity: 'High',
 };
 
 export const dropdownForm = {
