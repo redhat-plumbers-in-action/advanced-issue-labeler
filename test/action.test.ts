@@ -162,7 +162,7 @@ describe('Integration test', () => {
     setDefaultInputs();
     vi.stubEnv('INPUT_ISSUE-FORM', JSON.stringify(dropdownForm));
     vi.stubEnv('INPUT_SECTION', 'type');
-    vi.stubEnv('INPUT_BLOCK-LIST', 'other\nnone');
+    vi.stubEnv('INPUT_BLOCK-LIST', 'other\nnone\nOther');
 
     vi.mocked(mocks['@octokit/core']).config.get.mockImplementation(
       async (params: { owner: string; repo: string; path: string }) => {

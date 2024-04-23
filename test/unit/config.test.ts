@@ -137,7 +137,9 @@ describe('Test Config class', () => {
         {
           "section": [
             {
-              "block-list": [],
+              "block-list": [
+                "Other",
+              ],
               "id": [
                 "type",
               ],
@@ -157,7 +159,10 @@ describe('Test Config class', () => {
               ],
             },
             {
-              "block-list": [],
+              "block-list": [
+                "None",
+                "Other",
+              ],
               "id": [
                 "severity",
               ],
