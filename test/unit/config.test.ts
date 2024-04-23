@@ -222,10 +222,12 @@ describe('Test Config class', () => {
     });
 
     test('error when policy is empty', () => {
-      const config = new Config(emptyConfig, '.github/issue-labeler.yml');
+      const config = new Config(emptyConfig, 'src/custom-labeler.yml');
 
-      expect(() => config.getTemplatePolicy(undefined)).toThrowError(
-        `Missing configuration. Please setup 'Advanced Issue Labeler' Action using '.github/issue-labeler.yml' file.`
+      expect(() =>
+        config.getTemplatePolicy(undefined)
+      ).toThrowErrorMatchingInlineSnapshot(
+        `[Error: Missing configuration. Please setup 'Advanced Issue Labeler' Action using 'src/custom-labeler.yml' file.]`
       );
     });
   });

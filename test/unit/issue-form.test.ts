@@ -10,6 +10,7 @@ describe('Test IssueForm class', () => {
     expect(issueForm.parsed).toMatchInlineSnapshot(`
       {
         "body": "Test body",
+        "severity": "High",
         "title": "Test issue",
       }
     `);
