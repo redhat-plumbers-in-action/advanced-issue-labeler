@@ -38,6 +38,15 @@ export const templateConfig = {
             { name: 'low', keys: ['Low'] },
           ],
         },
+        {
+          id: ['checkList'],
+          'block-list': ['one'],
+          label: [
+            { name: 'type: one', keys: ['one'] },
+            { name: 'type: two', keys: ['two'] },
+            { name: 'type: three', keys: ['three'] },
+          ],
+        },
       ],
     },
     {

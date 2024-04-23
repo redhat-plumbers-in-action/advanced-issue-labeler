@@ -34709,15 +34709,14 @@ class IssueForm {
         return this.parsed[key];
     }
     listKeywords(key, blockList) {
-        const propertySection = this.getSafeProperty(key);
+        let propertySection = this.getSafeProperty(key);
         if (!propertySection)
             return undefined;
-        // Array can be only checkbox type - currently unsupported
-        if (Array.isArray(propertySection))
-            return undefined;
-        return propertySection
-            .split(', ', 25)
-            .filter(label => !this.isCompliant(blockList, label));
+        // Only Checkboxes are in form of array, dropdowns are strings separated by ', '
+        if (!Array.isArray(propertySection)) {
+            propertySection = propertySection.split(', ', 25);
+        }
+        return propertySection.filter(label => !this.isCompliant(blockList, label));
     }
     isCompliant(policy, keyword) {
         return !!policy.find(rule => keyword === rule);

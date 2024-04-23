@@ -152,6 +152,8 @@ describe('Test Labeler class', () => {
           "bug 🐛",
           "RFE 🎁",
           "high",
+          "type: two",
+          "type: three",
         ]
       `);
     });
@@ -163,6 +165,10 @@ describe('Test Labeler class', () => {
         expect(labeler.outputPolicy).toMatchInlineSnapshot(`
           {
             "section": {
+              "checkList": [
+                "type: two",
+                "type: three",
+              ],
               "severity": [
                 "high",
               ],
@@ -179,6 +185,8 @@ describe('Test Labeler class', () => {
             "bug 🐛",
             "RFE 🎁",
             "high",
+            "type: two",
+            "type: three",
           ]
         `);
       });
