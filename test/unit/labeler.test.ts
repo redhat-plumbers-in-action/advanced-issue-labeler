@@ -26,7 +26,7 @@ describe('Test Labeler class', () => {
 
     beforeEach(() => {
       vi.stubEnv('INPUT_SECTION', 'type');
-      vi.stubEnv('INPUT_BLOCK-LIST', 'other\nnone');
+      vi.stubEnv('INPUT_BLOCK-LIST', 'other\nnone\nOther');
 
       labeler = new Labeler(
         new IssueForm(dropdownForm),
@@ -43,6 +43,7 @@ describe('Test Labeler class', () => {
         [
           "other",
           "none",
+          "Other",
         ]
       `);
 

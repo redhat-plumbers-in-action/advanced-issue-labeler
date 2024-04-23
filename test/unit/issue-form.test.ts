@@ -44,7 +44,7 @@ describe('Test IssueForm class', () => {
       ]
     `);
 
-    expect(issueForm.listKeywords('type', ['other', 'none']))
+    expect(issueForm.listKeywords('type', ['other', 'none', 'Other']))
       .toMatchInlineSnapshot(`
         [
           "Bug Report",

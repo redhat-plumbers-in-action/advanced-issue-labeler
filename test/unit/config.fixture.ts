@@ -23,6 +23,7 @@ export const templateConfig = {
       section: [
         {
           id: ['type'],
+          'block-list': ['Other'],
           label: [
             { name: 'bug 🐛', keys: ['Bug Report'] },
             { name: 'RFE 🎁', keys: ['Feature Request'] },
@@ -30,6 +31,7 @@ export const templateConfig = {
         },
         {
           id: ['severity'],
+          'block-list': ['None', 'Other'],
           label: [
             { name: 'high', keys: ['High'] },
             { name: 'medium', keys: ['Medium'] },
