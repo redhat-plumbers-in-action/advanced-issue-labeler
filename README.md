@@ -227,15 +227,15 @@ jobs:
 
 ### Real-life examples
 
+* [`Lightning-AI/pytorch-lightning`](https://sourcegraph.com/search?q=context:global+repo:%5Egithub%5C.com/Lightning-AI/pytorch-lightning%24+file:%5E%5C.github/workflows+redhat-plumbers-in-action/advanced-issue-labeler&patternType=literal) [![GitHub Repo stars](https://img.shields.io/github/stars/Lightning-AI/pytorch-lightning?style=social)](https://github.com/Lightning-AI/pytorch-lightning)
+
+* [`bazelbuild/bazel`](https://sourcegraph.com/search?q=context:global+repo:%5Egithub%5C.com/bazelbuild/bazel%24+file:%5E%5C.github/workflows+redhat-plumbers-in-action/advanced-issue-labeler&patternType=literal) [![GitHub Repo stars](https://img.shields.io/github/stars/bazelbuild/bazel?style=social)](https://github.com/bazelbuild/bazel)
+
 * [`realm/realm-swift`](https://sourcegraph.com/search?q=context:global+repo:%5Egithub%5C.com/realm/realm-swift%24+file:%5E%5C.github/workflows+redhat-plumbers-in-action/advanced-issue-labeler&patternType=literal) [![GitHub Repo stars](https://img.shields.io/github/stars/realm/realm-swift?style=social)](https://github.com/realm/realm-swift)
 
 * [`systemd/systemd`](https://sourcegraph.com/search?q=context:global+repo:%5Egithub%5C.com/systemd/systemd%24+file:%5E%5C.github/workflows+redhat-plumbers-in-action/advanced-issue-labeler&patternType=literal) [![GitHub Repo stars](https://img.shields.io/github/stars/systemd/systemd?style=social)](https://github.com/systemd/systemd)
 
 * [`realm/realm-java`](https://sourcegraph.com/search?q=context:global+repo:%5Egithub%5C.com/realm/realm-java%24+file:%5E%5C.github/workflows+redhat-plumbers-in-action/advanced-issue-labeler&patternType=literal) [![GitHub Repo stars](https://img.shields.io/github/stars/realm/realm-java?style=social)](https://github.com/realm/realm-java)
-
-* [`blueedgetechno/win11React`](https://sourcegraph.com/search?q=context:global+repo:%5Egithub%5C.com/blueedgetechno/win11React%24+file:%5E%5C.github/workflows+redhat-plumbers-in-action/advanced-issue-labeler&patternType=literal) [![GitHub Repo stars](https://img.shields.io/github/stars/blueedgetechno/win11React?style=social)](https://github.com/blueedgetechno/win11React)
-
-* [`realm/realm-js`](https://sourcegraph.com/search?q=context:global+repo:%5Egithub%5C.com/realm/realm-js%24+file:%5E%5C.github/workflows+redhat-plumbers-in-action/advanced-issue-labeler&patternType=literal) [![GitHub Repo stars](https://img.shields.io/github/stars/realm/realm-js?style=social)](https://github.com/realm/realm-js)
 
 * more examples - [here](https://github.com/redhat-plumbers-in-action/advanced-issue-labeler/network/dependents)
 
