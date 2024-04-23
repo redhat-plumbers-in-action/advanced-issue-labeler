@@ -187,6 +187,34 @@ describe('Test Config class', () => {
                 },
               ],
             },
+            {
+              "block-list": [
+                "one",
+              ],
+              "id": [
+                "checkList",
+              ],
+              "label": [
+                {
+                  "keys": [
+                    "one",
+                  ],
+                  "name": "type: one",
+                },
+                {
+                  "keys": [
+                    "two",
+                  ],
+                  "name": "type: two",
+                },
+                {
+                  "keys": [
+                    "three",
+                  ],
+                  "name": "type: three",
+                },
+              ],
+            },
           ],
           "template": [
             "bug.yml",

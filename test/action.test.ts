@@ -268,10 +268,10 @@ describe('Integration test', () => {
 
     // Check outputs
     expect(process.env['OUTPUT_LABELS']).toMatchInlineSnapshot(
-      `"["bug 🐛","RFE 🎁","high"]"`
+      `"["bug 🐛","RFE 🎁","high","type: two","type: three"]"`
     );
     expect(process.env['OUTPUT_POLICY']).toMatchInlineSnapshot(
-      `"{"template":"bug.yml","section":{"type":["bug 🐛","RFE 🎁"],"severity":["high"]}}"`
+      `"{"template":"bug.yml","section":{"type":["bug 🐛","RFE 🎁"],"severity":["high"],"checkList":["type: two","type: three"]}}"`
     );
 
     // Check if the action has set the labels
@@ -282,7 +282,7 @@ describe('Integration test', () => {
         owner: 'redhat-plumbers-in-action',
         repo: 'advanced-issue-labeler',
         issue_number: 1,
-        labels: ['bug 🐛', 'RFE 🎁', 'high'],
+        labels: ['bug 🐛', 'RFE 🎁', 'high', 'type: two', 'type: three'],
       }
     );
   });

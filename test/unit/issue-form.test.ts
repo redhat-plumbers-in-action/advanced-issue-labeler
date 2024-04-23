@@ -52,8 +52,13 @@ describe('Test IssueForm class', () => {
         ]
       `);
 
-    // Checklists are unsupported at the moment
-    expect(issueForm.listKeywords('checkList', [])).toBeUndefined();
+    expect(issueForm.listKeywords('checkList', ['one'])).toMatchInlineSnapshot(`
+      [
+        "two",
+        "three",
+      ]
+    `);
+
     expect(issueForm.listKeywords('nonexistent', ['none'])).toBeUndefined();
   });
 });
