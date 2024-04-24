@@ -501,14 +501,14 @@ __metadata:
   linkType: hard
 
 "@octokit/plugin-throttling@npm:^9.2.0":
-  version: 9.2.0
-  resolution: "@octokit/plugin-throttling@npm:9.2.0"
+  version: 9.2.1
+  resolution: "@octokit/plugin-throttling@npm:9.2.1"
   dependencies:
     "@octokit/types": "npm:^13.0.0"
     bottleneck: "npm:^2.15.3"
   peerDependencies:
     "@octokit/core": ^6.0.0
-  checksum: 10c0/05ce22d1032177e692fe583ffecc81a2f492bc5a02528db12ece967143e7e168aa3a8546bddb3a1342f2da3b79fce25007b78258fba3a771b48d0797a733e77c
+  checksum: 10c0/fa841e779214b9996db33ac3277ac6716e693a4c040b08570fc4dba5ed3cfc2604717f11a7792fcc74c867ab11c695d76b96da8398d377af730128fcfb06857b
   languageName: node
   linkType: hard
 
