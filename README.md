@@ -37,15 +37,16 @@ Advanced Issue Labeler is a GitHub Action that can automatically label issues ba
 
 ## How does it work
 
-Advanced Issue Labeler takes advantage of GitHub [issue forms](https://github.blog/changelog/2021-06-23-issues-forms-beta-for-public-repositories) (special kind of issue templates) to provide a better developer experience by labeling issues based on provided input. It is currently possible to label issues based only on [dropdowns](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-githubs-form-schema#dropdown).
+Advanced Issue Labeler takes advantage of GitHub [issue forms](https://github.blog/changelog/2021-06-23-issues-forms-beta-for-public-repositories) (special kind of issue templates) to provide a better developer experience by labeling issues based on provided input. This action works best with [`dropdowns`](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-githubs-form-schema#dropdown) and [`checkboxes`](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-githubs-form-schema#checkboxes).
 
-Advanced Issue Labeler is expected to work in cooperation with [@stefanbuck/github-issue-parser](https://github.com/stefanbuck/github-issue-parser) GitHub Action. Parser action provides JSON representation of the submitted issue, where KEYs represent IDs described in the issue-form YAML configuration. Issue labeler understands it and can label issues based on selected values from dropdown. Dropdown values could directly represent labels or be mapped to policy configuration for more complex labeling requirements.
+Advanced Issue Labeler is expected to work in cooperation with [@stefanbuck/github-issue-parser `>= v3.1.1`](https://github.com/stefanbuck/github-issue-parser) GitHub Action. Parser action provides JSON representation of the submitted issue, where KEYs represent IDs described in the issue-form YAML configuration. Issue labeler understands it and can label issues based on selected values from dropdown. Dropdown values could directly represent labels or be mapped to policy configuration for more complex labeling requirements.
 
 ## Features
 
-* Ability to label issues based on issue form dropdown values
+* Ability to label issues based on issue form `dropdowns` and `checkboxes`
 * Ability to specify [policy](#policy) for mapping specific keywords to labels
 * Ability to exclude certain words from the labeling process ([`block-list`](#block-list))
+* Ability to define multiple policies for different issue forms
 
 ## Usage
 
@@ -276,7 +277,7 @@ Each issue form can have a defined different labeling policy, and this option is
 
 ### section
 
-The ID of the dropdown section from the issue form template.
+The ID of the section (`dropdown` or `checkboxes` section is recomended) from the issue form template.
 
 * default value: `undefined`
 * requirements: `required`
@@ -393,7 +394,7 @@ Array of issue-forms (e.g. `['bug-report.yml']`). This section is used to determ
 
 ### `section.id` keyword
 
-Equivalent of [section](#section) option. An array of IDs of dropdowns. These IDs need to point to dropdowns in the issue-form template.
+Equivalent of [section](#section) option. An array of IDs of section from issue-form. These IDs need to point to section in the issue-form template.
 
 * requirements: `required`
 
@@ -408,10 +409,10 @@ Equivalent of [block-list](#block-list) option. An array of forbidden keywords. 
 Section of policy describing labeling policy. `label` section of the policy is expected to have the following properties:
 
 * `name` - Name of label
-* `keys` - Array of keywords corresponding to values from `issue-form` dropdown
+* `keys` - Array of keywords corresponding to values from `issue-form` section
 
 * requirements: `required`
 
 ## Limitations
 
-* Currently it's not possible to use strings containing `,␣` in the dropdown menu. This pattern is used in the separation process when the dropdown option `multiple` is set to `true`.
+* Currently it's not possible to use strings containing `,␣` in the dropdown menu or checkboxes value. This pattern is used in the separation process (e.g. when the dropdown option `multiple` is set to `true`).
