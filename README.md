@@ -154,7 +154,7 @@ The following example shows how to automatically label issues based on animal ty
       - '🐛 Bug'
       - '🕷️ Spider'
       - '🐊 Crocodile'
-      - 'other'
+      - 'Other'
   validations:
     required: true
 
