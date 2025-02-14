@@ -230,6 +230,8 @@ jobs:
 
 * [`Lightning-AI/pytorch-lightning`](https://sourcegraph.com/search?q=context:global+repo:%5Egithub%5C.com/Lightning-AI/pytorch-lightning%24+file:%5E%5C.github/workflows+redhat-plumbers-in-action/advanced-issue-labeler&patternType=literal) [![GitHub Repo stars](https://img.shields.io/github/stars/Lightning-AI/pytorch-lightning?style=social)](https://github.com/Lightning-AI/pytorch-lightning)
 
+* [`DevToys-app/DevToys`](https://sourcegraph.com/search?q=context:global+repo:%5Egithub%5C.com/DevToys-app/DevToys%24+file:%5E%5C.github/workflows+redhat-plumbers-in-action/advanced-issue-labeler&patternType=literal) [![GitHub Repo stars](https://img.shields.io/github/stars/DevToys-app/DevToys?style=social)](https://github.com/DevToys-app/DevToys)
+
 * [`bazelbuild/bazel`](https://sourcegraph.com/search?q=context:global+repo:%5Egithub%5C.com/bazelbuild/bazel%24+file:%5E%5C.github/workflows+redhat-plumbers-in-action/advanced-issue-labeler&patternType=literal) [![GitHub Repo stars](https://img.shields.io/github/stars/bazelbuild/bazel?style=social)](https://github.com/bazelbuild/bazel)
 
 * [`realm/realm-swift`](https://sourcegraph.com/search?q=context:global+repo:%5Egithub%5C.com/realm/realm-swift%24+file:%5E%5C.github/workflows+redhat-plumbers-in-action/advanced-issue-labeler&patternType=literal) [![GitHub Repo stars](https://img.shields.io/github/stars/realm/realm-swift?style=social)](https://github.com/realm/realm-swift)
