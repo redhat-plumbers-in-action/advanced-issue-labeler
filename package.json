@@ -24,7 +24,7 @@
   ],
   "author": "jamacku@redhat.com",
   "license": "MIT",
-  "packageManager": "yarn@4.8.1",
+  "packageManager": "yarn@4.9.2",
   "type": "module",
   "dependencies": {
     "@actions/core": "^1.11.1",
