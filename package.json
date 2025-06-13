@@ -24,26 +24,26 @@
   ],
   "author": "jamacku@redhat.com",
   "license": "MIT",
-  "packageManager": "yarn@4.8.1",
+  "packageManager": "yarn@4.9.2",
   "type": "module",
   "dependencies": {
     "@actions/core": "^1.11.1",
-    "@actions/github": "^6.0.0",
-    "@octokit/core": "^6.1.5",
-    "@octokit/plugin-throttling": "^10.0.0",
-    "@octokit/rest": "^21.1.1",
+    "@actions/github": "^6.0.1",
+    "@octokit/core": "^7.0.2",
+    "@octokit/plugin-throttling": "^11.0.1",
+    "@octokit/rest": "^22.0.0",
     "@probot/octokit-plugin-config": "^3.0.2",
     "@total-typescript/ts-reset": "^0.6.1",
-    "zod": "^3.24.3"
+    "zod": "^3.25.64"
   },
   "devDependencies": {
-    "@types/node": "^22.15.2",
+    "@types/node": "^24.0.1",
     "@vercel/ncc": "^0.38.3",
-    "@vitest/coverage-v8": "^3.1.2",
+    "@vitest/coverage-v8": "^3.2.3",
     "js-yaml": "^4.1.0",
     "prettier": "^3.5.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3",
-    "vitest": "^3.1.2"
+    "vitest": "^3.2.3"
   }
 }
