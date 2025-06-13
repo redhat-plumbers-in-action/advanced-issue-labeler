@@ -227,18 +227,19 @@ jobs:
 ```
 
 ### Real-life examples
+* [`zen-browser/desktop`](https://sourcegraph.com/search?q=context:global+repo:%5Egithub%5C.com/zen-browser/desktop%24+file:%5E%5C.github/workflows+redhat-plumbers-in-action/advanced-issue-labeler&patternType=literal) [![GitHub Repo stars](https://img.shields.io/github/stars/zen-browser/desktop?style=social)](https://github.com/zen-browser/desktop)
+
+* [`SeleniumHQ/selenium`](https://sourcegraph.com/search?q=context:global+repo:%5Egithub%5C.com/SeleniumHQ/selenium%24+file:%5E%5C.github/workflows+redhat-plumbers-in-action/advanced-issue-labeler&patternType=literal) [![GitHub Repo stars](https://img.shields.io/github/stars/SeleniumHQ/selenium?style=social)](https://github.com/SeleniumHQ/selenium)
+
+* [`backstage/backstage`](https://sourcegraph.com/search?q=context:global+repo:%5Egithub%5C.com/backstage/backstage%24+file:%5E%5C.github/workflows+redhat-plumbers-in-action/advanced-issue-labeler&patternType=literal) [![GitHub Repo stars](https://img.shields.io/github/stars/backstage/backstage?style=social)](https://github.com/backstage/backstage)
 
 * [`Lightning-AI/pytorch-lightning`](https://sourcegraph.com/search?q=context:global+repo:%5Egithub%5C.com/Lightning-AI/pytorch-lightning%24+file:%5E%5C.github/workflows+redhat-plumbers-in-action/advanced-issue-labeler&patternType=literal) [![GitHub Repo stars](https://img.shields.io/github/stars/Lightning-AI/pytorch-lightning?style=social)](https://github.com/Lightning-AI/pytorch-lightning)
 
 * [`DevToys-app/DevToys`](https://sourcegraph.com/search?q=context:global+repo:%5Egithub%5C.com/DevToys-app/DevToys%24+file:%5E%5C.github/workflows+redhat-plumbers-in-action/advanced-issue-labeler&patternType=literal) [![GitHub Repo stars](https://img.shields.io/github/stars/DevToys-app/DevToys?style=social)](https://github.com/DevToys-app/DevToys)
 
+* [`RSSNext/Folo`](https://sourcegraph.com/search?q=context:global+repo:%5Egithub%5C.com/RSSNext/Folo%24+file:%5E%5C.github/workflows+redhat-plumbers-in-action/advanced-issue-labeler&patternType=literal) [![GitHub Repo stars](https://img.shields.io/github/stars/RSSNext/Folo?style=social)](https://github.com/RSSNext/Folo)
+
 * [`bazelbuild/bazel`](https://sourcegraph.com/search?q=context:global+repo:%5Egithub%5C.com/bazelbuild/bazel%24+file:%5E%5C.github/workflows+redhat-plumbers-in-action/advanced-issue-labeler&patternType=literal) [![GitHub Repo stars](https://img.shields.io/github/stars/bazelbuild/bazel?style=social)](https://github.com/bazelbuild/bazel)
-
-* [`realm/realm-swift`](https://sourcegraph.com/search?q=context:global+repo:%5Egithub%5C.com/realm/realm-swift%24+file:%5E%5C.github/workflows+redhat-plumbers-in-action/advanced-issue-labeler&patternType=literal) [![GitHub Repo stars](https://img.shields.io/github/stars/realm/realm-swift?style=social)](https://github.com/realm/realm-swift)
-
-* [`systemd/systemd`](https://sourcegraph.com/search?q=context:global+repo:%5Egithub%5C.com/systemd/systemd%24+file:%5E%5C.github/workflows+redhat-plumbers-in-action/advanced-issue-labeler&patternType=literal) [![GitHub Repo stars](https://img.shields.io/github/stars/systemd/systemd?style=social)](https://github.com/systemd/systemd)
-
-* [`realm/realm-java`](https://sourcegraph.com/search?q=context:global+repo:%5Egithub%5C.com/realm/realm-java%24+file:%5E%5C.github/workflows+redhat-plumbers-in-action/advanced-issue-labeler&patternType=literal) [![GitHub Repo stars](https://img.shields.io/github/stars/realm/realm-java?style=social)](https://github.com/realm/realm-java)
 
 * more examples - [here](https://github.com/redhat-plumbers-in-action/advanced-issue-labeler/network/dependents)
 
