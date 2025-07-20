@@ -1,6 +1,9 @@
 import { z } from 'zod';
 
-export const issueFormSchema = z.record(z.string().or(z.array(z.string())));
+export const issueFormSchema = z.record(
+  z.string(),
+  z.string().or(z.array(z.string()))
+);
 
 export type IssueFormType = z.infer<typeof issueFormSchema>;
 

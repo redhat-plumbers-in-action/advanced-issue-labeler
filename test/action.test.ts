@@ -359,11 +359,10 @@ describe('Integration test', () => {
         `
         "Incorrect format of provided 'issue-form' input: [
           {
+            "expected": "record",
             "code": "invalid_type",
-            "expected": "object",
-            "received": "string",
             "path": [],
-            "message": "Expected object, received string"
+            "message": "Invalid input: expected record, received string"
           }
         ]"
       `
