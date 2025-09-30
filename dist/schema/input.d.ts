@@ -1,5 +1,5 @@
 import { z } from 'zod';
-export declare const issueFormSchema: z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString>]>>;
+export declare const issueFormSchema: z.ZodRecord<z.ZodString, z.ZodPipe<z.ZodUnion<[z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString>]>, z.ZodArray<z.ZodArray<z.ZodUnknown>>]>, z.ZodTransform<string | string[], string | string[] | unknown[][]>>>;
 export type IssueFormType = z.infer<typeof issueFormSchema>;
 export declare const sectionSchema: z.ZodString;
 export type Section = z.infer<typeof sectionSchema>;

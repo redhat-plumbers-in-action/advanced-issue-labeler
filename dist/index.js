@@ -36834,7 +36834,17 @@ class Labeler {
 
 ;// CONCATENATED MODULE: ./src/schema/input.ts
 
-const issueFormSchema = record(schemas_string(), schemas_string().or(array(schemas_string())));
+const issueFormSchema = record(schemas_string(), schemas_string()
+    .or(array(schemas_string()))
+    .or(array(array(unknown())))
+    .transform(value => {
+    // ?NOTE: This is just a workaround for issue in github issue parser: https://github.com/stefanbuck/github-issue-parser/issues/90
+    // Transform array of arrays into simple array
+    if (Array.isArray(value)) {
+        return value.map(item => Array.isArray(item) ? item.join(', ') : item);
+    }
+    return value;
+}));
 const sectionSchema = schemas_string().min(1);
 const blockListSchema = array(schemas_string().min(1)).default([]);
 const templateSchema = schemas_string().min(1).optional();
