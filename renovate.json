@@ -1,17 +1,17 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base"],
-
-  "baseBranches": ["main", "node16"],
-
+  "extends": ["config:recommended"],
+  "baseBranchPatterns": ["main", "node16"],
   "labels": ["type: dependencies"],
   "github-actions": {
     "extends": ["schedule:monthly"],
     "addLabels": ["github-actions"]
   },
-
-  "js": {
-    "extends": ["schedule:monthly"],
-    "addLabels": ["javascript"]
-  }
+  "packageRules": [
+    {
+      "matchCategories": ["js"],
+      "extends": ["schedule:monthly"],
+      "addLabels": ["javascript"]
+    }
+  ]
 }
