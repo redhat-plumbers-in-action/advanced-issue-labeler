@@ -1107,7 +1107,7 @@ __metadata:
     "@vitest/coverage-v8": ^1.0.0
     eslint: 8.57.0
     eslint-plugin-prettier: 5.0.1
-    js-yaml: 4.1.0
+    js-yaml: 4.3.2
     node-fetch: ^3.3.2
     prettier: 3.0.3
     ts-node: 10.9.2
@@ -2421,7 +2421,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"js-yaml@npm:4.1.0, js-yaml@npm:^4.1.0":
+"js-yaml@npm:4.3.2":
+  version: 4.3.2
+  resolution: "js-yaml@npm:4.3.2"
+  dependencies:
+    argparse: ^2.0.1
+  bin:
+    js-yaml: bin/js-yaml.js
+  checksum: 3c9294448ed83fec340f017f2be056dab05bcba3fc742468a80275d264e982dfd94350a93640eb810e0fdf283bef7c1c810690cc69b7b04a187f781e079d2555
+  languageName: node
+  linkType: hard
+
+"js-yaml@npm:^4.1.0":
   version: 4.1.0
   resolution: "js-yaml@npm:4.1.0"
   dependencies:
